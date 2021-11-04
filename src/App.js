@@ -1,9 +1,8 @@
+import React from "react";
+import ButtonModule from "./modules/Button.module";
+
 function App() {
-  return (
-    <div className='App'>
-      <h1> {"Style compare"} </h1>
-    </div>
-  );
+  return <ButtonModule />;
 }
 
 export default App;
