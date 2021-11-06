@@ -5,8 +5,8 @@ import styles from "./codebox.module.css";
 
 function CodeBox({ snippet }) {
   return (
-    <div>
-      <SyntaxHighlighter className={styles.codebox} style={githubGist}>
+    <div className={styles.codebox}>
+      <SyntaxHighlighter className={styles.styleHighlighter} style={githubGist}>
         {snippet}
       </SyntaxHighlighter>
     </div>
