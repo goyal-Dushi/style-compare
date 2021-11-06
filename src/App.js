@@ -1,8 +1,14 @@
-import React from "react";
-import ButtonModule from "./modules/Button.module";
+import React, { createContext } from "react";
+import ButtonStyles from "./pages/Buttons";
+
+export const TypeContext = createContext();
 
 function App() {
-  return <ButtonModule />;
+  return (
+    <TypeContext.Provider value={["M", "B"]}>
+      <ButtonStyles />
+    </TypeContext.Provider>
+  );
 }
 
 export default App;
