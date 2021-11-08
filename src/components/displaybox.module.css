@@ -1,9 +1,8 @@
 .displayBox {
   border: 2px solid darkgrey;
   border-radius: 15px;
-  background-color: whitesmoke;
   padding: 20px;
-  margin: 20px 40px;
+  margin: 10px 40px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
