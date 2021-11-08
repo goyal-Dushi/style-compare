@@ -1,7 +1,23 @@
 .codebox {
-  margin: 20px 40px;
+  margin: 10px 40px;
   border-radius: 10px;
   border-width: 2px;
   border-style: solid;
   line-height: 1.4;
+}
+
+pre {
+  margin-bottom: 0;
+}
+
+.styleHighlighter {
+  padding: 0 !important;
+  border: none;
+  border-radius: 10px !important;
+}
+
+@media only screen and (max-width: 700px) {
+  .codebox {
+    font-size: 14px;
+  }
 }
