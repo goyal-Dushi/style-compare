@@ -1,3 +1,4 @@
+import { IconButton } from "@mui/material";
 import React, { useContext } from "react";
 import { TypeContext } from "../App";
 import styles from "./styleToggleNav.module.css";
@@ -12,18 +13,18 @@ function StyleToggleNav(props) {
     }
   };
   return (
-    <div className={styles.mainContainer}>
-      <div className={styles.styleContainer}>
-        {types?.map((item, i) => (
-          <button
-            onClick={() => toggleStyle(item)}
-            key={i}
-            className={styles.styleButton}>
-            {item}
-          </button>
-        ))}
-      </div>
-      <button className={styles.copyButton}>{"Copy"}</button>
+    <div className={styles.styleContainer}>
+      {types?.value?.map((item, i) => (
+        <IconButton color={"inherit"} onClick={() => toggleStyle(item)} key={i}>
+          <img
+            className={styles.styleImg}
+            height={"35px"}
+            width={"35px"}
+            src={types?.imgSrc[i]}
+            alt={"css-lib-img"}
+          />
+        </IconButton>
+      ))}
     </div>
   );
 }
