@@ -12,12 +12,30 @@ export default function ButtonDisabled() {
     if (type === "M") {
       data = `
       <Button disabled variant={"contained"} color={"primary"} > {"Disabled"} </Button>
+      <Button disabled variant={"outlined"} color={"primary"} > {"Disabled"} </Button>
+      <Button disabled color={"primary"} > {"Disabled"} </Button>
       `;
       return (
         <>
           <Button
             disabled
+            sx={{ margin: "10px 0px" }}
             variant={"contained"}
+            size={"large"}
+            color={"primary"}>
+            {"Disabled"}
+          </Button>
+          <Button
+            disabled
+            sx={{ margin: "10px 0px" }}
+            variant={"outlined"}
+            size={"large"}
+            color={"primary"}>
+            {"Disabled"}
+          </Button>
+          <Button
+            sx={{ margin: "10px 0px" }}
+            disabled
             size={"large"}
             color={"primary"}>
             {"Disabled"}
@@ -27,10 +45,22 @@ export default function ButtonDisabled() {
     } else if (type === "B") {
       data = `
       <Button variant={"primary"} size={"lg"} disabled> {"Disabled"} </Button>
+      <Button variant={"outline-primary"} size={"lg"} disabled> {"Disabled"} </Button>
       `;
       return (
         <>
-          <Bootstrap.Button variant={"primary"} size={"lg"} disabled>
+          <Bootstrap.Button
+            className={"mt-2 mb-2"}
+            variant={"primary"}
+            size={"lg"}
+            disabled>
+            {"Disabled"}
+          </Bootstrap.Button>
+          <Bootstrap.Button
+            className={"mt-2 mb-2"}
+            variant={"outline-primary"}
+            size={"lg"}
+            disabled>
             {"Disabled"}
           </Bootstrap.Button>
         </>
