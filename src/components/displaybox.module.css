@@ -4,7 +4,7 @@
   padding: 20px;
   margin: 10px 40px;
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: wrap;
   align-items: center;
   justify-content: space-around;
 }
