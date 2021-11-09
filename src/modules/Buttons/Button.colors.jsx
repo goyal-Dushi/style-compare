@@ -21,22 +21,40 @@ function ButtonColors() {
       `;
       return (
         <>
-          <Button variant={"contained"} color={"primary"}>
+          <Button
+            variant={"contained"}
+            sx={{ margin: "8px 0px" }}
+            color={"primary"}>
             {"Primary Default"}
           </Button>
-          <Button variant={"contained"} color={"secondary"}>
+          <Button
+            variant={"contained"}
+            sx={{ margin: "8px 0px" }}
+            color={"secondary"}>
             {"Secondary"}
           </Button>
-          <Button variant={"contained"} color={"success"}>
+          <Button
+            variant={"contained"}
+            sx={{ margin: "8px 0px" }}
+            color={"success"}>
             {"Success"}
           </Button>
-          <Button variant={"contained"} color={"error"}>
+          <Button
+            variant={"contained"}
+            sx={{ margin: "8px 0px" }}
+            color={"error"}>
             {"Error"}
           </Button>
-          <Button variant={"contained"} color={"info"}>
+          <Button
+            variant={"contained"}
+            sx={{ margin: "8px 0px" }}
+            color={"info"}>
             {"Info"}
           </Button>
-          <Button variant={"contained"} color={"warning"}>
+          <Button
+            variant={"contained"}
+            sx={{ margin: "8px 0px" }}
+            color={"warning"}>
             {"Warning"}
           </Button>
         </>
@@ -60,12 +78,24 @@ function ButtonColors() {
           <Bootstrap.Button variant={"secondary"}>
             {"Secondary"}
           </Bootstrap.Button>
-          <Bootstrap.Button variant={"success"}> {"Success"} </Bootstrap.Button>
-          <Bootstrap.Button variant={"danger"}> {"Danger"} </Bootstrap.Button>
-          <Bootstrap.Button variant={"warning"}> {"Warning"} </Bootstrap.Button>
-          <Bootstrap.Button variant={"info"}> {"Info"} </Bootstrap.Button>
-          <Bootstrap.Button variant={"light"}> {"Light"} </Bootstrap.Button>
-          <Bootstrap.Button variant={"dark"}> {"Dark"} </Bootstrap.Button>
+          <Bootstrap.Button className={"mt-2 mb-2"} variant={"success"}>
+            {"Success"}
+          </Bootstrap.Button>
+          <Bootstrap.Button className={"mt-2 mb-2"} variant={"danger"}>
+            {"Danger"}
+          </Bootstrap.Button>
+          <Bootstrap.Button className={"mt-2 mb-2"} variant={"warning"}>
+            {"Warning"}
+          </Bootstrap.Button>
+          <Bootstrap.Button className={"mt-2 mb-2"} variant={"info"}>
+            {"Info"}
+          </Bootstrap.Button>
+          <Bootstrap.Button className={"mt-2 mb-2"} variant={"light"}>
+            {"Light"}
+          </Bootstrap.Button>
+          <Bootstrap.Button className={"mt-2 mb-2"} variant={"dark"}>
+            {"Dark"}
+          </Bootstrap.Button>
         </>
       );
     }

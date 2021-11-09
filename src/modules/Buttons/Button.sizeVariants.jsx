@@ -23,13 +23,21 @@ export default function ButtonSizeVariants() {
     `;
       return (
         <>
-          <Button variant={"contained"} color={"primary"} size={"large"}>
+          <Button
+            variant={"contained"}
+            sx={{ margin: "10px 0px" }}
+            color={"primary"}
+            size={"large"}>
             {"Contained Large Button"}
           </Button>
-          <Button variant={"outlined"} color={"primary"} size={"medium"}>
+          <Button
+            variant={"outlined"}
+            sx={{ margin: "10px 0px" }}
+            color={"primary"}
+            size={"medium"}>
             {"Outlined Medium Button"}
           </Button>
-          <Button color={"primary"} size={"small"}>
+          <Button color={"primary"} sx={{ margin: "10px 0px" }} size={"small"}>
             {"Default variant Text & Small Button"}
           </Button>
         </>
@@ -45,10 +53,13 @@ export default function ButtonSizeVariants() {
     `;
       return (
         <>
-          <Bootstrap.Button size={"lg"}>
+          <Bootstrap.Button className={"mt-2 mb-2"} size={"lg"}>
             {"Default Primary Button & Large size"}
           </Bootstrap.Button>
-          <Bootstrap.Button variant={"outline-secondary"} size={"sm"}>
+          <Bootstrap.Button
+            className={"mt-2 mb-2"}
+            variant={"outline-secondary"}
+            size={"sm"}>
             {"Outlined Small Button"}
           </Bootstrap.Button>
         </>
