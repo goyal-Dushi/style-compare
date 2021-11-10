@@ -4,6 +4,7 @@ import DisplayBox from "../../components/DisplayBox";
 import StyleToggleNav from "../../components/StyleToggleNav";
 import { Button } from "@mui/material";
 import * as Bootstrap from "react-bootstrap";
+import DescBox from "../../components/DescBox";
 
 export default function ButtonSizeVariants() {
   const [type, setType] = useState("M");
@@ -68,6 +69,24 @@ export default function ButtonSizeVariants() {
   };
   return (
     <>
+      <DescBox
+        heading={"Sizes"}
+        content={
+          <>
+            {"In"} <b> {"Material"} </b>
+            {", there are three sizes available for buttons,"}
+            <span className={"codeSnippet"}>{"large"}</span> {","}
+            <span className={"codeSnippet"}>{"medium"}</span> {"&"}
+            <span className={"codeSnippet"}>{"small"}</span>
+            {".Whereas in"} <b> {"Bootstrap"} </b>
+            {"there are only two sizes available"}
+            <span className={"codeSnippet"}>{"lg : large"}</span> {"&"}
+            <span className={"codeSnippet"}>{"sm: small"}</span>
+            {". These could be applied to their respective"}
+            <span className={"codeSnippet"}>{"size"}</span> {"property."}
+          </>
+        }
+      />
       <StyleToggleNav setStyleType={setType} />
       <DisplayBox>{getHTML()}</DisplayBox>
       <CodeBox snippet={data} />

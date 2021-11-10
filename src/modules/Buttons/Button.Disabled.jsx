@@ -4,6 +4,7 @@ import DisplayBox from "../../components/DisplayBox";
 import StyleToggleNav from "../../components/StyleToggleNav";
 import { Button } from "@mui/material";
 import * as Bootstrap from "react-bootstrap";
+import DescBox from "../../components/DescBox";
 
 export default function ButtonDisabled() {
   const [type, setType] = useState("M");
@@ -69,6 +70,16 @@ export default function ButtonDisabled() {
   };
   return (
     <>
+      <DescBox
+        heading={"Disabled Buttons"}
+        content={
+          <>
+            {"For disabling a button, both Material & Bootstrap uses"}
+            <span className={"codeSnippet"}>{"disabled"}</span>
+            {"attribute for the element"}
+          </>
+        }
+      />
       <StyleToggleNav setStyleType={setType} />
       <DisplayBox>{getHTML()}</DisplayBox>
       <CodeBox snippet={data} />

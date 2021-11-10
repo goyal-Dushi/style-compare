@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import DescBox from "../../components/DescBox";
 import CodeBox from "../../components/CodeBox";
 import DisplayBox from "../../components/DisplayBox";
 import StyleToggleNav from "../../components/StyleToggleNav";
@@ -102,6 +103,18 @@ function ButtonColors() {
   };
   return (
     <>
+      <DescBox
+        heading={"Color"}
+        content={
+          <>
+            {"For applying color to your button, in"} <b> {"Material"} </b>
+            {"you can use "}
+            <span className={"codeSnippet"}>{"color"}</span>
+            {"property whereas in"} <b> {"Bootstrap"} </b>
+            <span className={"codeSnippet"}>{"variant"}</span> {"is used."}
+          </>
+        }
+      />
       <StyleToggleNav setStyleType={setType} />
       <DisplayBox>{getHTML()}</DisplayBox>
       <CodeBox snippet={data} />
