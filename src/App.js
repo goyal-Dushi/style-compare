@@ -26,7 +26,7 @@ function App() {
           <ul className={styles.sideNavContent}>
             <li
               onClick={() => {
-                navigate("/buttons");
+                navigate("/");
               }}>
               {"Home"}
             </li>
