@@ -27,3 +27,12 @@ button,
 i {
   cursor: pointer;
 }
+.codeSnippet {
+  color: rgb(32, 38, 45);
+  background-color: rgba(9, 32, 56, 0.2);
+  border-radius: 5px;
+  padding: 0px 5px;
+  margin: 0px 5px;
+  font-family: monospace;
+  text-align: center;
+}
