@@ -30,6 +30,10 @@
   margin: 0px auto 0px;
 }
 
+.sideNavContent li {
+  cursor: pointer;
+}
+
 .bodyContainer {
   overflow-y: auto;
   overflow-x: hidden;
