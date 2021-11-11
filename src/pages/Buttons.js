@@ -5,13 +5,12 @@ import WithIcons from "../modules/Buttons/WithIcons";
 
 export default function ButtonStyles() {
   return (
-    <>
-      <div style={{ width: "100%", overflowX: "hidden" }}>
-        <ButtonColors />
-        <ButtonSizeVariants />
-        <ButtonDisabled />
-        <WithIcons />
-      </div>
-    </>
+    <div className={"w-100"} style={{ overflowX: "hidden" }}>
+      <h1 className={"display-4 ps-4"}>{"Buttons"}</h1>
+      <ButtonColors />
+      <ButtonSizeVariants />
+      <ButtonDisabled />
+      <WithIcons />
+    </div>
   );
 }
