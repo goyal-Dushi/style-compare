@@ -1,0 +1,17 @@
+.sideNav {
+  padding-top: 100px;
+}
+
+.sideNavContent {
+  position: sticky;
+  top: 100px;
+  left: 0;
+  width: 90%;
+  overflow-y: auto;
+  height: 90vh;
+  margin: 0px auto 0px;
+}
+
+.sideNavContent li {
+  cursor: pointer;
+}
