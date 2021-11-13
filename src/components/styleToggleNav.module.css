@@ -1,28 +1,11 @@
-.mainContainer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 10px 40px;
-}
-
 .styleContainer {
+  margin: 0px 40px;
   display: inline-block;
   width: fit-content;
-  padding: 4px 10px;
 }
 
-.styleButton {
-  background: lightgreen;
-  color: white;
-  padding: 5px 10px;
-  font-size: 14px;
-  float: left;
-  margin: 3px 5px;
-}
-
-.copyButton {
-  background-color: lightskyblue;
-  color: black;
-  padding: 5px 10px;
-  font-size: 14px;
+.styleImg {
+  display: block;
+  border: none;
+  border-radius: 50%;
 }
