@@ -1,0 +1,11 @@
+.header {
+  position: fixed;
+  top: 0;
+  height: 80px;
+  background-color: white;
+  padding: 40px 20px;
+  box-shadow: 5px 0px 10px 5px lightgray;
+  font-size: 20px;
+  width: 100%;
+  z-index: 1;
+}
