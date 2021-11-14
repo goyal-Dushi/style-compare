@@ -1,6 +1,8 @@
 import React from "react";
 import RightSideNav from "../components/RightSideNav";
+import DismissAlert from "../modules/Alerts/Dismiss";
 import AlertColors from "../modules/Alerts/Colors";
+import AdditionalContent from "../modules/Alerts/Content";
 import AlertVariants from "../modules/Alerts/Variants";
 
 function Alerts() {
@@ -10,8 +12,17 @@ function Alerts() {
         <h1 className={"display-4 ps-4"}>{"Alerts"}</h1>
         <AlertColors />
         <AlertVariants />
+        <AdditionalContent />
+        <DismissAlert />
       </div>
-      <RightSideNav values={["Colors & Icons", "Variants"]} />
+      <RightSideNav
+        values={[
+          "Colors & Icons",
+          "Variants",
+          "Additional Content",
+          "Dismissable Alerts",
+        ]}
+      />
     </div>
   );
 }
