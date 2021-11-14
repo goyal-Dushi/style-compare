@@ -5,7 +5,7 @@ export default function RightSideNav({ values }) {
         <h5 className={"mx-auto w-50"}>
           <u>{"On This Page"}</u>
         </h5>
-        <ul className={"mx-auto w-50 h-auto"}>
+        <ul className={"mx-auto w-50 h-auto ps-0"}>
           {values?.map((item, i) => (
             <li key={i}> {item} </li>
           ))}

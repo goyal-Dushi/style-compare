@@ -5,6 +5,7 @@
 .sideNavContent {
   position: sticky;
   top: 100px;
+  padding-left: 0;
   left: 0;
   width: 90%;
   overflow-y: auto;
