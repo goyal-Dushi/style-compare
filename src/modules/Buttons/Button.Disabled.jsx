@@ -6,7 +6,7 @@ import { Button } from "@mui/material";
 import * as Bootstrap from "react-bootstrap";
 import DescBox from "../../components/DescBox";
 
-export default function ButtonDisabled() {
+export default function ButtonDisabled({ id }) {
   const [type, setType] = useState("M");
   let data;
   const getHTML = () => {
@@ -69,7 +69,7 @@ export default function ButtonDisabled() {
     }
   };
   return (
-    <>
+    <div id={id}>
       <DescBox
         heading={"Disabled Buttons"}
         content={
@@ -83,6 +83,6 @@ export default function ButtonDisabled() {
       <StyleToggleNav setStyleType={setType} />
       <DisplayBox>{getHTML()}</DisplayBox>
       <CodeBox snippet={data} />
-    </>
+    </div>
   );
 }

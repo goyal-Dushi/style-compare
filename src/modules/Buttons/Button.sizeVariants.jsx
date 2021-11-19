@@ -6,20 +6,20 @@ import { Button } from "@mui/material";
 import * as Bootstrap from "react-bootstrap";
 import DescBox from "../../components/DescBox";
 
-export default function ButtonSizeVariants() {
+export default function ButtonSizeVariants({ id }) {
   const [type, setType] = useState("M");
   let data;
   const getHTML = () => {
     if (type === "M") {
       data = `
-    <Button variant={"contained"} color={"primary"} size={"large"}>
-      {"Contained Large Button"}
+    <Button variant="contained" color="primary" size="large">
+      Contained Large Button
     </Button>
-    <Button variant={"outlined"} color={"primary"} size={"medium"}>
-      {"Outlined Medium Button"}
+    <Button variant="outlined" color="primary" size="medium">
+      Outlined Medium Button
     </Button>
-    <Button color={"primary"} size={"small"}>
-      {"Default variant Text & Small Button"}
+    <Button color="primary" size="small">
+      Default variant Text & Small Button
     </Button>
     `;
       return (
@@ -45,11 +45,11 @@ export default function ButtonSizeVariants() {
       );
     } else if (type === "B") {
       data = `
-    <Button size={"lg"}>
-      {"Default Primary Button & Large size"}
+    <Button size="lg">
+      Default Primary Button & Large size
     </Button>
-    <Button variant={"outline-secondary"} size={"sm"}>
-      {"Outlined Small Button"}
+    <Button variant="outline-secondary" size="sm">
+      Outlined Small Button
     </Button>
     `;
       return (
@@ -68,9 +68,9 @@ export default function ButtonSizeVariants() {
     }
   };
   return (
-    <>
+    <div id={id}>
       <DescBox
-        heading={"Sizes"}
+        heading={"Sizes & Variants"}
         content={
           <>
             {"In"} <b> {"Material"} </b>
@@ -90,6 +90,6 @@ export default function ButtonSizeVariants() {
       <StyleToggleNav setStyleType={setType} />
       <DisplayBox>{getHTML()}</DisplayBox>
       <CodeBox snippet={data} />
-    </>
+    </div>
   );
 }

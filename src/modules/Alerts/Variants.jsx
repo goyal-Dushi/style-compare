@@ -6,7 +6,7 @@ import StyleToggleNav from "../../components/StyleToggleNav";
 import * as Boot from "react-bootstrap";
 import DescBox from "../../components/DescBox";
 
-export default function AlertVariants() {
+export default function AlertVariants({ id }) {
   const [type, setType] = useState("M");
   let data;
   const getHTML = () => {
@@ -45,7 +45,7 @@ export default function AlertVariants() {
     }
   };
   return (
-    <>
+    <div id={id}>
       <DescBox
         heading={"Variants"}
         content={
@@ -68,6 +68,6 @@ export default function AlertVariants() {
       <StyleToggleNav setStyleType={setType} />
       <DisplayBox> {getHTML()} </DisplayBox>
       <CodeBox snippet={data} />
-    </>
+    </div>
   );
 }

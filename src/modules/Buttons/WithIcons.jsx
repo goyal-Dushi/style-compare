@@ -8,7 +8,7 @@ import DisplayBox from "../../components/DisplayBox";
 import CodeBox from "../../components/CodeBox";
 import DescBox from "../../components/DescBox";
 
-export default function WithIcons() {
+export default function WithIcons({ id }) {
   const [type, setType] = useState("M");
   let data;
   const getHTML = () => {
@@ -53,7 +53,7 @@ export default function WithIcons() {
     }
   };
   return (
-    <>
+    <div id={id}>
       <DescBox
         heading={"With Icons"}
         content={
@@ -82,6 +82,6 @@ export default function WithIcons() {
       <StyleToggleNav setStyleType={setType} />
       <DisplayBox> {getHTML()} </DisplayBox>
       <CodeBox snippet={data} />
-    </>
+    </div>
   );
 }

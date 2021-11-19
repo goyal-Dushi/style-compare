@@ -6,7 +6,7 @@ import DisplayBox from "../../components/DisplayBox";
 import StyleToggleNav from "../../components/StyleToggleNav";
 import DescBox from "../../components/DescBox";
 
-export default function DismissAlert() {
+export default function DismissAlert({ id }) {
   const [type, setType] = useState("M");
   const [open, setOpen] = useState(true);
   const [open2, setOpen2] = useState(true);
@@ -116,7 +116,7 @@ export default function DismissAlert() {
     }
   };
   return (
-    <>
+    <div id={id}>
       <DescBox
         heading={"Dismiss Alert"}
         content={
@@ -148,6 +148,6 @@ export default function DismissAlert() {
       <StyleToggleNav setStyleType={setType} />
       <DisplayBox> {getHTML()} </DisplayBox>
       <CodeBox snippet={data} />
-    </>
+    </div>
   );
 }

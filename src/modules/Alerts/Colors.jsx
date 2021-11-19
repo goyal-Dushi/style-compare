@@ -6,7 +6,7 @@ import { Alert } from "@mui/material";
 import * as Boot from "react-bootstrap";
 import DescBox from "../../components/DescBox";
 
-export default function AlertColors() {
+export default function AlertColors({ id }) {
   const [type, setType] = useState("M");
   let data;
   const getHTML = () => {
@@ -92,7 +92,7 @@ export default function AlertColors() {
     }
   };
   return (
-    <>
+    <div id={id}>
       <DescBox
         heading={"Colors & Icons"}
         content={
@@ -138,6 +138,6 @@ export default function AlertColors() {
       <StyleToggleNav setStyleType={setType} />
       <DisplayBox> {getHTML()} </DisplayBox>
       <CodeBox snippet={data} />
-    </>
+    </div>
   );
 }

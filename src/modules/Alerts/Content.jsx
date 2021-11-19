@@ -6,7 +6,7 @@ import DisplayBox from "../../components/DisplayBox";
 import StyleToggleNav from "../../components/StyleToggleNav";
 import DescBox from "../../components/DescBox";
 
-export default function AdditionalContent() {
+export default function AdditionalContent({ id }) {
   const [type, setType] = useState("M");
   let data;
   const getHTML = () => {
@@ -67,7 +67,7 @@ export default function AdditionalContent() {
     }
   };
   return (
-    <>
+    <div id={id}>
       <DescBox
         heading={"Additional Content"}
         content={
@@ -87,6 +87,6 @@ export default function AdditionalContent() {
       <StyleToggleNav setStyleType={setType} />
       <DisplayBox> {getHTML()} </DisplayBox>
       <CodeBox snippet={data} />
-    </>
+    </div>
   );
 }

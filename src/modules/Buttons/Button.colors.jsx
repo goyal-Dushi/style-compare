@@ -6,7 +6,7 @@ import StyleToggleNav from "../../components/StyleToggleNav";
 import { Button } from "@mui/material";
 import * as Bootstrap from "react-bootstrap";
 
-function ButtonColors() {
+function ButtonColors({ id }) {
   const [type, setType] = useState("M");
   console.log("Button module");
   let data;
@@ -102,7 +102,7 @@ function ButtonColors() {
     }
   };
   return (
-    <>
+    <div id={id}>
       <DescBox
         heading={"Color"}
         content={
@@ -118,7 +118,7 @@ function ButtonColors() {
       <StyleToggleNav setStyleType={setType} />
       <DisplayBox>{getHTML()}</DisplayBox>
       <CodeBox snippet={data} />
-    </>
+    </div>
   );
 }
 
