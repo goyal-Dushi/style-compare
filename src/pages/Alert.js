@@ -10,10 +10,10 @@ function Alerts() {
     <div className={"w-100 d-flex"}>
       <div className={"w-75"}>
         <h1 className={"display-4 ps-4"}>{"Alerts"}</h1>
-        <AlertColors />
-        <AlertVariants />
-        <AdditionalContent />
-        <DismissAlert />
+        <AlertColors id={"alertColors"} />
+        <AlertVariants id={"alertVariants"} />
+        <AdditionalContent id={"alertContent"} />
+        <DismissAlert id={"alertDismiss"} />
       </div>
       <RightSideNav
         values={[
@@ -21,6 +21,12 @@ function Alerts() {
           "Variants",
           "Additional Content",
           "Dismissable Alerts",
+        ]}
+        scrollRef={[
+          "#alertColors",
+          "#alertVariants",
+          "#alertContent",
+          "#alertDismiss",
         ]}
       />
     </div>
