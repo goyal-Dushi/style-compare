@@ -27,6 +27,8 @@ button,
 i {
   cursor: pointer;
 }
+
+/* Used in Modules */
 .codeSnippet {
   color: rgb(32, 38, 45);
   background-color: rgba(9, 32, 56, 0.2);
@@ -35,4 +37,17 @@ i {
   margin: 0px 5px;
   font-family: monospace;
   text-align: center;
+}
+
+/* App.js styles */
+.bodyWrapper {
+  display: grid;
+  grid-template-columns: 20% auto;
+  height: 100%;
+}
+
+.bodyContainer {
+  padding-top: 120px;
+  width: auto;
+  margin-bottom: 60px;
 }
