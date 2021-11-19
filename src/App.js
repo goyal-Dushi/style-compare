@@ -1,8 +1,9 @@
 import React, { createContext } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import "./app.css";
 import ButtonStyles from "./pages/Buttons";
 import Alerts from "./pages/Alert";
+import NavHeader from "./components/NavHeader";
+import Footer from "./components/Footer";
 import LeftSideNav from "./components/LeftSideNav";
 import Bootstrap from "./assets/img/bootstrap.png";
 import Material from "./assets/img/material.png";
@@ -13,9 +14,7 @@ export const TypeContext = createContext();
 function App() {
   return (
     <>
-      <nav className={"header"}>
-        <p> {"style-compare"} </p>
-      </nav>
+      <NavHeader />
       <div className={"bodyWrapper"}>
         <LeftSideNav />
         <div className={"bodyContainer"}>
@@ -28,8 +27,8 @@ function App() {
             </Routes>
           </TypeContext.Provider>
         </div>
+        <Footer />
       </div>
-      <footer className={"footerStyle"}>Copyright Footer</footer>
     </>
   );
 }
