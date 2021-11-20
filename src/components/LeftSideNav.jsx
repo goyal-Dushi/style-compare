@@ -26,6 +26,12 @@ export default function LeftSideNav() {
             }}>
             {"Alerts"}
           </li>
+          <li
+            onClick={() => {
+              navigate("/chips&badges");
+            }}>
+            {"Chips/Badges"}
+          </li>
         </ul>
       </aside>
     </>
