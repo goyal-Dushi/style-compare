@@ -2,6 +2,7 @@ import React, { createContext } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ButtonStyles from "./pages/Buttons";
 import Alerts from "./pages/Alert";
+import ChipBadge from "./pages/Chip&Badge";
 import NavHeader from "./components/NavHeader";
 import Footer from "./components/Footer";
 import LeftSideNav from "./components/LeftSideNav";
@@ -22,6 +23,7 @@ function App() {
             value={{ imgSrc: [Material, Bootstrap], value: ["M", "B"] }}>
             <Routes>
               <Route path={"/"} element={<Home />} />
+              <Route path={"/chips&badges"} element={<ChipBadge />} />
               <Route path={"/buttons"} element={<ButtonStyles />} />
               <Route path={"/alerts"} element={<Alerts />} />
             </Routes>
