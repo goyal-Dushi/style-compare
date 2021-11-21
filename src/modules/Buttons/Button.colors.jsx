@@ -101,20 +101,29 @@ function ButtonColors({ id }) {
       );
     }
   };
+
+  const getContent = () => {
+    if (type === "M") {
+      return (
+        <>
+          <b>Material</b> makes use of{" "}
+          <span className='codeSnippet'>color</span>
+          property for its button component to set its color.
+        </>
+      );
+    } else if (type === "B") {
+      return (
+        <>
+          <b>Bootstrap</b> uses the <span className='codeSnippet'>variant</span>
+          property to set the color as well as other variant for the button.
+        </>
+      );
+    }
+  };
+
   return (
     <div id={id}>
-      <DescBox
-        heading={"Color"}
-        content={
-          <>
-            {"For applying color to your button, in"} <b> {"Material"} </b>
-            {"you can use "}
-            <span className={"codeSnippet"}>{"color"}</span>
-            {"property whereas in"} <b> {"Bootstrap"} </b>
-            <span className={"codeSnippet"}>{"variant"}</span> {"is used."}
-          </>
-        }
-      />
+      <DescBox heading={"Color"} content={getContent()} />
       <StyleToggleNav setStyleType={setType} />
       <DisplayBox>{getHTML()}</DisplayBox>
       <CodeBox snippet={data} />

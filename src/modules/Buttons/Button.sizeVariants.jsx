@@ -67,26 +67,37 @@ export default function ButtonSizeVariants({ id }) {
       );
     }
   };
+
+  const getContent = () => {
+    if (type === "M") {
+      return (
+        <>
+          {"In"} <b> {"Material"} </b>
+          {", there are three sizes available for buttons,"}
+          <span className={"codeSnippet"}>{"large"}</span> {","}
+          <span className={"codeSnippet"}>{"medium"}</span> {"&"}
+          <span className={"codeSnippet"}>{"small"}</span>
+          {"which could be applied to its"}
+          <span className='codeSnippet'>{"size"}</span> {"property/attribute"}.
+        </>
+      );
+    } else if (type === "B") {
+      return (
+        <>
+          <b> {"Bootstrap"} </b>
+          {"provides only two sizes,"}
+          <span className={"codeSnippet"}>{"lg : large"}</span> {"&"}
+          <span className={"codeSnippet"}>{"sm: small"}</span>
+          {". These could be applied to their respective"}
+          <span className={"codeSnippet"}>{"size"}</span> {"property."}
+        </>
+      );
+    }
+  };
+
   return (
     <div id={id}>
-      <DescBox
-        heading={"Sizes & Variants"}
-        content={
-          <>
-            {"In"} <b> {"Material"} </b>
-            {", there are three sizes available for buttons,"}
-            <span className={"codeSnippet"}>{"large"}</span> {","}
-            <span className={"codeSnippet"}>{"medium"}</span> {"&"}
-            <span className={"codeSnippet"}>{"small"}</span>
-            {".Whereas in"} <b> {"Bootstrap"} </b>
-            {"there are only two sizes available"}
-            <span className={"codeSnippet"}>{"lg : large"}</span> {"&"}
-            <span className={"codeSnippet"}>{"sm: small"}</span>
-            {". These could be applied to their respective"}
-            <span className={"codeSnippet"}>{"size"}</span> {"property."}
-          </>
-        }
-      />
+      <DescBox heading={"Sizes & Variants"} content={<>{".Whereas in"}</>} />
       <StyleToggleNav setStyleType={setType} />
       <DisplayBox>{getHTML()}</DisplayBox>
       <CodeBox snippet={data} />
