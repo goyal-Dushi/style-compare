@@ -33,9 +33,9 @@ export default function ColorsSizes() {
       );
     } else if (type === "B") {
       data = `
-    <Badge > Primary Default </Badge>
-    <Badge bg="success" className="fs-1" > Success </Badge>
-    <Badge bg="danger" className="fs-2" > Danger </Badge>
+    <Badge pill> Primary Default </Badge>
+    <Badge pill bg="success" className="fs-1" > Success </Badge>
+    <Badge pill bg="danger" className="fs-2" > Danger </Badge>
     <Badge pill bg="warning" className="fs-3" > Warning! </Badge>
     <Badge pill bg="info" className="fs-4" > Info </Badge>
     <Badge pill bg="light" className="fs-5" > Light </Badge>
@@ -43,11 +43,11 @@ export default function ColorsSizes() {
     `;
       return (
         <>
-          <Boot.Badge> {"Primary Default"} </Boot.Badge>
-          <Boot.Badge className={"fs-1"} bg={"success"}>
+          <Boot.Badge pill> {"Primary Default"} </Boot.Badge>
+          <Boot.Badge pill className={"fs-1"} bg={"success"}>
             {"Success"}
           </Boot.Badge>
-          <Boot.Badge className={"fs-2"} bg={"danger"}>
+          <Boot.Badge pill className={"fs-2"} bg={"danger"}>
             {"Danger"}
           </Boot.Badge>
           <Boot.Badge pill className={"fs-3"} bg={"warning"}>
@@ -85,7 +85,8 @@ export default function ColorsSizes() {
           In
           <b> Bootstrap </b>, you use the same
           <span className='codeSnippet'>{"<Badge/>"}</span> for both chips and
-          badges. By Default, it has background,
+          badges.You can use the <span className='codeSnippet'>pill</span>
+          attribute for showing chip like badges. By Default, it has background,
           <span className='codeSnippet'>bg:primary</span> and no rounded
           borders. Bootstrap dosen't provide any size property/attribute for its
           Badge component, but you can trigger different sized by utilizing the
