@@ -72,8 +72,8 @@ export default function ButtonSizeVariants({ id }) {
     if (type === "M") {
       return (
         <>
-          {"In"} <b> {"Material"} </b>
-          {", there are three sizes available for buttons,"}
+          <b> {"Material has"} </b>
+          {"three sizes available for buttons,"}
           <span className={"codeSnippet"}>{"large"}</span> {","}
           <span className={"codeSnippet"}>{"medium"}</span> {"&"}
           <span className={"codeSnippet"}>{"small"}</span>
@@ -97,7 +97,7 @@ export default function ButtonSizeVariants({ id }) {
 
   return (
     <div id={id}>
-      <DescBox heading={"Sizes & Variants"} content={<>{".Whereas in"}</>} />
+      <DescBox heading={"Sizes & Variants"} content={getContent()} />
       <StyleToggleNav setStyleType={setType} />
       <DisplayBox>{getHTML()}</DisplayBox>
       <CodeBox snippet={data} />
