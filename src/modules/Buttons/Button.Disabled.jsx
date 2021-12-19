@@ -5,17 +5,14 @@ import StyleToggleNav from "../../components/StyleToggleNav";
 import { Button } from "@mui/material";
 import * as Bootstrap from "react-bootstrap";
 import DescBox from "../../components/DescBox";
+import { content, html } from "./buttons.json";
 
 export default function ButtonDisabled({ id }) {
   const [type, setType] = useState("M");
   let data;
   const getHTML = () => {
     if (type === "M") {
-      data = `
-      <Button disabled variant={"contained"} color={"primary"} > {"Disabled"} </Button>
-      <Button disabled variant={"outlined"} color={"primary"} > {"Disabled"} </Button>
-      <Button disabled color={"primary"} > {"Disabled"} </Button>
-      `;
+      data = html.disabled.M;
       return (
         <>
           <Button
@@ -44,10 +41,7 @@ export default function ButtonDisabled({ id }) {
         </>
       );
     } else if (type === "B") {
-      data = `
-      <Button variant={"primary"} size={"lg"} disabled> {"Disabled"} </Button>
-      <Button variant={"outline-primary"} size={"lg"} disabled> {"Disabled"} </Button>
-      `;
+      data = html.disabled.B;
       return (
         <>
           <Bootstrap.Button
@@ -70,16 +64,7 @@ export default function ButtonDisabled({ id }) {
   };
   return (
     <div id={id}>
-      <DescBox
-        heading={"Disabled Buttons"}
-        content={
-          <>
-            {"For disabling a button, both Material & Bootstrap uses"}
-            <span className={"codeSnippet"}>{"disabled"}</span>
-            {"attribute for the element"}
-          </>
-        }
-      />
+      <DescBox heading={"Disabled Buttons"} content={content.disabled.C} />
       <StyleToggleNav setStyleType={setType} />
       <DisplayBox>{getHTML()}</DisplayBox>
       <CodeBox snippet={data} />

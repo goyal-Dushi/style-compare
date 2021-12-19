@@ -7,20 +7,14 @@ import StyleToggleNav from "../../components/StyleToggleNav";
 import DisplayBox from "../../components/DisplayBox";
 import CodeBox from "../../components/CodeBox";
 import DescBox from "../../components/DescBox";
+import { content, html } from "./buttons.json";
 
 export default function WithIcons({ id }) {
   const [type, setType] = useState("M");
   let data;
   const getHTML = () => {
     if (type === "M") {
-      data = `
-    <Button endIcon={<SendIcon />} variant={"contained"}>
-        {"Send"}
-    </Button>
-    <Button startIcon={<PrintIcon />} variant={"outlined"} color={"info"}>
-        {"Print"}
-    </Button> 
-        `;
+      data = html.icons.M;
       return (
         <>
           <Button endIcon={<SendIcon />} variant={"contained"}>
@@ -32,14 +26,7 @@ export default function WithIcons({ id }) {
         </>
       );
     } else if (type === "B") {
-      data = `
-    <Button variant={"primary"}>
-      {"Send"} <i className={"bi-send"}></i>
-    </Button>
-    <Button variant={"outline-info"}>
-      <i className={"bi-printer"}></i> {"Print"}
-    </Button>  
-    `;
+      data = html.icons.B;
       return (
         <>
           <Boot.Button variant={"primary"}>
@@ -54,30 +41,9 @@ export default function WithIcons({ id }) {
   };
   const getContent = () => {
     if (type === "M") {
-      return (
-        <>
-          <b> {"Material"} </b> {"have icons lib named"}
-          <span className={"codeSnippet"}>{"@mui/icons-material"}</span>
-          {
-            "used for importing material icon component. It provides Button with attributes like"
-          }
-          <span className={"codeSnippet"}> {"endIcon"} </span> {"&"}
-          <span className={"codeSnippet"}>{"startIcon"}</span>
-          {"to place the icons at the end or start of the button respectively"}
-        </>
-      );
+      return content.icons.M;
     } else if (type === "B") {
-      return (
-        <>
-          {"In"} <b> {"Bootstrap"} </b> {","}
-          <span className={"codeSnippet"}>{"bootstrap-icons"}</span>
-          {"is the lib for using its icons via classes provided to the"}
-          <span className={"codeSnippet"}>{"<i></i>"}</span>
-          {
-            "tags. You need to place them manually where you want your icon to occur."
-          }
-        </>
-      );
+      return content.icons.B;
     }
   };
   return (

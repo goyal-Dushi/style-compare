@@ -5,6 +5,7 @@ import DisplayBox from "../../components/DisplayBox";
 import StyleToggleNav from "../../components/StyleToggleNav";
 import { Button } from "@mui/material";
 import * as Bootstrap from "react-bootstrap";
+import { content, html } from "./buttons.json";
 
 function ButtonColors({ id }) {
   const [type, setType] = useState("M");
@@ -12,14 +13,7 @@ function ButtonColors({ id }) {
   let data;
   const getHTML = () => {
     if (type === "M") {
-      data = `
-      <Button variant={"contained"} color={"primary"} > {"Primary Default"} </Button>
-      <Button variant={"contained"} color={"secondary"} > {"Secondary"} </Button>
-      <Button variant={"contained"} color={"success"} > {"Success"} </Button>
-      <Button variant={"contained"} color={"error"} > {"Error"} </Button>
-      <Button variant={"contained"} color={"info"} > {"Info"} </Button>
-      <Button variant={"contained"} color={"warning"} > {"Warning"} </Button>
-      `;
+      data = html.colors.M;
       return (
         <>
           <Button
@@ -61,16 +55,7 @@ function ButtonColors({ id }) {
         </>
       );
     } else if (type === "B") {
-      data = `
-      <Button variant={"primary"} > {"Primary Default"} </Button>
-      <Button variant={"secondary"} > {"Secondary"} </Button>
-      <Button variant={"success"} > {"Success"} </Button>
-      <Button variant={"danger"} > {"Danger"} </Button>
-      <Button variant={"warning"} > {"Warning"} </Button>
-      <Button variant={"info"} > {"Info"} </Button>
-      <Button variant={"light"} > {"Light"} </Button>
-      <Button variant={"dark"} > {"Dark"} </Button>
-      `;
+      data = html.colors.B;
       return (
         <>
           <Bootstrap.Button variant={"primary"}>
@@ -104,20 +89,9 @@ function ButtonColors({ id }) {
 
   const getContent = () => {
     if (type === "M") {
-      return (
-        <>
-          <b>Material</b> makes use of{" "}
-          <span className='codeSnippet'>color</span>
-          property for its button component to set its color.
-        </>
-      );
+      return content.colors.M;
     } else if (type === "B") {
-      return (
-        <>
-          <b>Bootstrap</b> uses the <span className='codeSnippet'>variant</span>
-          property to set the color as well as other variant for the button.
-        </>
-      );
+      return content.colors.B;
     }
   };
 

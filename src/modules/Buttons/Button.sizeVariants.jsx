@@ -5,23 +5,14 @@ import StyleToggleNav from "../../components/StyleToggleNav";
 import { Button } from "@mui/material";
 import * as Bootstrap from "react-bootstrap";
 import DescBox from "../../components/DescBox";
+import { content, html } from "./buttons.json";
 
 export default function ButtonSizeVariants({ id }) {
   const [type, setType] = useState("M");
   let data;
   const getHTML = () => {
     if (type === "M") {
-      data = `
-    <Button variant="contained" color="primary" size="large">
-      Contained Large Button
-    </Button>
-    <Button variant="outlined" color="primary" size="medium">
-      Outlined Medium Button
-    </Button>
-    <Button color="primary" size="small">
-      Default variant Text & Small Button
-    </Button>
-    `;
+      data = html.sizeVariants.M;
       return (
         <>
           <Button
@@ -44,14 +35,7 @@ export default function ButtonSizeVariants({ id }) {
         </>
       );
     } else if (type === "B") {
-      data = `
-    <Button size="lg">
-      Default Primary Button & Large size
-    </Button>
-    <Button variant="outline-secondary" size="sm">
-      Outlined Small Button
-    </Button>
-    `;
+      data = html.sizeVariants.B;
       return (
         <>
           <Bootstrap.Button className={"mt-2 mb-2"} size={"lg"}>
@@ -70,28 +54,9 @@ export default function ButtonSizeVariants({ id }) {
 
   const getContent = () => {
     if (type === "M") {
-      return (
-        <>
-          <b> {"Material has"} </b>
-          {"three sizes available for buttons,"}
-          <span className={"codeSnippet"}>{"large"}</span> {","}
-          <span className={"codeSnippet"}>{"medium"}</span> {"&"}
-          <span className={"codeSnippet"}>{"small"}</span>
-          {"which could be applied to its"}
-          <span className='codeSnippet'>{"size"}</span> {"property/attribute"}.
-        </>
-      );
+      return content.sizeVariants.M;
     } else if (type === "B") {
-      return (
-        <>
-          <b> {"Bootstrap"} </b>
-          {"provides only two sizes,"}
-          <span className={"codeSnippet"}>{"lg : large"}</span> {"&"}
-          <span className={"codeSnippet"}>{"sm: small"}</span>
-          {". These could be applied to their respective"}
-          <span className={"codeSnippet"}>{"size"}</span> {"property."}
-        </>
-      );
+      return content.sizeVariants.B;
     }
   };
 
