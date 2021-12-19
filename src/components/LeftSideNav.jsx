@@ -44,6 +44,12 @@ export default function LeftSideNav() {
                   }}>
                   {"Chips/Badges"}
                 </li>
+                <li
+                  onClick={() => {
+                    navigate("/progress");
+                  }}>
+                  {"Progress"}
+                </li>
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>
