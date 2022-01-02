@@ -6,6 +6,8 @@ import CodeBox from "../../../components/CodeBox";
 import DescBox from "../../../components/DescBox";
 import DisplayBox from "../../../components/DisplayBox";
 import StyleToggleNav from "../../../components/StyleToggleNav";
+import { content, html } from "./badges.json";
+import { descContent } from "../../common.json";
 
 function AlignmentContent({ id }) {
   const [type, setType] = useState("M");
@@ -13,20 +15,7 @@ function AlignmentContent({ id }) {
   let data;
   const getHTML = () => {
     if (type === "M") {
-      data = `
-    <Badge max={100} color="secondary" badgeContent={120} >
-        <Mail/>
-    </Badge>
-    <Badge max={50} color="secondary" badgeContent={44} anchorOrigin={{vertical:'bottom', horizontal:'right'}} >
-        <Mail/>
-    </Badge>
-    <Badge badgeContent={0} color="secondary" showZero anchorOrigin={{vertical:'bottom', horizontal:'left'}}>
-        <Mail/>
-    </Badge>
-    <Badge badgeContent={0} color="secondary" anchorOrigin={{vertical:'top', horizontal:'left'}} >
-        <Mail/>
-    </Badge>
-    `;
+      data = html.alignContent.M;
       return (
         <>
           <Badge max={100} color={"secondary"} badgeContent={120}>
@@ -55,20 +44,7 @@ function AlignmentContent({ id }) {
         </>
       );
     } else if (type === "B") {
-      data = `
-    <Button variant={"info"} style={{ position: "relative" }}>
-        Some Emails
-        <Badge style={{ position: "absolute", top: "-10px", right: "-25px" }} bg={"success"} text={"danger"} >
-            99+
-        </Badge>
-    </Button>
-    <Button variant={"danger"} style={{ position: "relative" }}>
-        Spam
-        <Badge bg={"dark"} text={"danger"} style={{position: "absolute", top: "30px", bottom: "-15px", right: "-25px"}}>
-            99+
-        </Badge>
-    </Button>
-    `;
+      data = html.alignContent.B;
       return (
         <>
           <Boot.Button variant={"primary"} style={{ position: "relative" }}>
@@ -100,35 +76,13 @@ function AlignmentContent({ id }) {
   };
 
   const getContent = () => {
-    if (type === "M") {
-      return (
-        <>
-          <b> Material </b> provides attributes like
-          <span className='codeSnippet'>anchorOrigin</span>
-          to control the alignment of badges and
-          <span className='codeSnippet'>badgeContent</span>,
-          <span className='codeSnippet'>max</span> and
-          <span className='codeSnippet'>showZero</span>
-          like properties to set the content inside badge, set maximum value for
-          the badge content
-          {
-            "(if content exceeds max value, then material adds <span className='codeSnippet'> + </span> after the value, and "
-          }
-          boolean property to show zero value or not respectively. By default,
-          showZero is set to <span className='codeSnippet'> false </span>.
-        </>
-      );
-    } else if (type === "B") {
-      return (
-        <>
-          <b> Bootstrap </b> dosen't provide any property for alignment of
-          badges or even content. There is only the
-          <span className='codeSnippet'> text </span>
-          attribute which is used to set the color for the text content inside
-          the badge. Apart from this, you have to manually provide styles in
-          order to align the badges.
-        </>
-      );
+    switch (type) {
+      case "M":
+        return content.alignContent.M;
+      case "B":
+        return content.alignContent.B;
+      default:
+        return descContent.defaultText;
     }
   };
 

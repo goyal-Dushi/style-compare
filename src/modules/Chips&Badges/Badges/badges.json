@@ -1,0 +1,14 @@
+{
+  "content": {
+    "alignContent": {
+      "M": "<b> Material </b> provides attributes like <span class='codeSnippet'> anchorOrigin </span> to control the alignment of badges and <span class='codeSnippet'>badgeContent</span>, <span class='codeSnippet'>max</span> and <span class='codeSnippet'>showZero</span> like properties to set the content inside badge, set maximum value for the badge content (if content exceeds max value, then material adds <span class='codeSnippet'> + </span> after the value, and boolean property to show zero value or not respectively. By default, showZero is set to <span class='codeSnippet'> false </span>.",
+      "B": "<b> Bootstrap </b> dosen't provide any property for alignment of badges or even content. There is only the <span class='codeSnippet'> text </span> attribute which is used to set the color for the text content inside the badge. Apart from this, you have to manually provide styles in order to align the badges."
+    }
+  },
+  "html": {
+    "alignContent": {
+      "M": " \n<Badge max={100} color='secondary' badgeContent={120} > \n \t <Mail/> \n </Badge> \n <Badge max={50} color='secondary' badgeContent={44} anchorOrigin={{vertical:'bottom', horizontal:'right'}} > \n \t <Mail/> \n </Badge> \n <Badge badgeContent={0} color='secondary' showZero anchorOrigin={{vertical:'bottom', horizontal:'left'}}> \n \t <Mail/> \n </Badge> \n <Badge badgeContent={0} color='secondary' anchorOrigin={{vertical:'top', horizontal:'left'}} > \n \t  <Mail/> \n </Badge> \n",
+      "B": "\n <Button variant='info' style='position:relative'> \n \t Some Emails \n \t <Badge style='position: absolute, top: -10px, right: -25px' bg='success' text='danger' > \n \t \t   99+ \n \t </Badge> \n </Button> \n <Button variant='danger' style= position: relative'> \n \t Spam \n \t <Badge bg='dark' text='danger' style= 'position: absolute, top: 30px, bottom: -15px, right: -25px' > \n \t \t  99+ \n \t </Badge> \n </Button> \n"
+    }
+  }
+}
