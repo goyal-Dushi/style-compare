@@ -8,6 +8,7 @@ import DisplayBox from "../../components/DisplayBox";
 import CodeBox from "../../components/CodeBox";
 import DescBox from "../../components/DescBox";
 import { content, html } from "./buttons.json";
+import { descContent } from "../common.json";
 
 export default function WithIcons({ id }) {
   const [type, setType] = useState("M");
@@ -40,10 +41,13 @@ export default function WithIcons({ id }) {
     }
   };
   const getContent = () => {
-    if (type === "M") {
-      return content.icons.M;
-    } else if (type === "B") {
-      return content.icons.B;
+    switch (type) {
+      case "M":
+        return content.icons.M;
+      case "B":
+        return content.icons.B;
+      default:
+        return descContent.defaultText;
     }
   };
   return (

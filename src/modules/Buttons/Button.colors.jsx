@@ -6,10 +6,10 @@ import StyleToggleNav from "../../components/StyleToggleNav";
 import { Button } from "@mui/material";
 import * as Bootstrap from "react-bootstrap";
 import { content, html } from "./buttons.json";
+import { descContent } from "../common.json";
 
 function ButtonColors({ id }) {
   const [type, setType] = useState("M");
-  console.log("Button module");
   let data;
   const getHTML = () => {
     if (type === "M") {
@@ -88,10 +88,13 @@ function ButtonColors({ id }) {
   };
 
   const getContent = () => {
-    if (type === "M") {
-      return content.colors.M;
-    } else if (type === "B") {
-      return content.colors.B;
+    switch (type) {
+      case "M":
+        return content.colors.M;
+      case "B":
+        return content.colors.B;
+      default:
+        return descContent.defaultText;
     }
   };
 

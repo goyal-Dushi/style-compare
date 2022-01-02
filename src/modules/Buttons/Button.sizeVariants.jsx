@@ -6,6 +6,7 @@ import { Button } from "@mui/material";
 import * as Bootstrap from "react-bootstrap";
 import DescBox from "../../components/DescBox";
 import { content, html } from "./buttons.json";
+import { descContent } from "../common.json";
 
 export default function ButtonSizeVariants({ id }) {
   const [type, setType] = useState("M");
@@ -53,10 +54,13 @@ export default function ButtonSizeVariants({ id }) {
   };
 
   const getContent = () => {
-    if (type === "M") {
-      return content.sizeVariants.M;
-    } else if (type === "B") {
-      return content.sizeVariants.B;
+    switch (type) {
+      case "M":
+        return content.sizeVariants.M;
+      case "B":
+        return content.sizeVariants.B;
+      default:
+        return descContent.defaultText;
     }
   };
 
