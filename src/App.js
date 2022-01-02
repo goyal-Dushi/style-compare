@@ -9,6 +9,7 @@ import LeftSideNav from "./components/LeftSideNav";
 import Bootstrap from "./assets/img/bootstrap.png";
 import Material from "./assets/img/material.png";
 import Home from "./pages/Home";
+import Progress from "./pages/Progress";
 
 export const TypeContext = createContext();
 
@@ -26,6 +27,7 @@ function App() {
               <Route path={"/chips&badges"} element={<ChipBadge />} />
               <Route path={"/buttons"} element={<ButtonStyles />} />
               <Route path={"/alerts"} element={<Alerts />} />
+              <Route path={"/progress"} element={<Progress />} />
             </Routes>
           </TypeContext.Provider>
         </div>
