@@ -1,0 +1,38 @@
+{
+  "content": {
+    "colors": {
+      "M": "<b> Material </b> provides alerts box in four colors as you can see in the below display box.<span class='codeSnippet'>severity</span> prop not only gives color to the Alert component, but sets an <span class='codeSnippet'> icon </span> as well as per the severity value. <span class='codeSnippet'> color </span> property can also be used, but by default it sets the icon for its values as <span class='codeSnippet'> checkCircleOutline </span>. Thus you can remove or override icon using the <span class='codeSnippet'> icon </span> prop. Set it to <span class='codeSnippet'> false </span> to remove icon or specify some other material icon.",
+      "B": "<b> Bootstrap </b> provides a variety of colors for their Alert box which can be applied using its <span class='codeSnippet'> variant </span> prop. By default, its variant props has <span class='codeSnippet'> primary </span> value. Also, bootstrap dosen't apply any icons to its Alert by default. You have to use <span class='codeSnippet'> bootstrap-icons </span> with the <span class='codeSnippet'> &lt;i&gt;&lt;/i&gt; </span> tags as shown below in order to include icons alongwith alert content."
+    },
+    "alertContent": {
+      "M": "<b> Material </b> provides with <span class='codeSnippet'> &lt;AlertTitle/&gt; </span> component for adding heading/title to the Alert component.",
+      "B": "<b> Bootstrap </b> has two components, namely <span class='codeSnippet'> &lt;Alert.Heading/&gt; </span> & <span class='codeSnippet'> &lt;Alert.Link/&gt; </span> for adding heading and links to our component."
+    },
+    "variants": {
+      "M": "<b> Material </b> provides variety of variants from which <span class='codeSnippet'> standard </span> is the <span className='codeSnippet'> default </span> one.",
+      "B": "<b> Bootstrap </b> dosen't provide any other Alert variants other than its standard filled Alert. But you can customize them by providing <span class='codeSnippet'> inline styles </span> or <span className='codeSnippet'> overriding </span> bootstrap classes."
+    },
+    "dismissable": {
+      "M": "In <b> Material </b> an alert can have an <span class='codeSnippet'> action </span> , such as a close button. If an <span class='codeSnippet'> onClose </span> prop is set and no <span class='codeSnippet'> action </span> props is there, then a <span class='codeSnippet'> close </span> icon is displayed by default, else you can provide your custom icon or button in action.",
+      "B": "<b> Bootstrap </b> allows you to set <span className='codeSnippet'> dismissible </span> props to your alert and displays a close icon by default. Further functionality is displayed in code using <span className='codeSnippet'> const [open,setOpen] = useState </span>, react hooks."
+    }
+  },
+  "html": {
+    "colors": {
+      "M": "\n <Alert color={'info'}> Info Color Alert </Alert> \n <Alert color={'warning'}> Warning Color Alert </Alert> \n <Alert color={'error'}> Error Color Alert </Alert> \n <Alert color={'success'}> Color Success </Alert> \n <Alert severity={'info'}> Info Severity Alert </Alert> \n <Alert severity={'warning'}> Warning Severity Alert </Alert> \n <Alert severity={'error'}> Error Severity Alert </Alert> \n <Alert > Default success Alert </Alert> \n",
+      "B": "\n <Alert> Primary Default </Alert> \n <Alert variant={'warning'} > <i className={'bi-exclamation-triangle-fill me-2'}></i> Warning Alert </Alert> \n <Alert variant={'info'} > <i className={'bi-info-lg me-2'}></i> Info Alert </Alert> \n <Alert variant={'success'} > <i className={'bi-check2-circle me-2'}></i> Success Alert </Alert> \n <Alert variant={'secondary'} > Secondary Alert </Alert> \n <Alert variant={'danger'} > Danger Alert </Alert> \n <Alert variant={'light'} > Light Alert </Alert> \n <Alert variant={'dark'} > Dark Alert </Alert> \n"
+    },
+    "alertContent": {
+      "M": " \n <Alert severity='error'> \n \t <AlertTitle> Error Title </AlertTitle> \n \t This is an error alert — <strong>error occured</strong> \n </Alert> \n <Alert color='warning'> \n \t  <AlertTitle>Warning Title</AlertTitle> \n \t  This is a warning alert — <strong>warning!</strong> \n </Alert> \n",
+      "B": " \n <Alert> \n \t <Alert.Heading variant='success' > Success Alert! </Alert.Heading> \n \t <p> This is Success alert -</p><Alert.Link> success link </Alert.Link> \n </Alert> \n <Alert> \n \t <Alert.Heading variant='info' > Info Alert! </Alert.Heading> \n \t <p> This is Info alert -</p><Alert.Link> info link </Alert.Link> \n </Alert> \n"
+    },
+    "variants": {
+      "M": " \n <Alert> Default Standard variant </Alert> \n <Alert variant='filled' severity='info'> Filled </Alert> \n <Alert variant='outlined' severity='warning'> Outlined </Alert> \n",
+      "B": " \n <Alert> Default Bootstrap Alert </Alert> \n <Alert style='border: '2px solid #084298', background:'none'' variant='outline-success' > Success Outline </Alert> \n"
+    },
+    "dismissable": {
+      "M": " \n {open ? ( <Alert onClose={() => { setOpen(false) }}> Dismissible Alert </Alert> ) : null} \n \t <Button className='mx-2' variant='outlined' onClick={() => setOpen(true)} color='primary'> \n \t \t Open Alert \n \t </Button> \n open2 ? ( \n \t <Alert action={ <Button color='inherit' size='small' onClick={() => setOpen2(false)}> CLOSE </Button> }> \n \t \t Dismissible Alert \n \t </Alert> \n ) : null} \n <Button className='mx-2' variant='outlined' onClick={() => setOpen2(true)} color='primary'> \n \t Open Alert \n </Button> \n",
+      "B": "\n {open ? ( \n \t <Alert variant='danger' onClose={() => setOpen(false)} dismissible > \n \t \t <Alert.Heading> Oh snap! You got an error! </Alert.Heading> \n \t \t  <p> Change this and that and try again. Duis mollis, est non commodo </p> \n \t </Alert> \n ) : null} \n \t <Button onClick={() => { setOpen(true) }} variant='outline-primary mx-2' size='sm'> \n \t \t OPEN \n \t </Button> \n"
+    }
+  }
+}
