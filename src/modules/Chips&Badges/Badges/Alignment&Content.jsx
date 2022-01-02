@@ -7,7 +7,7 @@ import DescBox from "../../../components/DescBox";
 import DisplayBox from "../../../components/DisplayBox";
 import StyleToggleNav from "../../../components/StyleToggleNav";
 
-function AlignmentContent() {
+function AlignmentContent({ id }) {
   const [type, setType] = useState("M");
 
   let data;
@@ -133,12 +133,12 @@ function AlignmentContent() {
   };
 
   return (
-    <>
+    <div id={id}>
       <DescBox heading={"Alignment & Content"} content={getContent()} />
       <StyleToggleNav setStyleType={setType} />
       <DisplayBox> {getHTML()} </DisplayBox>
       <CodeBox snippet={data} />
-    </>
+    </div>
   );
 }
 

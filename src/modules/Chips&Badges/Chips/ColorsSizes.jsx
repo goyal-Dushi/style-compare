@@ -6,7 +6,7 @@ import DescBox from "../../../components/DescBox";
 import DisplayBox from "../../../components/DisplayBox";
 import StyleToggleNav from "../../../components/StyleToggleNav";
 
-export default function ColorsSizes() {
+export default function ColorsSizes({ id }) {
   const [type, setType] = useState("M");
   let data;
   const getHTML = () => {
@@ -98,7 +98,7 @@ export default function ColorsSizes() {
   };
 
   return (
-    <div>
+    <div id={id}>
       <DescBox heading={"Colors, Sizes & Variants"} content={getContent()} />
       <StyleToggleNav setStyleType={setType} />
       <DisplayBox> {getHTML()} </DisplayBox>

@@ -7,7 +7,7 @@ import DisplayBox from "../../../components/DisplayBox";
 import StyleToggleNav from "../../../components/StyleToggleNav";
 import DescBox from "../../../components/DescBox";
 
-function IconChips() {
+function IconChips({ id }) {
   const [type, setType] = useState("M");
   const [showChip, setShowChip] = useState(true);
   const [showChip2, setShowChip2] = useState(true);
@@ -148,7 +148,7 @@ function IconChips() {
   };
 
   return (
-    <div>
+    <div id={id}>
       <DescBox heading={"Icon Chips/Chip Actions"} content={getContent()} />
       <StyleToggleNav setStyleType={setType} />
       <DisplayBox> {getHTML()} </DisplayBox>
