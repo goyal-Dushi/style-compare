@@ -6,8 +6,8 @@ import ChipBadge from "./pages/Chip&Badge";
 import NavHeader from "./components/NavHeader";
 import Footer from "./components/Footer";
 import LeftSideNav from "./components/LeftSideNav";
-import Bootstrap from "./assets/img/bootstrap.png";
-import Material from "./assets/img/material.png";
+import Bootstrap from "./assets/img/bootstrap.webp";
+import Material from "./assets/img/material.webp";
 import Home from "./pages/Home";
 import Progress from "./pages/Progress";
 
