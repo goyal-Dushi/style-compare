@@ -3,7 +3,18 @@ import styles from "./navhead.module.css";
 export default function NavHeader() {
   return (
     <nav className={styles.header}>
-      <p> {"style-compare"} </p>
+      <h1 className='display-6'> {"style-compare"} </h1>
+      <a
+        target={"_blank"}
+        href={"https://github.com/goyal-Dushi/style-compare"}
+        style={{
+          color: "black",
+          fontSize: "30px",
+        }}
+        role={"button"}
+        rel='noreferrer'>
+        <i class='bi bi-github'></i>
+      </a>
     </nav>
   );
 }
