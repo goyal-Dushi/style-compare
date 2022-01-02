@@ -5,6 +5,8 @@ import CodeBox from "../../components/CodeBox";
 import DisplayBox from "../../components/DisplayBox";
 import StyleToggleNav from "../../components/StyleToggleNav";
 import DescBox from "../../components/DescBox";
+import { content, html } from "./alerts.json";
+import { descContent } from "../common.json";
 
 export default function DismissAlert({ id }) {
   const [type, setType] = useState("M");
@@ -13,22 +15,7 @@ export default function DismissAlert({ id }) {
   let data = "";
   const getHTML = () => {
     if (type === "M") {
-      data = `
-    {open ? ( <Alert onClose={() => { setOpen(false) }}> Dismissible Alert </Alert> ) : null}
-    <Button className="mx-2" variant="outlined" onClick={() => setOpen(true)} color="primary">
-        Open Alert
-    </Button>
-
-    open2 ? ( 
-    <Alert
-        action={ <Button color="inherit" size="small" onClick={() => setOpen2(false)}> CLOSE </Button> }>
-        Dismissible Alert
-    </Alert>
-    ) : null}
-    <Button className="mx-2" variant="outlined" onClick={() => setOpen2(true)} color="primary">
-        pen Alert
-    </Button>
-    `;
+      data = html.dismissable.M;
       return (
         <>
           <div className={"d-flex w-100 mb-2"}>
@@ -73,17 +60,7 @@ export default function DismissAlert({ id }) {
         </>
       );
     } else if (type === "B") {
-      data = `
-    {open ? (
-    <Alert variant='danger' onClose={() => setOpen(false)} dismissible >
-        <Alert.Heading> Oh snap! You got an error! </Alert.Heading>
-        <p> Change this and that and try again. Duis mollis, est non commodo </p>
-    </Alert>
-    ) : null}
-    <Button onClick={() => { setOpen(true) }} variant="outline-primary mx-2" size="sm">
-        OPEN
-    </Button>
-    `;
+      data = html.dismissable.B;
       return (
         <>
           <div className='w-100 d-flex'>
@@ -115,36 +92,21 @@ export default function DismissAlert({ id }) {
       );
     }
   };
+
+  const getContent = () => {
+    switch (type) {
+      case "M":
+        return content.dismissable.M;
+      case "B":
+        return content.dismissable.B;
+      default:
+        return descContent.defaultText;
+    }
+  };
+
   return (
     <div id={id}>
-      <DescBox
-        heading={"Dismiss Alert"}
-        content={
-          <>
-            {"In"} <b> {"Material"} </b> {"an alert can have an"}
-            <span className='codeSnippet'>{"action"}</span>
-            {", such as a close button. If an"}
-            <span className='codeSnippet'>{"onClose"}</span>
-            {"prop is set and no"}
-            <span className='codeSnippet'>{"action"}</span>
-            {"props is there, then a"}
-            <span className='codeSnippet'>{"close"}</span>
-            {
-              "icon is displayed by default, else you can provide your custom icon or button in action."
-            }
-            <br />
-            <b> {"Bootstrap"} </b> {"allows you to set"}
-            <span className='codeSnippet'>{"dismissible"}</span>
-            {
-              "props to your alert and displays a close icon by default. Further functionality is displayed in code using"
-            }
-            <span className='codeSnippet'>
-              {"const [open,setOpen] = useState"}
-            </span>
-            {", react hooks."}
-          </>
-        }
-      />
+      <DescBox heading={"Dismiss Alert"} content={getContent()} />
       <StyleToggleNav setStyleType={setType} />
       <DisplayBox> {getHTML()} </DisplayBox>
       <CodeBox snippet={data} />

@@ -5,17 +5,15 @@ import DisplayBox from "../../components/DisplayBox";
 import StyleToggleNav from "../../components/StyleToggleNav";
 import * as Boot from "react-bootstrap";
 import DescBox from "../../components/DescBox";
+import { content, html } from "./alerts.json";
+import { descContent } from "../common.json";
 
 export default function AlertVariants({ id }) {
   const [type, setType] = useState("M");
   let data;
   const getHTML = () => {
     if (type === "M") {
-      data = `
-    <Alert> {"Default Standard variant"} </Alert>
-    <Alert variant={"filled"} severity={"info"}> {"Filled"} </Alert>
-    <Alert variant={"outlined"} severity={"warning"}> {"Outlined"} </Alert>
-    `;
+      data = html.variants.M;
       return (
         <>
           <Alert> {"Default Standard variant"} </Alert>
@@ -28,10 +26,7 @@ export default function AlertVariants({ id }) {
         </>
       );
     } else if (type === "B") {
-      data = `
-    <Alert> {"Default Bootstrap Alert"} </Alert>
-    <Alert style={{ border: "2px solid #084298", background: "none" }} variant={"outline-success"} > {"Success Outline"} </Alert>
-    `;
+      data = html.variants.B;
       return (
         <>
           <Boot.Alert>{"Default Bootstrap Alert"}</Boot.Alert>
@@ -44,27 +39,21 @@ export default function AlertVariants({ id }) {
       );
     }
   };
+
+  const getContent = () => {
+    switch (type) {
+      case "M":
+        return content.variants.M;
+      case "B":
+        return content.variants.B;
+      default:
+        return descContent.defaultText;
+    }
+  };
+
   return (
     <div id={id}>
-      <DescBox
-        heading={"Variants"}
-        content={
-          <>
-            <b> {"Material"} </b> {"provides variety of variants from which"}
-            <span className={"codeSnippet"}> {"standard"} </span>
-            {"is the"} <span className={"codeSnippet"}>{"default"}</span>
-            {"one."}
-            <br />
-            <b> {"Bootstrap"} </b>
-            {
-              "dosen't provide any other Alert variants other than its standard filled Alert. But you can customize them by providing"
-            }
-            <span className={"codeSnippet"}>{"inline styles"}</span>
-            {"or"} <span className={"codeSnippet"}>{"overriding"}</span>
-            {"bootstrap classes."}
-          </>
-        }
-      />
+      <DescBox heading={"Variants"} content={getContent()} />
       <StyleToggleNav setStyleType={setType} />
       <DisplayBox> {getHTML()} </DisplayBox>
       <CodeBox snippet={data} />

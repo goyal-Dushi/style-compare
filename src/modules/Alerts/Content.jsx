@@ -5,22 +5,15 @@ import CodeBox from "../../components/CodeBox";
 import DisplayBox from "../../components/DisplayBox";
 import StyleToggleNav from "../../components/StyleToggleNav";
 import DescBox from "../../components/DescBox";
+import { content, html } from "./alerts.json";
+import { descContent } from "../common.json";
 
 export default function AdditionalContent({ id }) {
   const [type, setType] = useState("M");
   let data;
   const getHTML = () => {
     if (type === "M") {
-      data = `
-    <Alert severity="error">
-        <AlertTitle>Error Title</AlertTitle>
-        This is an error alert — <strong>error occured</strong>
-    </Alert>
-    <Alert color="warning">
-        <AlertTitle>Warning Title</AlertTitle>
-        This is a warning alert — <strong>warning!</strong>
-    </Alert>
-    `;
+      data = html.alertContent.M;
       return (
         <>
           <Alert severity={"error"}>
@@ -36,16 +29,7 @@ export default function AdditionalContent({ id }) {
         </>
       );
     } else if (type === "B") {
-      data = `
-    <Alert>
-        <Alert.Heading variant="success" > Success Alert! </Alert.Heading>
-        <p> This is Success alert -</p><Alert.Link> success link </Alert.Link>
-    </Alert>
-    <Alert>
-        <Alert.Heading variant="info" > Info Alert! </Alert.Heading>
-        <p> This is Info alert -</p><Alert.Link> info link </Alert.Link>
-    </Alert>
-    `;
+      data = html.alertContent.B;
       return (
         <>
           <Boot.Alert variant={"success"}>
@@ -66,24 +50,21 @@ export default function AdditionalContent({ id }) {
       );
     }
   };
+
+  const getContent = () => {
+    switch (type) {
+      case "M":
+        return content.alertContent.M;
+      case "B":
+        return content.alertContent.B;
+      default:
+        return descContent.defaultText;
+    }
+  };
+
   return (
     <div id={id}>
-      <DescBox
-        heading={"Additional Content"}
-        content={
-          <>
-            <b> {"Material"} </b> {"provides with"}
-            <span className={"codeSnippet"}>{"<AlertTitle/>"}</span>
-            {"component for adding heading/title to the Alert component."}
-            <br />
-            <b> {"Bootstrap"} </b> {"has two components, namely"}
-            <span className={"codeSnippet"}>{"<Alert.Heading/>"}</span>
-            {"&"}
-            <span className={"codeSnippet"}>{"<Alert.Link/>"}</span>
-            {"for adding heading and links to our component."}
-          </>
-        }
-      />
+      <DescBox heading={"Additional Content"} content={getContent()} />
       <StyleToggleNav setStyleType={setType} />
       <DisplayBox> {getHTML()} </DisplayBox>
       <CodeBox snippet={data} />
