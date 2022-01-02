@@ -1,0 +1,22 @@
+{
+  "content": {
+    "colorSizes": {
+      "M": "<b> Material </b> has separate component named <span class='codeSnippet'> &lt;Chip/&gt; </span> for rendering chips.By Default, the Chip has <span class='codeSnippet'>size:medium</span>, <span class='codeSnippet'> color:default </span> and <span class='codeSnippet'>variant:filled</span>.",
+      "B": "<b> Bootstrap </b>, you use the same <span class='codeSnippet'> &lt;Badge/&gt; </span> for both chips and badges.You can use the <span class='codeSnippet'>pill</span> attribute for showing chip like badges. By Default, it has background, <span class='codeSnippet'>bg:primary</span> and no rounded borders. Bootstrap dosen't provide any size property/attribute for its Badge component, but you can trigger different sized by utilizing the <span class='codeSnippet'> fs-[x] </span>, where 'x' ranges from [1,6], 1 being largest and 6 being smallest."
+    },
+    "icons": {
+      "M": "<b>Material</b> has properties/attributes namely <span class='codeSnippet'>icon</span>, <span class='codeSnippet'>deleteIcon</span> and <span class='codeSnippet'>avatar</span>. <span class='codeSnippet'>icon</span> property takes an material icon component import from <span class='codeSnippet'>@mui/icons-material</span> library and by default is placed at the start of the chip, whereas, the <span class='codeSnippet'>deleteIcon</span> places the icon component at the end of the chip. <span class='codeSnippet'>avatar</span> is used if you want to place your own media files in the chip. Also, if the <span class='codeSnippet'>onDelete</span> property is specified, only then the deleteIcon is shown and by default a <span class='codeSnippet'>cross</span> icon is displayed by material. You could also set <span class='codeSnippet'>clickable</span> property to the chip to have the ripple effect provided by Material.",
+      "B": "<b>Bootstrap</b> dosen't provide any property/attribute for its component to place icon. But, you can use the <span class='codeSnippet'> &lt;i&gt;&lt;/i&gt; </span> tags to place bootstrap icons at your desired position as shown below."
+    }
+  },
+  "html": {
+    "colorSizes": {
+      "M": "\n <Chip label='Default Chip' /> \n <Chip label='Primary' color='primary' variant='outlined' /> \n <Chip label='Secondary' color='secondary' variant='outlined' /> \n <Chip label='Error' color='error' variant='outlined/ /> \n <Chip label='Info' color='info' size='small' variant='filled' /> \n <Chip label='Success' color='success' size='small' /> \n <Chip label='Warning' color='warning' size='small' /> \n",
+      "B": "\n <Badge pill> Primary Default </Badge>\n <Badge pill bg='success' className='fs-1' > Success </Badge> \n <Badge pill bg='danger' className='fs-2' > Danger </Badge> \n <Badge pill bg='warning' className='fs-3' > Warning! </Badge> \n <Badge pill bg='info' className='fs-4' > Info </Badge>\n <Badge pill bg='light' className='fs-5' > Light </Badge> \n <Badge pill bg='dark' className='fs-6' > Dark </Badge>\n"
+    },
+    "icons": {
+      "M": " \n <Chip clickable icon={<AddCircle />} label='Add Item' color='primary' /> \n <Chip clickable icon={<AddCircleOutline />} label='Add Item' variant='outlined' color='success' /> \n <Chip clickable avatar={<Avatar>M</Avatar>} label='Avatar' color='primary' /> \n <Chip deleteIcon={<Delete />} label='Delete Chip' onDelete={handleDelete} variant='filled' color='error' /> \n <Chip label='Default Delete Chip' onDelete={handleDelete2} color='primary' /> \n",
+      "B": " \n <Badge pill bg='success' className='fs-5'><i className='bi bi-check-circle-fill'></i> Success! </Badge> \n <Badge pill bg='danger' className='fs-5'> Delete! <i className='bi bi-trash-fill' onClick={() => handleDelete} ></i> </Badge>\n"
+    }
+  }
+}

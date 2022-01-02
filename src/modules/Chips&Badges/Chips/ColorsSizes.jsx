@@ -1,25 +1,19 @@
 import { Chip } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import * as Boot from "react-bootstrap";
 import CodeBox from "../../../components/CodeBox";
 import DescBox from "../../../components/DescBox";
 import DisplayBox from "../../../components/DisplayBox";
 import StyleToggleNav from "../../../components/StyleToggleNav";
+import { content, html } from "./chips.json";
+import { descContent } from "../../common.json";
 
 export default function ColorsSizes({ id }) {
   const [type, setType] = useState("M");
   let data;
   const getHTML = () => {
     if (type === "M") {
-      data = `
-    <Chip label="Default Chip" />
-    <Chip label="Primary" color="primary" variant="outlined" />
-    <Chip label="Secondary" color="secondary" variant="outlined" />
-    <Chip label="Error" color="error" variant="outlined" />
-    <Chip label="Info" color="info" size="small" variant="filled" />
-    <Chip label="Success" color="success" size="small" />
-    <Chip label="Warning" color="warning" size="small" />
-    `;
+      data = html.colorSizes.M;
       return (
         <>
           <Chip label={"Default Chip"} />
@@ -32,15 +26,7 @@ export default function ColorsSizes({ id }) {
         </>
       );
     } else if (type === "B") {
-      data = `
-    <Badge pill> Primary Default </Badge>
-    <Badge pill bg="success" className="fs-1" > Success </Badge>
-    <Badge pill bg="danger" className="fs-2" > Danger </Badge>
-    <Badge pill bg="warning" className="fs-3" > Warning! </Badge>
-    <Badge pill bg="info" className="fs-4" > Info </Badge>
-    <Badge pill bg="light" className="fs-5" > Light </Badge>
-    <Badge pill bg="dark" className="fs-6" > Dark </Badge>
-    `;
+      data = html.colorSizes.B;
       return (
         <>
           <Boot.Badge pill> {"Primary Default"} </Boot.Badge>
@@ -67,35 +53,16 @@ export default function ColorsSizes({ id }) {
     }
   };
 
-  const getContent = () => {
-    if (type === "M") {
-      return (
-        <>
-          <b> Material </b> has separate component named
-          <span className='codeSnippet'>{"<Chip/>"}</span>
-          for rendering chips.By Default, the Chip has
-          <span className='codeSnippet'>size:medium</span>,
-          <span className='codeSnippet'>color:default</span> and
-          <span className='codeSnippet'>variant:filled</span>.
-        </>
-      );
-    } else if (type === "B") {
-      return (
-        <>
-          In
-          <b> Bootstrap </b>, you use the same
-          <span className='codeSnippet'>{"<Badge/>"}</span> for both chips and
-          badges.You can use the <span className='codeSnippet'>pill</span>
-          attribute for showing chip like badges. By Default, it has background,
-          <span className='codeSnippet'>bg:primary</span> and no rounded
-          borders. Bootstrap dosen't provide any size property/attribute for its
-          Badge component, but you can trigger different sized by utilizing the
-          <span className='codeSnippet'>{"fs-[x]"}</span>, where 'x' ranges from
-          {"[1,6]"}, 1 being largest and 6 being smallest.
-        </>
-      );
+  const getContent = useCallback(() => {
+    switch (type) {
+      case "M":
+        return content.colorSizes.M;
+      case "B":
+        return content.colorSizes.B;
+      default:
+        return descContent.defaultText;
     }
-  };
+  }, [type]);
 
   return (
     <div id={id}>
