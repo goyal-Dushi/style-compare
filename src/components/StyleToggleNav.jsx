@@ -3,13 +3,13 @@ import React, { useContext } from "react";
 import { TypeContext } from "../App";
 import styles from "./styleToggleNav.module.css";
 
-function StyleToggleNav(props) {
+function StyleToggleNav({ setStyleType }) {
   const types = useContext(TypeContext);
   const toggleStyle = (type) => {
     if (type === "M") {
-      props.setStyleType("M");
+      setStyleType("M");
     } else if (type === "B") {
-      props.setStyleType("B");
+      setStyleType("B");
     }
   };
   return (
