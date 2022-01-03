@@ -21,6 +21,12 @@ export default function LeftSideNav() {
                   }}>
                   {"About"}
                 </li>
+                <li
+                  onClick={() => {
+                    navigate("/installation");
+                  }}>
+                  {"Installation"}
+                </li>
               </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item eventKey={"1"}>

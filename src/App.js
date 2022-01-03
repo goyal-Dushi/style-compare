@@ -10,6 +10,7 @@ import Bootstrap from "./assets/img/bootstrap.webp";
 import Material from "./assets/img/material.webp";
 import Home from "./pages/Home";
 import Progress from "./pages/Progress";
+import Installation from "./pages/Installation";
 
 export const TypeContext = createContext();
 
@@ -24,6 +25,7 @@ function App() {
             value={{ imgSrc: [Material, Bootstrap], value: ["M", "B"] }}>
             <Routes>
               <Route path={"/"} element={<Home />} />
+              <Route path={"/installation"} element={<Installation />} />
               <Route path={"/chips&badges"} element={<ChipBadge />} />
               <Route path={"/buttons"} element={<ButtonStyles />} />
               <Route path={"/alerts"} element={<Alerts />} />
