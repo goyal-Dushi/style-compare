@@ -5,7 +5,14 @@
   position: absolute;
   bottom: 0;
   font-size: 20px;
-  padding: 10px 0px;
+  padding: 8px 0px;
   font-weight: bold;
   text-align: center;
+}
+
+.anchor {
+  text-decoration: none;
+  font-style: italic;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }

@@ -6,7 +6,16 @@ export default function Footer() {
 
   return (
     <footer className={styles.footerStyle}>
-      <CopyrightSharpIcon /> {`style-compare ${date}`}
+      <CopyrightSharpIcon /> {`LibCompare ${date}`}
+      <p style={{ fontSize: "14px" }}>
+        {"By "}
+        <a
+          className={styles.anchor}
+          href='http://dushyantgoyal.herokuapp.com/'
+          rel='noreferrer noopener'>
+          {" Dushyant Goyal"}
+        </a>
+      </p>
     </footer>
   );
 }
