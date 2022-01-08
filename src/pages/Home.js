@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <div className={"w-75"}>
-      <h1 className={"display-3 fw-bold"}> {"Welcome to style-compare"} </h1>
+      <h1 className={"display-3 fw-bold"}> {"Welcome to LibCompare"} </h1>
       <p className={"fs-5"}>
         {
           "The purpose of this documentation is to provide short and to-the-point evaluation and documentation of various components and their respective visual representation provided by different CSS styling libraries. "
