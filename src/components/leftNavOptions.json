@@ -1,0 +1,32 @@
+{
+  "options": {
+    "start": [
+      {
+        "name": "About",
+        "link": "/"
+      },
+      {
+        "name": "Installation",
+        "link": "/installation"
+      }
+    ],
+    "components": [
+      {
+        "name": "Alerts",
+        "link": "/alerts"
+      },
+      {
+        "name": "Buttons",
+        "link": "/buttons"
+      },
+      {
+        "name": "Chips & Badges",
+        "link": "chips&badges"
+      },
+      {
+        "name": "Progress",
+        "link": "/progress"
+      }
+    ]
+  }
+}
