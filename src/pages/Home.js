@@ -4,21 +4,23 @@ export default function Home() {
       <h1 className={"display-3 fw-bold"}> {"Welcome to style-compare"} </h1>
       <p className={"fs-5"}>
         {
-          "The purpose of this documentation was to provide a one stop solution to all those Frontend Engineers and Developers out there to compare and evaluate differences in styling provided by various CSS lib like Material UI, Bootstrap, and much more"
+          "The purpose of this documentation is to provide short and to-the-point evaluation and documentation of various components and their respective visual representation provided by different CSS styling libraries. "
         }
         <br />
         <br />
         {
-          "While developing a website using CSS lib, it is very difficult to decide which one to use, since each has their own uniqueness. Thus, I used to view documentation for each of the lib, comparing design and style differences across their components. It took a lot of my time in this."
+          "While developing websites, it becomes very difficult to decide which CSS lib to use based on the component UI they provide and it is a tiresome job to go through each of the CSS library’s docs and draw comparison across each of them, like how they are different, what is unique about each component they provide and much more."
         }
         <br />
         <br />
-        {"And thus, I came up with this documentation.."}
+        {
+          "Thus, I decided to start with this documentation so that instead of going through long component documentation, we Frontend developers could get major comparison differences across various components provided by multiple CSS libraries out there."
+        }
       </p>
       <h3 className={"display-3 fw-bold"}> {"Aim"} </h3>
       <p className={"fs-5"}>
         {
-          "My aim is to develop a doc which can allow comparison of various components and styles across all the styling libraries out there so you can visit just one place to view the styles you want and get started with."
+          "My aim is to make this documentation useful, to the point and short, covering all major differences across various component styles and their respective features provided by all major/minor CSS libraries out there so as to act as a one stop solution for all Frontend Developers out there to be able to easily evaluate CSS libraries out there and choose appropriately."
         }
       </p>
     </div>
