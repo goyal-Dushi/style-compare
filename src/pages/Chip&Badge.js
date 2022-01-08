@@ -8,13 +8,13 @@ export default function Chip_Badge() {
   return (
     <div className={"w-100 d-flex"}>
       <div className={"w-75"}>
-        <h1 className={"display-4 ps-4"}>{"Chips & Badges"}</h1>
-        <h2 className={"display-5 mt-3 ps-4"}>
+        <h1 className={"display-4 fw-bold ps-4"}>{"Chips & Badges"}</h1>
+        <h2 className={"display-5 fw-bold mt-3 ps-4"}>
           <u>{"Chips"}</u>
         </h2>
         <ColorsSizes id={"chipColorSizes"} />
         <IconChips id={"chipIcons"} />
-        <h2 className={"display-5 mt-3 ps-4"}>
+        <h2 className={"display-5 fw-bold mt-3 ps-4"}>
           <u>{"Badges"}</u>
         </h2>
         <AlignmentContent id={"badgeAlignment"} />

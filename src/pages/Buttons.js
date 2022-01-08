@@ -11,7 +11,7 @@ export default function ButtonStyles() {
         className={"w-75 position-relative"}
         data-bs-spy={"scroll"}
         data-bs-target={"#rightNav"}>
-        <h1 className={"display-4 ps-4"}>{"Buttons"}</h1>
+        <h1 className={"display-4 ps-4 fw-bold"}>{"Buttons"}</h1>
         <ButtonColors id={"btnColors"} />
         <ButtonSizeVariants id={"btnSizeVariants"} />
         <ButtonDisabled id={"btnDisabled"} />

@@ -11,7 +11,7 @@ export default function Progress() {
           className={"w-75 position-relative"}
           data-bs-spy={"scroll"}
           data-bs-target={"#rightNav"}>
-          <h1 className={"display-4 ps-4"}>{"Progress"}</h1>
+          <h1 className={"display-4 fw-bold ps-4"}>{"Progress"}</h1>
           <TypesColors id={"typesColor"} />
           <AnimationLabels id={"animationLables"} />
         </div>
