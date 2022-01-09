@@ -1,7 +1,8 @@
+import styles from './rightSideNav.module.css';
 export default function RightSideNav({ values, scrollRef }) {
   return (
     <>
-      <aside className={"position-fixed end-0 top-20"} style={{ width: "20%" }}>
+      <aside className={styles.rightSideNav} style={{ width: "20%" }}>
         <h5 className={"mx-auto w-50"}>
           <u>{"On This Page"}</u>
         </h5>

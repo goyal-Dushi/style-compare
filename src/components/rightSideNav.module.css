@@ -1,0 +1,12 @@
+.rightSideNav {
+  position: fixed;
+  top: 20;
+  right: 0; 
+}
+
+
+@media only screen and (max-width: 999px) {
+  .rightSideNav {
+    display: none;
+  }
+}
