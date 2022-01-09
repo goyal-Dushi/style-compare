@@ -16,3 +16,26 @@
 .sideNavContent li {
   cursor: pointer;
 }
+
+@media only screen and (max-width: 768px) {
+  .sideNav {
+    width: 100%;
+    padding-top: 0px;
+    margin-top: 81px;
+    position: fixed;
+    z-index: 999;
+  }
+
+  .sideNavContent {
+    min-width: 100%;
+    top: 90px;
+  }
+
+  .accordion {
+    border-bottom: 1px solid rgba(0,0,0,0.125);
+  }
+
+  .collapsed {
+    height: 0px;
+  }
+}

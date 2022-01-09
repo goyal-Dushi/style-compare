@@ -1,4 +1,4 @@
-import React, { createContext, lazy, Suspense, useEffect } from "react";
+import React, { createContext, lazy, Suspense, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavHeader from "./components/NavHeader";
 import Footer from "./components/Footer";
@@ -16,15 +16,24 @@ const ButtonStyles = lazy(() => import("./pages/Buttons"));
 export const TypeContext = createContext();
 
 function App() {
+  const [responsiveExpanded, setResponsiveExpanded] = useState(false);
+  const toggleResponsiveNav = () => setResponsiveExpanded(!responsiveExpanded);
+  
   useEffect(() => {
     document.title = "LibCompare";
   }, []);
 
   return (
     <>
-      <NavHeader />
+      <NavHeader 
+        toggleResponsiveNav={toggleResponsiveNav} 
+        responsiveExpanded={responsiveExpanded}
+      />
       <div className={"bodyWrapper"}>
-        <LeftSideNav />
+        <LeftSideNav 
+          responsiveExpanded={responsiveExpanded} 
+          toggleResponsiveNav={toggleResponsiveNav}
+        />
         <div className={"bodyContainer"}>
           <TypeContext.Provider
             value={{ imgSrc: [Material, Bootstrap], value: ["M", "B"] }}>

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 import styles from "./leftSideNav.module.css";
 import { options } from "./leftNavOptions.json";
 
-export default function LeftSideNav() {
+export default function LeftSideNav({ responsiveExpanded, toggleResponsiveNav }) {
   const [selectOption, setSelected] = useState("About");
 
   const handleOptionClick = (e) => {
@@ -13,12 +13,16 @@ export default function LeftSideNav() {
     setSelected(e.currentTarget.innerText);
   };
 
+  const toggleResponsive = () => {
+    toggleResponsiveNav();
+  }
+  
   let navigate = useNavigate();
   return (
     <>
       <aside className={styles.sideNav}>
-        <ul className={`${styles.sideNavContent} w-75 mx-auto`}>
-          <Accordion flush>
+        <ul className={`${styles.sideNavContent}${ responsiveExpanded ? '' : ` ${styles.collapsed}`} w-75 mx-auto`} >
+          <Accordion className={styles.accordion} flush>
             <Accordion.Item eventKey={"0"}>
               <Accordion.Header>
                 <li>{"Getting Started"}</li>
@@ -35,6 +39,7 @@ export default function LeftSideNav() {
                             : "list-group-item list-group-item-action py-2"
                         }
                         onClick={(e) => {
+                          toggleResponsive();
                           navigate(item.link);
                           handleOptionClick(e);
                         }}>
@@ -59,6 +64,7 @@ export default function LeftSideNav() {
                             : "list-group-item list-group-item-action py-2"
                         }
                         onClick={(e) => {
+                          toggleResponsive();
                           navigate(item.link);
                           handleOptionClick(e);
                         }}>
