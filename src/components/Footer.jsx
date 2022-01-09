@@ -10,6 +10,7 @@ export default function Footer() {
       <p style={{ fontSize: "14px" }}>
         {"By "}
         <a
+          target={"_blank"}
           className={styles.anchor}
           href='http://dushyantgoyal.herokuapp.com/'
           rel='noreferrer noopener'>
