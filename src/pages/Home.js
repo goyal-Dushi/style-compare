@@ -20,7 +20,7 @@ export default function Home() {
       <h3 className={"display-3 fw-bold"}> {"Aim"} </h3>
       <p className={"fs-5"}>
         {
-          "My aim is to make this documentation useful, to the point and short, covering all major differences across various component styles and their respective features provided by all major/minor CSS libraries out there so as to act as a one stop solution for all Frontend Developers out there to be able to easily evaluate CSS libraries out there and choose appropriately."
+          "My aim is to make this documentation useful, to the point and short, covering all major differences across various component styles and their respective features provided by all major/minor CSS libraries out there so as to act as a one stop solution for all Frontend Developers to be able to easily evaluate these libraries and choose decisively."
         }
       </p>
     </div>
