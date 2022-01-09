@@ -42,12 +42,42 @@ i {
 /* App.js styles */
 .bodyWrapper {
   display: grid;
-  grid-template-columns: 20% auto;
+  grid-template-columns: 20% 80%;
   height: 100%;
 }
 
 .bodyContainer {
   padding-top: 120px;
   width: auto;
-  margin-bottom: 8%;
+  margin-bottom: 83px;
+  min-height: calc(100vh + 83px);
+}
+
+.bodyContent {
+  width: 75%;
+  position: relative;
+}
+
+@media only screen and (max-width: 999px) {
+  .bodyContent {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .bodyContainer {
+    width: calc(100vw - 40px);
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .bodyContent {
+    width: 100%;
+    padding-bottom: 83px;
+  }
+
+  .bodyContent {
+    width: 100%;
+    padding-bottom: 83px;
+  }
 }

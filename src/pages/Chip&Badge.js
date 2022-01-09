@@ -7,7 +7,7 @@ import IconChips from "../modules/Chips&Badges/Chips/IconChips";
 export default function Chip_Badge() {
   return (
     <div className={"w-100 d-flex"}>
-      <div className={"w-75"}>
+      <div className="bodyContent">
         <h1 className={"display-4 fw-bold ps-4"}>{"Chips & Badges"}</h1>
         <h2 className={"display-5 fw-bold mt-3 ps-4"}>
           <u>{"Chips"}</u>

@@ -8,7 +8,7 @@ import AlertVariants from "../modules/Alerts/Variants";
 function Alerts() {
   return (
     <div className={"w-100 d-flex"}>
-      <div className={"w-75"}>
+      <div className="bodyContent">
         <h1 className={"display-4 fw-bold ps-4"}>{"Alerts"}</h1>
         <AlertColors id={"alertColors"} />
         <AlertVariants id={"alertVariants"} />

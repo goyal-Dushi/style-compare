@@ -37,7 +37,7 @@ export default function Installation() {
   };
 
   return (
-    <div className={"w-75"}>
+    <div className="bodyContent">
       <h1 className={"display-4 fw-bold"}> {"Installation"} </h1>
       <DescBox
         heading={getHeading()}

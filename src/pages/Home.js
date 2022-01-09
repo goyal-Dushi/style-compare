@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <div className={"w-75"}>
+    <div className={"bodyContent"}>
       <h1 className={"display-3 fw-bold"}> {"Welcome to LibCompare"} </h1>
       <p className={"fs-5"}>
         {

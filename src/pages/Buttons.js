@@ -8,7 +8,7 @@ export default function ButtonStyles() {
   return (
     <div className={"w-100 d-flex"}>
       <div
-        className={"w-75 position-relative"}
+        className="bodyContent"
         data-bs-spy={"scroll"}
         data-bs-target={"#rightNav"}>
         <h1 className={"display-4 ps-4 fw-bold"}>{"Buttons"}</h1>
