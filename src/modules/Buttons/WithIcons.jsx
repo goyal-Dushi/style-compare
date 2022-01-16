@@ -7,8 +7,8 @@ import StyleToggleNav from "../../components/StyleToggleNav";
 import DisplayBox from "../../components/DisplayBox";
 import CodeBox from "../../components/CodeBox";
 import DescBox from "../../components/DescBox";
-import { content, html } from "./buttons.json";
-import { descContent } from "../common.json";
+const { content, html } = require("./buttons.json");
+const { descContent } = require("../common.json");
 
 export default function WithIcons({ id }) {
   const [type, setType] = useState("M");

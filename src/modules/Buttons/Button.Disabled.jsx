@@ -5,7 +5,7 @@ import StyleToggleNav from "../../components/StyleToggleNav";
 import { Button } from "@mui/material";
 import * as Bootstrap from "react-bootstrap";
 import DescBox from "../../components/DescBox";
-import { content, html } from "./buttons.json";
+const { content, html } = require("./buttons.json");
 
 export default function ButtonDisabled({ id }) {
   const [type, setType] = useState("M");

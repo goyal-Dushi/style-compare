@@ -11,7 +11,7 @@ import CodeBox from "../../components/CodeBox";
 import DescBox from "../../components/DescBox";
 import DisplayBox from "../../components/DisplayBox";
 import StyleToggleNav from "../../components/StyleToggleNav";
-import { descContent } from "../common.json";
+const { descContent } = require("../common.json");
 
 function AnimationLabels({ id }) {
   const [type, setType] = useState("M");

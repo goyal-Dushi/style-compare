@@ -5,8 +5,8 @@ import DisplayBox from "../../components/DisplayBox";
 import StyleToggleNav from "../../components/StyleToggleNav";
 import * as Boot from "react-bootstrap";
 import DescBox from "../../components/DescBox";
-import { content, html } from "./alerts.json";
-import { descContent } from "../common.json";
+const { content, html } = require("./alerts.json");
+const { descContent } = require("../common.json");
 
 export default function AlertVariants({ id }) {
   const [type, setType] = useState("M");

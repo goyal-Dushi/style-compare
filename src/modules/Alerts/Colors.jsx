@@ -5,8 +5,8 @@ import CodeBox from "../../components/CodeBox";
 import { Alert } from "@mui/material";
 import * as Boot from "react-bootstrap";
 import DescBox from "../../components/DescBox";
-import { content, html } from "./alerts.json";
-import { descContent } from "../common.json";
+const { content, html } = require("./alerts.json");
+const { descContent } = require("../common.json");
 
 export default function AlertColors({ id }) {
   const [type, setType] = useState("M");

@@ -5,8 +5,8 @@ import DisplayBox from "../../components/DisplayBox";
 import StyleToggleNav from "../../components/StyleToggleNav";
 import { Button } from "@mui/material";
 import * as Bootstrap from "react-bootstrap";
-import { content, html } from "./buttons.json";
-import { descContent } from "../common.json";
+const { content, html } = require("./buttons.json");
+const { descContent } = require("../common.json");
 
 function ButtonColors({ id }) {
   const [type, setType] = useState("M");

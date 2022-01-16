@@ -6,8 +6,8 @@ import CodeBox from "../../../components/CodeBox";
 import DisplayBox from "../../../components/DisplayBox";
 import StyleToggleNav from "../../../components/StyleToggleNav";
 import DescBox from "../../../components/DescBox";
-import { content, html } from "./chips.json";
-import { descContent } from "../../common.json";
+const { content, html } = require("./chips.json");
+const { descContent } = require("../../common.json");
 
 function IconChips({ id }) {
   const [type, setType] = useState("M");

@@ -6,8 +6,8 @@ import CodeBox from "../../../components/CodeBox";
 import DescBox from "../../../components/DescBox";
 import DisplayBox from "../../../components/DisplayBox";
 import StyleToggleNav from "../../../components/StyleToggleNav";
-import { content, html } from "./badges.json";
-import { descContent } from "../../common.json";
+const { content, html } = require("./badges.json");
+const { descContent } = require("../../common.json");
 
 function AlignmentContent({ id }) {
   const [type, setType] = useState("M");

@@ -3,7 +3,7 @@ import { useState } from "react";
 import Accordion from "react-bootstrap/Accordion";
 import { useNavigate } from "react-router";
 import styles from "./leftSideNav.module.css";
-import { options } from "./leftNavOptions.json";
+const { options } = require("./leftNavOptions.json");
 
 export default function LeftSideNav() {
   const [selectOption, setSelected] = useState("About");
