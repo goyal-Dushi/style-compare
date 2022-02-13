@@ -1,9 +1,9 @@
 import React from "react";
 import RightSideNav from "../components/RightSideNav";
-import DismissAlert from "../modules/Alerts/Dismiss";
-import AlertColors from "../modules/Alerts/Colors";
-import AdditionalContent from "../modules/Alerts/Content";
-import AlertVariants from "../modules/Alerts/Variants";
+import DismissAlert from "../modules/Alerts/Dismissable/Dismiss";
+import AlertColors from "../modules/Alerts/Colors/Colors";
+import AdditionalContent from "../modules/Alerts/Content/Content";
+import AlertVariants from "../modules/Alerts/Variants/Variants";
 
 function Alerts() {
   return (
