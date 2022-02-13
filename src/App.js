@@ -3,9 +3,8 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavHeader from "./components/NavHeader";
 import Footer from "./components/Footer";
 import LeftSideNav from "./components/LeftSideNav";
-import Bootstrap from "./assets/img/bootstrap.webp";
-import Material from "./assets/img/material.webp";
-import Loading from "./pages/Loader";
+import Loading from "./components/Loader";
+import { libType } from "./libtype";
 const Alerts = lazy(() => import("./pages/Alert"));
 const ChipBadge = lazy(() => import("./pages/Chip&Badge"));
 const Home = lazy(() => import("./pages/Home"));
@@ -26,8 +25,7 @@ function App() {
       <div className={"bodyWrapper"}>
         <LeftSideNav />
         <div className={"bodyContainer"}>
-          <TypeContext.Provider
-            value={{ imgSrc: [Material, Bootstrap], value: ["M", "B"] }}>
+          <TypeContext.Provider value={libType}>
             <Routes>
               <Route
                 path={"/"}
