@@ -9,7 +9,6 @@ export default function LeftSideNav() {
   const [selectOption, setSelected] = useState("About");
 
   const handleOptionClick = (e) => {
-    console.log(e.currentTarget.innerText);
     setSelected(e.currentTarget.innerText);
   };
 
