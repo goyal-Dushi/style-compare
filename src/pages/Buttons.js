@@ -1,7 +1,7 @@
 import RightSideNav from "../components/RightSideNav";
-import ButtonColors from "../modules/Buttons/Button.colors";
-import ButtonDisabled from "../modules/Buttons/Button.Disabled";
-import ButtonSizeVariants from "../modules/Buttons/Button.sizeVariants";
+import ButtonColors from "../modules/Buttons/Colors/Button.colors";
+import ButtonDisabled from "../modules/Buttons/Disabled/Button.Disabled";
+import ButtonSizeVariants from "../modules/Buttons/SizeVariants/Button.sizeVariants";
 import WithIcons from "../modules/Buttons/WithIcons";
 
 export default function ButtonStyles() {
