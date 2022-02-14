@@ -15,11 +15,12 @@ function StyleToggleNav({ setStyleType }) {
   return (
     <div className={styles.styleContainer}>
       {types?.value?.map((item, i) => (
-        <Tooltip arrow={true} placement={"bottom"} title={types?.names?.[i]}>
-          <IconButton
-            color={"inherit"}
-            onClick={() => toggleStyle(item)}
-            key={i}>
+        <Tooltip
+          key={i}
+          arrow={true}
+          placement={"bottom"}
+          title={types?.names?.[i]}>
+          <IconButton color={"inherit"} onClick={() => toggleStyle(item)}>
             <img
               className={styles.styleImg}
               height={"35px"}
