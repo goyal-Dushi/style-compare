@@ -1,8 +1,8 @@
 import React from "react";
 import RightSideNav from "../components/RightSideNav";
-import AlignmentContent from "../modules/Chips&Badges/Badges/Alignment&Content";
-import ColorsSizes from "../modules/Chips&Badges/Chips/ColorsSizes";
-import IconChips from "../modules/Chips&Badges/Chips/IconChips";
+import AlignmentContent from "../modules/Chips&Badges/Badges/Align&Content/Alignment&Content";
+import ColorsSizes from "../modules/Chips&Badges/Chips/ColorSize/ColorsSizes";
+import IconChips from "../modules/Chips&Badges/Chips/IconChips/IconChips";
 
 export default function Chip_Badge() {
   return (
