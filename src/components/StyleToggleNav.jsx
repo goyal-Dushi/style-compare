@@ -19,7 +19,7 @@ function StyleToggleNav({ setStyleType }) {
           key={i}
           arrow={true}
           placement={"bottom"}
-          title={types?.names?.[i]}>
+          title={<span style={{ fontSize: "18px" }}>{types?.names?.[i]}</span>}>
           <IconButton color={"inherit"} onClick={() => toggleStyle(item)}>
             <img
               className={styles.styleImg}
