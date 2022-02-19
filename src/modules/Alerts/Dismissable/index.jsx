@@ -1,8 +1,5 @@
-import { useState } from "react";
-import CodeBox from "../../../components/CodeBox";
-import DisplayBox from "../../../components/DisplayBox";
-import StyleToggleNav from "../../../components/StyleToggleNav";
-import DescBox from "../../../components/DescBox";
+import { useState, useRef } from "react";
+import Interface from "../../../components/Interface";
 import { htmlDismiss } from "../alertsHtml";
 import MaterialAlertDismiss from "./Libs/MaterialAlertDismiss";
 import BootstrapAlertDismiss from "./Libs/BootstrapAlertDismiss";
@@ -11,35 +8,35 @@ const { descContent } = require("../../common.json");
 
 export default function DismissAlert({ id }) {
   const [type, setType] = useState("M");
+  const html = useRef();
+  const desc = useRef();
 
-  let data = "";
   const getHTML = () => {
-    if (type === "M") {
-      data = htmlDismiss.M;
-      return <MaterialAlertDismiss />;
-    } else if (type === "B") {
-      data = htmlDismiss.B;
-      return <BootstrapAlertDismiss />;
-    }
-  };
-
-  const getContent = () => {
     switch (type) {
       case "M":
-        return content.dismissable.M;
+        desc.current = content.dismissable.M;
+        html.current = htmlDismiss.M;
+        return <MaterialAlertDismiss />;
       case "B":
-        return content.dismissable.B;
+        desc.current = content.dismissable.B;
+        html.current = htmlDismiss.B;
+        return <BootstrapAlertDismiss />;
       default:
-        return descContent.defaultText;
+        desc.current = descContent.defaultText;
+        return <></>;
     }
   };
 
   return (
-    <div id={id}>
-      <DescBox heading={"Dismiss Alert"} content={getContent()} />
-      <StyleToggleNav setStyleType={setType} />
-      <DisplayBox> {getHTML()} </DisplayBox>
-      <CodeBox snippet={data} />
-    </div>
+    <>
+      <Interface
+        componentID={id}
+        heading={"Dismiss Alert"}
+        content={desc}
+        setType={setType}
+        setHtml={getHTML}
+        codeData={html}
+      />
+    </>
   );
 }

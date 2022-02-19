@@ -1,8 +1,5 @@
-import React, { useState } from "react";
-import CodeBox from "../../../components/CodeBox";
-import DisplayBox from "../../../components/DisplayBox";
-import StyleToggleNav from "../../../components/StyleToggleNav";
-import DescBox from "../../../components/DescBox";
+import React, { useState, useRef } from "react";
+import Interface from "../../../components/Interface";
 import { htmlVariants } from "../alertsHtml";
 import MaterialAlertVariants from "./Libs/MaterialAlertVariants";
 import BootstrapAlertVariants from "./Libs/BootstrapAlertVariants";
@@ -11,34 +8,35 @@ const { descContent } = require("../../common.json");
 
 export default function AlertVariants({ id }) {
   const [type, setType] = useState("M");
-  let data;
-  const getHTML = () => {
-    if (type === "M") {
-      data = htmlVariants.M;
-      return <MaterialAlertVariants />;
-    } else if (type === "B") {
-      data = htmlVariants.B;
-      return <BootstrapAlertVariants />;
-    }
-  };
+  const html = useRef();
+  const desc = useRef();
 
-  const getContent = () => {
+  const getHTML = () => {
     switch (type) {
       case "M":
-        return content.variants.M;
+        html.current = htmlVariants.M;
+        desc.current = content.variants.M;
+        return <MaterialAlertVariants />;
       case "B":
-        return content.variants.B;
+        html.current = htmlVariants.B;
+        desc.current = content.variants.B;
+        return <BootstrapAlertVariants />;
       default:
-        return descContent.defaultText;
+        desc.current = descContent.defaultText;
+        return <></>;
     }
   };
 
   return (
-    <div id={id}>
-      <DescBox heading={"Variants"} content={getContent()} />
-      <StyleToggleNav setStyleType={setType} />
-      <DisplayBox> {getHTML()} </DisplayBox>
-      <CodeBox snippet={data} />
-    </div>
+    <>
+      <Interface
+        componentID={id}
+        heading={"Variants"}
+        content={desc}
+        setType={setType}
+        setHtml={getHTML}
+        codeData={html}
+      />
+    </>
   );
 }
