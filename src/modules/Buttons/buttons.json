@@ -15,23 +15,5 @@
       "M": "<b> Material </b> have icons lib named <span class='codeSnippet'> @mui/icons-material </span> used for importing material icon component. It provides Button with attributes like <span class='codeSnippet'> endIcon </span> & <span class='codeSnippet'> startIcon </span> to place the icons at the end or start of the button respectively.",
       "B": "In <b> Bootstrap </b>, <span class='codeSnippet'> bootstrap-icons </span> is the lib for using its icons via classes provided to the <span class='codeSnippet'><i></i></span> tags. You need to place them manually where you want your icon to occur."
     }
-  },
-  "html": {
-    "colors": {
-      "M": "\n <Button variant='contained' color='primary' > Primary Default </Button> \n <Button variant='contained' color='secondary' > Secondary </Button> \n <Button variant='contained' color='success' > Success </Button> \n <Button variant='contained' color='error' > Error </Button> \n <Button variant='contained' color='info' > Info </Button> \n <Button variant='contained' color='warning' > Warning </Button>\n",
-      "B": "\n <Button variant='primary' > Primary Default </Button> \n <Button variant='secondary' > Secondary </Button> \n <Button variant='success' > Success </Button> \n <Button variant='danger' > Danger </Button> \n <Button variant='warning' > Warning </Button> \n <Button variant='info' > Info </Button> \n <Button variant='light' > Light </Button> \n <Button variant='dark' > Dark </Button> \n"
-    },
-    "disabled": {
-      "M": "\n <Button disabled variant='contained' color='primary' > Disabled </Button> \n <Button disabled variant='outlined' color='primary' > Disabled </Button> \n <Button disabled color='primary' > Disabled </Button> \n",
-      "B": "\n <Button variant='primary' size='lg' disabled> Disabled </Button> \n <Button variant='outline-primary' size='lg' disabled> Disabled </Button> \n"
-    },
-    "sizeVariants": {
-      "M": " \n <Button variant='contained' color='primary' size='large'> Contained Large Button </Button> \n <Button variant='outlined' color='primary' size='medium'> Outlined Medium Button </Button> \n <Button color='primary' size='small'> Default variant Text & Small Button </Button> \n",
-      "B": " \n <Button size='lg'> Default Primary Button & Large size </Button> \n <Button variant='outline-secondary' size='sm'> Outlined Small Button </Button> \n"
-    },
-    "icons": {
-      "M": " \n <Button endIcon={<SendIcon />} variant='contained'> Send </Button> \n <Button startIcon={<PrintIcon />} variant='outlined' color='info'> Print </Button> \n",
-      "B": " \n <Button variant='primary' > \n \t Send <i className='bi-send'></i> \n </Button> \n <Button variant='outline-info'> \n \t <i className='bi-printer'></i> Print \n </Button> \n"
-    }
   }
 }
