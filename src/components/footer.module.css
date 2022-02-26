@@ -1,13 +1,13 @@
 .footerStyle {
   width: 100%;
-  background-color: lightcoral;
-  color: white;
+  color: black;
   position: absolute;
   bottom: 0;
   font-size: 20px;
   padding: 8px 0px;
   font-weight: bold;
   text-align: center;
+  box-shadow: 8px 0px 30px lightgray;
 }
 
 .anchor {
