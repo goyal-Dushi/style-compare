@@ -1,6 +1,5 @@
-import { IconButton, Snackbar, Tooltip } from "@mui/material";
-import React, { useState } from "react";
-import CopyToClipboard from "react-copy-to-clipboard";
+import { Alert, IconButton, Snackbar, Tooltip } from "@mui/material";
+import React, { useRef, useState } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { monokai } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import styles from "./codebox.module.css";
@@ -8,6 +7,8 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
 function CodeBox({ snippet }) {
   const [alert, setAlert] = useState(false);
+  const inputRef = useRef();
+
   const handleAlertClose = (event, reason) => {
     if (reason === "clickaway") {
       setAlert(false);
@@ -15,35 +16,49 @@ function CodeBox({ snippet }) {
     }
     setAlert(false);
   };
+
+  const handleCopy = () => {
+    if (window?.navigator?.clipboard) {
+      window.navigator.clipboard.writeText(snippet);
+    } else {
+      inputRef?.current?.select();
+      document.execCommand("copy");
+    }
+    setAlert(true);
+  };
+
   return (
     <>
       <div className={styles.codebox}>
-        <CopyToClipboard
-          text={snippet}
-          onCopy={(text, result) => (result ? setAlert(true) : null)}>
-          <div style={{ position: "relative", width: "100%" }}>
-            <Tooltip title={"Copy"} arrow={true} placement={"left"}>
-              <IconButton
-                aria-label={"copy"}
-                style={{ position: "absolute", right: "0" }}
-                color={"primary"}
-                size={"large"}>
-                <ContentCopyIcon />
-              </IconButton>
-            </Tooltip>
-          </div>
-        </CopyToClipboard>
-        <SyntaxHighlighter className={styles.styleHighlighter} style={monokai}>
+        <div style={{ position: "relative", width: "100%" }}>
+          <Tooltip title={"Copy"} arrow={true} placement={"left"}>
+            <IconButton
+              onClick={handleCopy}
+              aria-label={"copy"}
+              style={{ position: "absolute", right: "0" }}
+              color={"primary"}
+              size={"large"}>
+              <ContentCopyIcon />
+            </IconButton>
+          </Tooltip>
+        </div>
+        <SyntaxHighlighter
+          wrapLongLines={true}
+          className={styles.styleHighlighter}
+          style={monokai}>
           {snippet}
         </SyntaxHighlighter>
       </div>
+      <input style={{ height: 0, opacity: 0 }} value={snippet} ref={inputRef} />
       <Snackbar
-        anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
+        anchorOrigin={{ horizontal: "right", vertical: "top" }}
         autoHideDuration={2000}
-        message={"Code copied to Clipboard!"}
         open={alert}
-        onClose={handleAlertClose}
-      />
+        onClose={handleAlertClose}>
+        <Alert variant={"filled"} severity={"success"}>
+          {"Copied to Clipboard!"}
+        </Alert>
+      </Snackbar>
     </>
   );
 }
