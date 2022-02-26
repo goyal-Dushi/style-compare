@@ -49,7 +49,12 @@ function CodeBox({ snippet }) {
           {snippet}
         </SyntaxHighlighter>
       </div>
-      <input style={{ height: 0, opacity: 0 }} value={snippet} ref={inputRef} />
+      <input
+        style={{ height: 0, opacity: 0 }}
+        readOnly
+        value={snippet}
+        ref={inputRef}
+      />
       <Snackbar
         anchorOrigin={{ horizontal: "right", vertical: "top" }}
         autoHideDuration={2000}
