@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "LibCompare",
+  "name": "LibCompare: React App",
+  "desc": "Documentation site where user can compare various CSS libs",
   "icons": [
     {
       "src": "favicon.ico",
