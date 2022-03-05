@@ -16,5 +16,11 @@
       "M": "In <b> Material </b> an alert can have an <span class='codeSnippet'> action </span> , such as a close button. If an <span class='codeSnippet'> onClose </span> prop is set and no <span class='codeSnippet'> action </span> props is there, then a <span class='codeSnippet'> close </span> icon is displayed by default, else you can provide your custom icon or button in action.",
       "B": "<b> Bootstrap </b> allows you to set <span className='codeSnippet'> dismissible </span> props to your alert and displays a close icon by default. Further functionality is displayed in code using <span className='codeSnippet'> const [open,setOpen] = useState </span>, react hooks."
     }
+  },
+  "links": {
+    "forColors": {
+      "M": "https://mui.com/components/alert/#color",
+      "B": "https://react-bootstrap.github.io/components/alerts#examples"
+    }
   }
 }
