@@ -12,7 +12,7 @@ export default function Interface(props) {
       <div id={componentID}>
         <DescBox heading={heading} content={content} />
         <StyleToggleNav setStyleType={setType} />
-        <DisplayBox> {setHtml()} </DisplayBox>
+        {setHtml ? <DisplayBox> {setHtml()} </DisplayBox> : <></>}
         <CodeBox snippet={codeData?.current} />
       </div>
     </>
