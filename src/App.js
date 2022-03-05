@@ -1,4 +1,4 @@
-import React, { createContext, lazy, Suspense, useEffect } from "react";
+import React, { createContext, lazy, Suspense } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavHeader from "./components/NavHeader";
 import Footer from "./components/Footer";
@@ -15,10 +15,6 @@ const ButtonStyles = lazy(() => import("./pages/Buttons"));
 export const TypeContext = createContext();
 
 function App() {
-  useEffect(() => {
-    document.title = "LibCompare";
-  }, []);
-
   return (
     <>
       <NavHeader />
