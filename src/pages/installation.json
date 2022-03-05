@@ -1,0 +1,11 @@
+{
+  "material": {
+    "install": "\n npm install @mui/material @emotion/react @emotion/styled \n \n yarn add @mui/material @emotion/react @emotion/styled \n",
+    "heading": "Material UI"
+  },
+  "bootstrap": {
+    "install": "\n npm install bootstrap \n \n yarn add bootstrap \n",
+    "heading": "Bootstrap"
+  },
+  "contentDesc": "You can use either yarn or npm, most popular node package manager libs to install such dependencies in your next React/Vue/Angular project."
+}
