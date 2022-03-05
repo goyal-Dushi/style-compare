@@ -1,52 +1,39 @@
-import { useState } from "react";
-import CodeBox from "../components/CodeBox";
-import DescBox from "../components/DescBox";
-import StyleToggleNav from "../components/StyleToggleNav";
+import React, { useEffect, useRef, useState } from "react";
+import Interface from "../components/Interface";
+const { material, bootstrap, contentDesc } = require("./installation.json");
+const { descContent: defaultHeading } = require("../modules/common.json");
 
 export default function Installation() {
   const [type, setType] = useState("M");
+  const html = useRef(material.install);
+  const heading = useRef(material.heading);
+  const desc = useRef(contentDesc);
 
-  const getSnippet = () => {
+  useEffect(() => {
     switch (type) {
       case "M":
-        return `
-    npm install @mui/material @emotion/react @emotion/styled
-
-    yarn add @mui/material @emotion/react @emotion/styled
-        `;
+        html.current = material.install;
+        heading.current = material.heading;
+        break;
       case "B":
-        return `
-    npm install bootstrap
-
-    yarn add bootstrap
-            `;
+        html.current = bootstrap.install;
+        heading.current = bootstrap.heading;
+        break;
       default:
-        return "To be updated soon!";
+        heading.current = defaultHeading;
+        break;
     }
-  };
-
-  const getHeading = () => {
-    switch (type) {
-      case "M":
-        return "Material";
-      case "B":
-        return "Bootstrap";
-      default:
-        return "";
-    }
-  };
+  }, [type]);
 
   return (
-    <div className={"w-75"}>
+    <>
       <h1 className={"display-4 fw-bold"}> {"Installation"} </h1>
-      <DescBox
-        heading={getHeading()}
-        content={
-          "You can use either yarn or npm, most popular node package manager libs to install such dependencies in your next React/Vue/Angular project."
-        }
+      <Interface
+        heading={heading.current}
+        content={desc}
+        setType={setType}
+        codeData={html}
       />
-      <StyleToggleNav setStyleType={setType} />
-      <CodeBox snippet={getSnippet()} />
-    </div>
+    </>
   );
 }
