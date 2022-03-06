@@ -14,7 +14,11 @@ export default function Interface(props) {
         {heading && content && <DescBox heading={heading} content={content} />}
         <StyleToggleNav setStyleType={setType} linkTo={linkState?.current} />
         {setHtml ? <DisplayBox> {setHtml()} </DisplayBox> : <></>}
-        {codeData && <CodeBox snippet={codeData?.current} />}
+        {codeData.current ? (
+          <CodeBox snippet={codeData.current} />
+        ) : (
+          <CodeBox snippet={codeData} />
+        )}
       </div>
     </>
   );
