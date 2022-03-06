@@ -13,12 +13,12 @@ function StyleToggleNav({ setStyleType, linkTo }) {
   const toggleStyle = (type) => {
     switch (type) {
       case "M":
-        setStyleType("M");
         linkHead.current = "Material UI";
+        setStyleType("M");
         break;
       case "B":
-        setStyleType("B");
         linkHead.current = "Bootstrap";
+        setStyleType("B");
         break;
       default:
         linkHead.current = "";
@@ -55,15 +55,17 @@ function StyleToggleNav({ setStyleType, linkTo }) {
           </Tooltip>
         ))}
       </div>
-      <div className={styles.styleLink}>
-        {"View on "}
-        <a
-          target={"_blank"}
-          href={linkTo?.current ? linkTo?.current : defaultLink}
-          rel={"noreferrer"}>
-          {linkHead?.current ? linkHead?.current : "Material UI"}
-        </a>
-      </div>
+      {linkTo && (
+        <div className={styles.styleLink}>
+          {"View on "}
+          <a
+            target={"_blank"}
+            href={linkTo?.current ? linkTo?.current : defaultLink}
+            rel={"noreferrer"}>
+            {linkHead?.current ? linkHead?.current : "Material UI"}
+          </a>
+        </div>
+      )}
     </>
   );
 }
