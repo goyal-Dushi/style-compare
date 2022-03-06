@@ -1,5 +1,7 @@
 {
   "descContent": {
-    "defaultText": "Sorry, content not availabe yet! Working on it."
+    "defaultText": "Sorry, content not availabe yet! Working on it.",
+    "defaultHeading": "Heading not available yet!",
+    "defaultLink": "https://libcompare.vercel.app/"
   }
 }

@@ -4,6 +4,11 @@
   width: fit-content;
 }
 
+.styleLink {
+  margin: 0 50px;
+  font-size: 14px;
+}
+
 .styleImg {
   display: block;
   border: none;
