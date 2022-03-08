@@ -1,9 +1,10 @@
 import React, { useCallback, useState, useRef } from "react";
-import MaterialAlertColors from "./Libs/MaterialAlertColors";
-import BootstrapAlertColor from "./Libs/BootstrapAlertColor";
 import { htmlColor } from "../alertsHtml";
 import Interface from "../../../components/Interface";
-const { content } = require("../alerts.json");
+import GetLib from "./Libs/GetLib";
+const {
+  content: { colors },
+} = require("../alerts.json");
 const { descContent } = require("../../common.json");
 
 export default function AlertColors({ id }) {
@@ -12,19 +13,9 @@ export default function AlertColors({ id }) {
   const desc = useRef();
 
   const getHTML = useCallback(() => {
-    switch (type) {
-      case "M":
-        html.current = htmlColor.M;
-        desc.current = content.colors.M;
-        return <MaterialAlertColors />;
-      case "B":
-        html.current = htmlColor.B;
-        desc.current = content.colors.B;
-        return <BootstrapAlertColor />;
-      default:
-        desc.current = descContent.defaultText;
-        return <></>;
-    }
+    html.current = htmlColor[type];
+    desc.current = colors[type] || descContent.defaultText;
+    return <GetLib type={type} />;
   }, [type]);
 
   return (
