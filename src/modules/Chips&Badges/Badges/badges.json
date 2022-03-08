@@ -4,5 +4,13 @@
       "M": "<b> Material </b> provides attributes like <span class='codeSnippet'> anchorOrigin </span> to control the alignment of badges and <span class='codeSnippet'>badgeContent</span>, <span class='codeSnippet'>max</span> and <span class='codeSnippet'>showZero</span> like properties to set the content inside badge, set maximum value for the badge content (if content exceeds max value, then material adds <span class='codeSnippet'> + </span> after the value, and boolean property to show zero value or not respectively. By default, showZero is set to <span class='codeSnippet'> false </span>.",
       "B": "<b> Bootstrap </b> dosen't provide any property for alignment of badges or even content. There is only the <span class='codeSnippet'> text </span> attribute which is used to set the color for the text content inside the badge. Apart from this, you have to manually provide styles in order to align the badges."
     }
+  },
+  "links": {
+    "forBadgeAlignContent": {
+      "M": "https://mui.com/components/badges/#badge-alignment",
+      "B": ""
+    },
+    "materialBadgeAPI": "https://mui.com/api/badge/",
+    "bootstrapBadgeAPI": "https://react-bootstrap.github.io/components/badge/#api"
   }
 }

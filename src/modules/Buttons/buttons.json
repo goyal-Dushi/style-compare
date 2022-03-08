@@ -15,5 +15,25 @@
       "M": "<b> Material </b> have icons lib named <span class='codeSnippet'> @mui/icons-material </span> used for importing material icon component. It provides Button with attributes like <span class='codeSnippet'> endIcon </span> & <span class='codeSnippet'> startIcon </span> to place the icons at the end or start of the button respectively.",
       "B": "In <b> Bootstrap </b>, <span class='codeSnippet'> bootstrap-icons </span> is the lib for using its icons via classes provided to the <span class='codeSnippet'><i></i></span> tags. You need to place them manually where you want your icon to occur."
     }
+  },
+  "links": {
+    "forBtnColors": {
+      "M": "https://mui.com/components/buttons/#color",
+      "B": "https://react-bootstrap.github.io/components/buttons/#examples"
+    },
+    "forBtnDisabled": {
+      "M": "",
+      "B": "https://react-bootstrap.github.io/components/buttons/#disabled-state"
+    },
+    "forBtnSizeVariants": {
+      "M": "https://mui.com/components/buttons/#sizes",
+      "B": "https://react-bootstrap.github.io/components/buttons/#sizes"
+    },
+    "forBtnIcons": {
+      "M": "https://mui.com/components/buttons/#buttons-with-icons-and-label",
+      "B": ""
+    },
+    "materialBtnAPI": "https://mui.com/api/button/",
+    "bootstrapBtnAPI": "https://react-bootstrap.github.io/components/buttons/#api"
   }
 }

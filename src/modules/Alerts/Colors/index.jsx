@@ -11,6 +11,7 @@ export default function AlertColors({ id }) {
   const [type, setType] = useState("M");
   const html = useRef();
   const desc = useRef();
+  const link = useRef();
 
   const getHTML = useCallback(() => {
     html.current = htmlColor[type];
@@ -24,6 +25,7 @@ export default function AlertColors({ id }) {
         componentID={id}
         heading={"Colors & Icons"}
         content={desc}
+        linkTo={link}
         setType={setType}
         setHtml={getHTML}
         codeData={html}
