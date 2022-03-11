@@ -1,8 +1,7 @@
 import { useCallback, useState, useRef } from "react";
 import Interface from "../../../components/Interface";
-import MaterialAlertContent from "./Libs/MaterialAlertContent";
-import BootstrapAlertContent from "./Libs/BootstrapAlertContent";
 import { htmlContent } from "../alertsHtml";
+import GetAlertComponent from "../GetAlertComponent";
 const {
   content: { alertContent },
   links: { forAlertContent, bootstrapAlertAPI, materialAlertAPI },
@@ -15,23 +14,26 @@ export default function AdditionalContent({ id }) {
   const desc = useRef();
   const link = useRef();
 
-  const getHTML = useCallback(() => {
+  const getLink = useCallback(() => {
+    if (forAlertContent[type]) {
+      return forAlertContent[type];
+    }
     switch (type) {
       case "M":
-        html.current = htmlContent.M;
-        desc.current = alertContent.M;
-        link.current = forAlertContent.M || materialAlertAPI;
-        return <MaterialAlertContent />;
+        return materialAlertAPI;
       case "B":
-        html.current = htmlContent.B;
-        desc.current = alertContent.B;
-        link.current = forAlertContent.B || bootstrapAlertAPI;
-        return <BootstrapAlertContent />;
+        return bootstrapAlertAPI;
       default:
-        desc.current = descContent.defaultText;
-        return <></>;
+        return "";
     }
   }, [type]);
+
+  const getHTML = useCallback(() => {
+    html.current = htmlContent[type];
+    desc.current = alertContent[type] || descContent.defaultText;
+    link.current = getLink();
+    return <GetAlertComponent cssLib={type} componentType={id} />;
+  }, [type, id, getLink]);
 
   return (
     <>

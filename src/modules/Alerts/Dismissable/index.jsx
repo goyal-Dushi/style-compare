@@ -1,8 +1,7 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 import Interface from "../../../components/Interface";
 import { htmlDismiss } from "../alertsHtml";
-import MaterialAlertDismiss from "./Libs/MaterialAlertDismiss";
-import BootstrapAlertDismiss from "./Libs/BootstrapAlertDismiss";
+import GetAlertComponent from "../GetAlertComponent";
 const {
   content: { dismissable },
   links: { forAlertDismissable, materialAlertAPI, bootstrapAlertAPI },
@@ -15,22 +14,25 @@ export default function DismissAlert({ id }) {
   const desc = useRef();
   const link = useRef();
 
-  const getHTML = () => {
+  const getLink = useCallback(() => {
+    if (forAlertDismissable[type]) {
+      return forAlertDismissable[type];
+    }
     switch (type) {
       case "M":
-        desc.current = dismissable.M;
-        html.current = htmlDismiss.M;
-        link.current = forAlertDismissable.M || materialAlertAPI;
-        return <MaterialAlertDismiss />;
+        return materialAlertAPI;
       case "B":
-        desc.current = dismissable.B;
-        html.current = htmlDismiss.B;
-        link.current = forAlertDismissable.B || bootstrapAlertAPI;
-        return <BootstrapAlertDismiss />;
+        return bootstrapAlertAPI;
       default:
-        desc.current = descContent.defaultText;
-        return <></>;
+        return "";
     }
+  }, [type]);
+
+  const getHTML = () => {
+    html.current = htmlDismiss[type];
+    desc.current = dismissable[type] || descContent.defaultText;
+    link.current = getLink();
+    return <GetAlertComponent componentType={id} cssLib={type} />;
   };
 
   return (
