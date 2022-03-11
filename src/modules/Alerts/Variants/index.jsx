@@ -1,8 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import Interface from "../../../components/Interface";
 import { htmlVariants } from "../alertsHtml";
-import MaterialAlertVariants from "./Libs/MaterialAlertVariants";
-import BootstrapAlertVariants from "./Libs/BootstrapAlertVariants";
+import GetAlertComponent from "../GetAlertComponent";
 const {
   content: { variants },
   links: { forAlertVariants, materialAlertAPI, bootstrapAlertAPI },
@@ -15,22 +14,25 @@ export default function AlertVariants({ id }) {
   const desc = useRef();
   const link = useRef();
 
-  const getHTML = () => {
+  const getLink = useCallback(() => {
+    if (forAlertVariants[type]) {
+      return forAlertVariants[type];
+    }
     switch (type) {
       case "M":
-        html.current = htmlVariants.M;
-        desc.current = variants.M;
-        link.current = forAlertVariants.M || materialAlertAPI;
-        return <MaterialAlertVariants />;
+        return materialAlertAPI;
       case "B":
-        html.current = htmlVariants.B;
-        desc.current = variants.B;
-        link.current = forAlertVariants.B || bootstrapAlertAPI;
-        return <BootstrapAlertVariants />;
+        return bootstrapAlertAPI;
       default:
-        desc.current = descContent.defaultText;
-        return <></>;
+        return "";
     }
+  }, [type]);
+
+  const getHTML = () => {
+    html.current = htmlVariants[type];
+    desc.current = variants[type] || descContent.defaultText;
+    link.current = getLink();
+    return <GetAlertComponent cssLib={type} componentType={id} />;
   };
 
   return (

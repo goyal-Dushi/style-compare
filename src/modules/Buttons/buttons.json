@@ -35,5 +35,12 @@
     },
     "materialBtnAPI": "https://mui.com/api/button/",
     "bootstrapBtnAPI": "https://react-bootstrap.github.io/components/buttons/#api"
-  }
+  },
+  "componentIds": {
+    "buttonColorId": "btnColors",
+    "buttonSizeVarId": "btnSizeVariants",
+    "buttonDisabledId": "btnDisabled",
+    "buttonIconId": "btnWithIcons"
+  },
+  "navLinks": ["Colors", "Size & Variants", "Disabled", "Icons"]
 }

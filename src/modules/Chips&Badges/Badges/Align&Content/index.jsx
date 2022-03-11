@@ -1,8 +1,7 @@
 import React, { useState, useRef, useCallback } from "react";
-import BootstrapBadge from "./Libs/BootstrapBadge";
-import MaterialBadge from "./Libs/MaterialBadge";
 import Interface from "../../../../components/Interface";
 import { htmlAlignContent } from "../badgeHtml";
+import GetBadgeComponent from "../GetBadgeComponent";
 const {
   content: { alignContent },
   links: { forBadgeAlignContent, materialBadgeAPI, bootstrapBadgeAPI },
@@ -15,23 +14,26 @@ function AlignmentContent({ id }) {
   const desc = useRef();
   const link = useRef();
 
-  const getHTML = useCallback(() => {
+  const getLink = useCallback(() => {
+    if (forBadgeAlignContent[type]) {
+      return forBadgeAlignContent[type];
+    }
     switch (type) {
       case "M":
-        html.current = htmlAlignContent.M;
-        desc.current = alignContent.M;
-        link.current = forBadgeAlignContent.M || materialBadgeAPI;
-        return <MaterialBadge />;
+        return materialBadgeAPI;
       case "B":
-        html.current = htmlAlignContent.B;
-        desc.current = alignContent.B;
-        link.current = forBadgeAlignContent.B || bootstrapBadgeAPI;
-        return <BootstrapBadge />;
+        return bootstrapBadgeAPI;
       default:
-        desc.current = descContent.defaultText;
-        return <></>;
+        return "";
     }
   }, [type]);
+
+  const getHTML = () => {
+    html.current = htmlAlignContent[type];
+    desc.current = alignContent[type] || descContent.defaultText;
+    link.current = getLink();
+    return <GetBadgeComponent cssLib={type} componentType={id} />;
+  };
 
   return (
     <Interface

@@ -1,11 +1,10 @@
 import React, { useCallback, useState, useRef } from "react";
-import MaterialAlertColors from "./Libs/MaterialAlertColors";
-import BootstrapAlertColor from "./Libs/BootstrapAlertColor";
 import { htmlColor } from "../alertsHtml";
 import Interface from "../../../components/Interface";
+import GetAlertComponent from "../GetAlertComponent";
 const {
   content: { colors },
-  links: { forColors },
+  links: { forColors, materialAlertAPI, bootstrapAlertAPI },
 } = require("../alerts.json");
 const { descContent } = require("../../common.json");
 
@@ -15,23 +14,26 @@ export default function AlertColors({ id }) {
   const desc = useRef();
   const link = useRef();
 
-  const getHTML = useCallback(() => {
+  const getLink = useCallback(() => {
+    if (forColors[type]) {
+      return forColors[type];
+    }
     switch (type) {
       case "M":
-        link.current = forColors.M;
-        html.current = htmlColor.M;
-        desc.current = colors.M;
-        return <MaterialAlertColors />;
+        return materialAlertAPI;
       case "B":
-        link.current = forColors.B;
-        html.current = htmlColor.B;
-        desc.current = colors.B;
-        return <BootstrapAlertColor />;
+        return bootstrapAlertAPI;
       default:
-        desc.current = descContent.defaultText;
-        return <></>;
+        return "";
     }
   }, [type]);
+
+  const getHTML = useCallback(() => {
+    html.current = htmlColor[type];
+    desc.current = colors[type] || descContent.defaultText;
+    link.current = getLink();
+    return <GetAlertComponent cssLib={type} componentType={id} />;
+  }, [type, getLink, id]);
 
   return (
     <>

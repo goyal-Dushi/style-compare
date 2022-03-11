@@ -1,6 +1,5 @@
-import React, { useState, useRef } from "react";
-import MaterialBtnIcon from "./Libs/MaterialBtnIcon";
-import BootstrapBtnIcon from "./Libs/BootstrapBtnIcon";
+import React, { useState, useRef, useCallback } from "react";
+import GetButtonComponent from "../GetButtonComponent";
 import Interface from "../../../components/Interface";
 import { htmlWithIcons } from "../buttonsHtml";
 const {
@@ -15,22 +14,25 @@ export default function WithIcons({ id }) {
   const desc = useRef();
   const link = useRef();
 
-  const getHTML = () => {
+  const getLink = useCallback(() => {
+    if (forBtnIcons[type]) {
+      return forBtnIcons[type];
+    }
     switch (type) {
       case "M":
-        html.current = htmlWithIcons.M;
-        desc.current = icons.M;
-        link.current = forBtnIcons.M || materialBtnAPI;
-        return <MaterialBtnIcon />;
+        return materialBtnAPI;
       case "B":
-        html.current = htmlWithIcons.B;
-        desc.current = icons.B;
-        link.current = forBtnIcons.B || bootstrapBtnAPI;
-        return <BootstrapBtnIcon />;
+        return bootstrapBtnAPI;
       default:
-        desc.current = descContent.defaultText;
-        return <></>;
+        return "";
     }
+  }, [type]);
+
+  const getHTML = () => {
+    html.current = htmlWithIcons[type];
+    desc.current = icons[type] || descContent.defaultText;
+    link.current = getLink();
+    return <GetButtonComponent cssLib={type} componentType={id} />;
   };
 
   return (
