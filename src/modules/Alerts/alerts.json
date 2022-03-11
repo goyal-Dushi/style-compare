@@ -36,5 +36,17 @@
     },
     "materialAlertAPI": "https://mui.com/api/alert/",
     "bootstrapAlertAPI": "https://react-bootstrap.github.io/components/alerts#api"
-  }
+  },
+  "componentIDs": {
+    "alertColorID": "alertColors",
+    "alertVariantID": "alertVariants",
+    "alertContentID": "alertContent",
+    "alertDismissID": "alertDismiss"
+  },
+  "navLabels": [
+    "Colors & Icons",
+    "Variants",
+    "Additional Content",
+    "Dismissable Alerts"
+  ]
 }

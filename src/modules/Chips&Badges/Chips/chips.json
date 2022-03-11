@@ -30,5 +30,10 @@
     },
     "materialChipAPI": "https://mui.com/api/chip/",
     "bootstrapChipAPI": "https://react-bootstrap.github.io/components/badge/#badge-props"
-  }
+  },
+  "componentIds": {
+    "chipColorSizeId": "chipColorSizes",
+    "chipIconsId": "chipIcons"
+  },
+  "navLinks": ["Colors & Sizes", "Icon Chips"]
 }

@@ -1,36 +1,21 @@
 import React, { useEffect, useRef, useState } from "react";
 import Interface from "../components/Interface";
-const { material, bootstrap, contentDesc } = require("./installation.json");
+const { install, heading, contentDesc } = require("./installation.json");
 const { descContent: defaultHeading } = require("../modules/common.json");
 
 export default function Installation() {
   const [type, setType] = useState("M");
   const [data, setData] = useState({
-    html: material.install,
-    heading: material.heading,
+    html: install[type],
+    heading: heading[type],
   });
   const desc = useRef(contentDesc);
 
   useEffect(() => {
-    switch (type) {
-      case "M":
-        setData({
-          html: material.install,
-          heading: material.heading,
-        });
-        break;
-      case "B":
-        setData({
-          html: bootstrap.install,
-          heading: bootstrap.heading,
-        });
-        break;
-      default:
-        setData({
-          heading: defaultHeading,
-        });
-        break;
-    }
+    setData({
+      html: install[type],
+      heading: heading[type] || defaultHeading,
+    });
   }, [type]);
 
   return (
