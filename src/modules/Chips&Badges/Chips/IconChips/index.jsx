@@ -1,8 +1,7 @@
 import React, { useCallback, useState, useRef } from "react";
-import MatericalChipIcon from "./Libs/MatericalChipIcon";
-import BootstrapChipIcons from "./Libs/BootstrapChipIcons";
 import Interface from "../../../../components/Interface";
 import { htmlChipIcons } from "../../chipsHtml";
+import GetChipComponent from "../GetChipComponent";
 const {
   content: { icons },
   links: { forChipIcon, materialChipAPI, bootstrapChipAPI },
@@ -15,23 +14,26 @@ function IconChips({ id }) {
   const desc = useRef();
   const link = useRef();
 
-  const getHTML = useCallback(() => {
+  const getLink = useCallback(() => {
+    if (forChipIcon[type]) {
+      return forChipIcon[type];
+    }
     switch (type) {
       case "M":
-        html.current = htmlChipIcons.M;
-        desc.current = icons.M;
-        link.current = forChipIcon.M || materialChipAPI;
-        return <MatericalChipIcon />;
+        return materialChipAPI;
       case "B":
-        html.current = htmlChipIcons.B;
-        desc.current = icons.B;
-        link.current = forChipIcon.B || bootstrapChipAPI;
-        return <BootstrapChipIcons />;
+        return bootstrapChipAPI;
       default:
-        desc.current = descContent.defaultText;
-        return <></>;
+        return "";
     }
   }, [type]);
+
+  const getHTML = () => {
+    html.current = htmlChipIcons[type];
+    desc.current = icons[type] || descContent.defaultText;
+    link.current = getLink();
+    return <GetChipComponent cssLib={type} componentType={id} />;
+  };
 
   return (
     <Interface
