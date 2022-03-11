@@ -1,7 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useCallback } from "react";
 import Interface from "../../../components/Interface";
-import MaterialSizVarButton from "./Libs/MaterialSizVarButton";
-import BootstrapSizVarButton from "./Libs/BootstrapSizVarButton";
+import GetButtonComponent from "../GetButtonComponent";
 import { htmlSizeVariants } from "../buttonsHtml";
 const {
   content: { sizeVariants },
@@ -15,22 +14,25 @@ export default function ButtonSizeVariants({ id }) {
   const desc = useRef();
   const link = useRef();
 
-  const getHTML = () => {
+  const getLink = useCallback(() => {
+    if (forBtnSizeVariants[type]) {
+      return forBtnSizeVariants[type];
+    }
     switch (type) {
       case "M":
-        html.current = htmlSizeVariants.M;
-        desc.current = sizeVariants.M;
-        link.current = forBtnSizeVariants.M || materialBtnAPI;
-        return <MaterialSizVarButton />;
+        return materialBtnAPI;
       case "B":
-        html.current = htmlSizeVariants.B;
-        desc.current = sizeVariants.B;
-        link.current = forBtnSizeVariants.B || bootstrapBtnAPI;
-        return <BootstrapSizVarButton />;
+        return bootstrapBtnAPI;
       default:
-        desc.current = descContent.defaultText;
-        return <></>;
+        return "";
     }
+  }, [type]);
+
+  const getHTML = () => {
+    html.current = htmlSizeVariants[type];
+    desc.current = sizeVariants[type] || descContent.defaultText;
+    link.current = getLink();
+    return <GetButtonComponent cssLib={type} componentType={id} />;
   };
 
   return (

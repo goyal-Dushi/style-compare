@@ -1,7 +1,6 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useCallback } from "react";
 import Interface from "../../../components/Interface";
-import MaterialDisabledBtn from "./Libs/MaterialDisabledBtn";
-import BootstrapDisabledBtn from "./Libs/BootstrapDisabledBtn";
+import GetButtonComponent from "../GetButtonComponent";
 import { htmlDisabled } from "../buttonsHtml";
 const {
   content,
@@ -14,16 +13,24 @@ export default function ButtonDisabled({ id }) {
   const desc = useRef(content.disabled.C);
   const link = useRef();
 
-  const getHTML = () => {
-    if (type === "M") {
-      html.current = htmlDisabled.M;
-      link.current = forBtnDisabled.M || materialBtnAPI;
-      return <MaterialDisabledBtn />;
-    } else if (type === "B") {
-      html.current = htmlDisabled.B;
-      link.current = forBtnDisabled.B || bootstrapBtnAPI;
-      return <BootstrapDisabledBtn />;
+  const getLink = useCallback(() => {
+    if (forBtnDisabled[type]) {
+      return forBtnDisabled[type];
     }
+    switch (type) {
+      case "M":
+        return materialBtnAPI;
+      case "B":
+        return bootstrapBtnAPI;
+      default:
+        return "";
+    }
+  }, [type]);
+
+  const getHTML = () => {
+    html.current = htmlDisabled[type];
+    link.current = getLink();
+    return <GetButtonComponent cssLib={type} componentType={id} />;
   };
   return (
     <Interface

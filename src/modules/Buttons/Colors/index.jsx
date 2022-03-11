@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
 import Interface from "../../../components/Interface";
-import MaterialButtonColors from "./Libs/MaterialButtonColors";
-import BootstrapButtonColors from "./Libs/BootstrapButtonColors";
+import GetButtonComponent from "../GetButtonComponent";
 import { htmlColors } from "../buttonsHtml";
+import { useCallback } from "react";
 const {
   content: { colors },
   links: { forBtnColors, materialBtnAPI, bootstrapBtnAPI },
@@ -15,22 +15,25 @@ function ButtonColors({ id }) {
   const desc = useRef();
   const link = useRef();
 
-  const getHTML = () => {
+  const getLink = useCallback(() => {
+    if (forBtnColors[type]) {
+      return forBtnColors[type];
+    }
     switch (type) {
       case "M":
-        html.current = htmlColors.M;
-        desc.current = colors.M;
-        link.current = forBtnColors.M || materialBtnAPI;
-        return <MaterialButtonColors />;
+        return materialBtnAPI;
       case "B":
-        html.current = htmlColors.B;
-        desc.current = colors.B;
-        link.current = forBtnColors.B || bootstrapBtnAPI;
-        return <BootstrapButtonColors />;
+        return bootstrapBtnAPI;
       default:
-        desc.current = descContent.defaultText;
-        return <></>;
+        return "";
     }
+  }, [type]);
+
+  const getHTML = () => {
+    html.current = htmlColors[type];
+    desc.current = colors[type] || descContent.defaultText;
+    link.current = getLink();
+    return <GetButtonComponent cssLib={type} componentType={id} />;
   };
 
   return (
