@@ -4,6 +4,7 @@
   border-width: 2px;
   border-style: solid;
   line-height: 1.4;
+  max-width: 1060px;
 }
 
 pre {

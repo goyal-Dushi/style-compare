@@ -4,20 +4,26 @@ import MaterialDisabledBtn from './Libs/MaterialDisabledBtn';
 import BootstrapDisabledBtn from './Libs/BootstrapDisabledBtn';
 import { htmlDisabled } from '../buttonsHtml';
 
-const { content } = require('../buttons.json');
+const {
+  content,
+  links: { forBtnDisabled, materialBtnAPI, bootstrapBtnAPI },
+} = require('../buttons.json');
 
 export default function ButtonDisabled({ id }) {
   const [type, setType] = useState('M');
   const html = useRef();
   const desc = useRef(content.disabled.C);
+  const link = useRef();
 
   const getHTML = () => {
     switch (type) {
       case 'M':
         html.current = htmlDisabled.M;
+        link.current = forBtnDisabled.M || materialBtnAPI;
         return <MaterialDisabledBtn />;
       case 'B':
         html.current = htmlDisabled.B;
+        link.current = forBtnDisabled.B || bootstrapBtnAPI;
         return <BootstrapDisabledBtn />;
       default:
         return <></>;
@@ -28,6 +34,7 @@ export default function ButtonDisabled({ id }) {
       componentID={id}
       heading={'Disabled Buttons'}
       content={desc}
+      linkTo={link}
       setType={setType}
       setHtml={getHTML}
       codeData={html}

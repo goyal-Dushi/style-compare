@@ -1,38 +1,76 @@
+import React, { useContext, useRef } from 'react';
 import { IconButton, Tooltip } from '@mui/material';
-import React, { useContext } from 'react';
 import { TypeContext } from '../App';
 import styles from './styleToggleNav.module.css';
 
-function StyleToggleNav({ setStyleType }) {
+const {
+  descContent: { defaultLink },
+} = require('../modules/common.json');
+
+function StyleToggleNav({ setStyleType, linkTo }) {
   const types = useContext(TypeContext);
+  const linkHead = useRef();
+
   const toggleStyle = (type) => {
-    if (type === 'M') {
-      setStyleType('M');
-    } else if (type === 'B') {
-      setStyleType('B');
+    switch (type) {
+      case 'M':
+        linkHead.current = 'Material UI';
+        setStyleType('M');
+        break;
+      case 'B':
+        linkHead.current = 'Bootstrap';
+        setStyleType('B');
+        break;
+      default:
+        linkHead.current = '';
+        break;
     }
   };
   return (
-    <div className={styles.styleContainer}>
-      {types?.value?.map((item, i) => (
-        <Tooltip
-          key={item}
-          arrow
-          placement={'bottom'}
-          title={<span style={{ fontSize: '18px' }}>{types?.names?.[i]}</span>}
-        >
-          <IconButton color={'inherit'} onClick={() => toggleStyle(item)}>
-            <img
-              className={styles.styleImg}
-              height={'35px'}
-              width={'35px'}
-              src={types?.imgSrc[i]}
-              alt={'css-lib-img'}
-            />
-          </IconButton>
-        </Tooltip>
-      ))}
-    </div>
+    <>
+      <div className={styles.styleContainer}>
+        {types?.value?.map((item, i) => (
+          <Tooltip
+            key={item}
+            arrow
+            placement={'top-end'}
+            title={
+              <span style={{ fontSize: '18px' }}>{types?.names?.[i]}</span>
+            }
+          >
+            <IconButton
+              color={'inherit'}
+              aria-label={`${types?.names?.[i]}-icon`}
+              onClick={() => toggleStyle(item)}
+            >
+              {types?.imgSrc[i] ? (
+                <img
+                  className={styles.styleImg}
+                  height={'35px'}
+                  width={'35px'}
+                  src={types?.imgSrc[i]}
+                  alt={'css-lib-img'}
+                />
+              ) : (
+                item
+              )}
+            </IconButton>
+          </Tooltip>
+        ))}
+      </div>
+      {linkTo && (
+        <div className={styles.styleLink}>
+          {'View on '}
+          <a
+            target={'_blank'}
+            href={linkTo?.current ? linkTo?.current : defaultLink}
+            rel={'noreferrer'}
+          >
+            {linkHead?.current ? linkHead?.current : 'Material UI'}
+          </a>
+        </div>
+      )}
+    </>
   );
 }
 

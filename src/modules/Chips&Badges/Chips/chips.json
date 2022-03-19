@@ -18,5 +18,17 @@
       "M": " \n <Chip clickable icon={<AddCircle />} label='Add Item' color='primary' /> \n <Chip clickable icon={<AddCircleOutline />} label='Add Item' variant='outlined' color='success' /> \n <Chip clickable avatar={<Avatar>M</Avatar>} label='Avatar' color='primary' /> \n <Chip deleteIcon={<Delete />} label='Delete Chip' onDelete={handleDelete} variant='filled' color='error' /> \n <Chip label='Default Delete Chip' onDelete={handleDelete2} color='primary' /> \n",
       "B": " \n <Badge pill bg='success' className='fs-5'><i className='bi bi-check-circle-fill'></i> Success! </Badge> \n <Badge pill bg='danger' className='fs-5'> Delete! <i className='bi bi-trash-fill' onClick={() => handleDelete} ></i> </Badge>\n"
     }
+  },
+  "links": {
+    "forChipColorSizes": {
+      "M": "https://mui.com/components/chips/#color-chip",
+      "B": "https://react-bootstrap.github.io/components/badge/#pill"
+    },
+    "forChipIcon": {
+      "M": "https://mui.com/components/chips/#chip-adornments",
+      "B": ""
+    },
+    "materialChipAPI": "https://mui.com/api/chip/",
+    "bootstrapChipAPI": "https://react-bootstrap.github.io/components/badge/#badge-props"
   }
 }

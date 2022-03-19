@@ -4,23 +4,29 @@ import MaterialAlertContent from './Libs/MaterialAlertContent';
 import BootstrapAlertContent from './Libs/BootstrapAlertContent';
 import { htmlContent } from '../alertsHtml';
 
-const { content } = require('../alerts.json');
+const {
+  content: { alertContent },
+  links: { forAlertContent, bootstrapAlertAPI, materialAlertAPI },
+} = require('../alerts.json');
 const { descContent } = require('../../common.json');
 
 export default function AdditionalContent({ id }) {
   const [type, setType] = useState('M');
   const html = useRef();
   const desc = useRef();
+  const link = useRef();
 
   const getHTML = useCallback(() => {
     switch (type) {
       case 'M':
         html.current = htmlContent.M;
-        desc.current = content.alertContent.M;
+        desc.current = alertContent.M;
+        link.current = forAlertContent.M || materialAlertAPI;
         return <MaterialAlertContent />;
       case 'B':
         html.current = htmlContent.B;
-        desc.current = content.alertContent.B;
+        desc.current = alertContent.B;
+        link.current = forAlertContent.B || bootstrapAlertAPI;
         return <BootstrapAlertContent />;
       default:
         desc.current = descContent.defaultText;
@@ -29,13 +35,16 @@ export default function AdditionalContent({ id }) {
   }, [type]);
 
   return (
-    <Interface
-      componentID={id}
-      heading={'Additional Content'}
-      content={desc}
-      setType={setType}
-      setHtml={getHTML}
-      codeData={html}
-    />
+    <>
+      <Interface
+        componentID={id}
+        heading={'Additional Content'}
+        linkTo={link}
+        content={desc}
+        setType={setType}
+        setHtml={getHTML}
+        codeData={html}
+      />
+    </>
   );
 }

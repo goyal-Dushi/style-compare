@@ -6,22 +6,30 @@ const { descContent: defaultHeading } = require('../modules/common.json');
 
 export default function Installation() {
   const [type, setType] = useState('M');
-  const html = useRef(material.install);
-  const heading = useRef(material.heading);
+  const [data, setData] = useState({
+    html: material.install,
+    heading: material.heading,
+  });
   const desc = useRef(contentDesc);
 
   useEffect(() => {
     switch (type) {
       case 'M':
-        html.current = material.install;
-        heading.current = material.heading;
+        setData({
+          html: material.install,
+          heading: material.heading,
+        });
         break;
       case 'B':
-        html.current = bootstrap.install;
-        heading.current = bootstrap.heading;
+        setData({
+          html: bootstrap.install,
+          heading: bootstrap.heading,
+        });
         break;
       default:
-        heading.current = defaultHeading;
+        setData({
+          heading: defaultHeading,
+        });
         break;
     }
   }, [type]);
@@ -30,10 +38,10 @@ export default function Installation() {
     <>
       <h1 className={'display-4 fw-bold'}>{' Installation '}</h1>
       <Interface
-        heading={heading.current}
+        heading={data.heading}
         content={desc}
         setType={setType}
-        codeData={html}
+        codeData={data.html}
       />
     </>
   );
