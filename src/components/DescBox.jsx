@@ -1,4 +1,4 @@
-import React, { useEffect, createRef } from "react";
+import React, { useEffect, createRef } from 'react';
 
 export default function DescBox({ heading, content }) {
   const contentRef = createRef();
@@ -8,9 +8,9 @@ export default function DescBox({ heading, content }) {
   }, [content, contentRef]);
 
   return (
-    <div style={{ margin: "40px 40px 0px" }}>
-      <h2 className={"display-6"}> {heading} </h2>
-      <p ref={contentRef}></p>
+    <div style={{ margin: '40px 40px 0px' }}>
+      <h2 className={'display-6'}> {heading} </h2>
+      <p ref={contentRef} />
     </div>
   );
 }

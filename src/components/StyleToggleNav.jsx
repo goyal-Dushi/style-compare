@@ -1,10 +1,11 @@
-import { IconButton, Tooltip } from "@mui/material";
-import React, { useContext, useRef } from "react";
-import { TypeContext } from "../App";
-import styles from "./styleToggleNav.module.css";
+import React, { useContext, useRef } from 'react';
+import { IconButton, Tooltip } from '@mui/material';
+import { TypeContext } from '../App';
+import styles from './styleToggleNav.module.css';
+
 const {
   descContent: { defaultLink },
-} = require("../modules/common.json");
+} = require('../modules/common.json');
 
 function StyleToggleNav({ setStyleType, linkTo }) {
   const types = useContext(TypeContext);
@@ -12,16 +13,16 @@ function StyleToggleNav({ setStyleType, linkTo }) {
 
   const toggleStyle = (type) => {
     switch (type) {
-      case "M":
-        linkHead.current = "Material UI";
-        setStyleType("M");
+      case 'M':
+        linkHead.current = 'Material UI';
+        setStyleType('M');
         break;
-      case "B":
-        linkHead.current = "Bootstrap";
-        setStyleType("B");
+      case 'B':
+        linkHead.current = 'Bootstrap';
+        setStyleType('B');
         break;
       default:
-        linkHead.current = "";
+        linkHead.current = '';
         break;
     }
   };
@@ -30,23 +31,25 @@ function StyleToggleNav({ setStyleType, linkTo }) {
       <div className={styles.styleContainer}>
         {types?.value?.map((item, i) => (
           <Tooltip
-            key={i}
-            arrow={true}
-            placement={"top-end"}
+            key={item}
+            arrow
+            placement={'top-end'}
             title={
-              <span style={{ fontSize: "18px" }}>{types?.names?.[i]}</span>
-            }>
+              <span style={{ fontSize: '18px' }}>{types?.names?.[i]}</span>
+            }
+          >
             <IconButton
-              color={"inherit"}
+              color={'inherit'}
               aria-label={`${types?.names?.[i]}-icon`}
-              onClick={() => toggleStyle(item)}>
+              onClick={() => toggleStyle(item)}
+            >
               {types?.imgSrc[i] ? (
                 <img
                   className={styles.styleImg}
-                  height={"35px"}
-                  width={"35px"}
+                  height={'35px'}
+                  width={'35px'}
                   src={types?.imgSrc[i]}
-                  alt={"css-lib-img"}
+                  alt={'css-lib-img'}
                 />
               ) : (
                 item
@@ -57,12 +60,13 @@ function StyleToggleNav({ setStyleType, linkTo }) {
       </div>
       {linkTo && (
         <div className={styles.styleLink}>
-          {"View on "}
+          {'View on '}
           <a
-            target={"_blank"}
+            target={'_blank'}
             href={linkTo?.current ? linkTo?.current : defaultLink}
-            rel={"noreferrer"}>
-            {linkHead?.current ? linkHead?.current : "Material UI"}
+            rel={'noreferrer'}
+          >
+            {linkHead?.current ? linkHead?.current : 'Material UI'}
           </a>
         </div>
       )}

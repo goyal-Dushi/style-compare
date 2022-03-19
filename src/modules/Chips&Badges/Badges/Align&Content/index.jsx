@@ -1,28 +1,29 @@
-import React, { useState, useRef, useCallback } from "react";
-import BootstrapBadge from "./Libs/BootstrapBadge";
-import MaterialBadge from "./Libs/MaterialBadge";
-import Interface from "../../../../components/Interface";
-import { htmlAlignContent } from "../badgeHtml";
+import React, { useState, useRef, useCallback } from 'react';
+import BootstrapBadge from './Libs/BootstrapBadge';
+import MaterialBadge from './Libs/MaterialBadge';
+import Interface from '../../../../components/Interface';
+import { htmlAlignContent } from '../badgeHtml';
+
 const {
   content: { alignContent },
   links: { forBadgeAlignContent, materialBadgeAPI, bootstrapBadgeAPI },
-} = require("../badges.json");
-const { descContent } = require("../../../common.json");
+} = require('../badges.json');
+const { descContent } = require('../../../common.json');
 
 function AlignmentContent({ id }) {
-  const [type, setType] = useState("M");
+  const [type, setType] = useState('M');
   const html = useRef();
   const desc = useRef();
   const link = useRef();
 
   const getHTML = useCallback(() => {
     switch (type) {
-      case "M":
+      case 'M':
         html.current = htmlAlignContent.M;
         desc.current = alignContent.M;
         link.current = forBadgeAlignContent.M || materialBadgeAPI;
         return <MaterialBadge />;
-      case "B":
+      case 'B':
         html.current = htmlAlignContent.B;
         desc.current = alignContent.B;
         link.current = forBadgeAlignContent.B || bootstrapBadgeAPI;
@@ -36,7 +37,7 @@ function AlignmentContent({ id }) {
   return (
     <Interface
       componentID={id}
-      heading={"Alignment & Content"}
+      heading={'Alignment & Content'}
       content={desc}
       linkTo={link}
       setType={setType}

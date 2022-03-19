@@ -1,10 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
-import Interface from "../components/Interface";
-const { material, bootstrap, contentDesc } = require("./installation.json");
-const { descContent: defaultHeading } = require("../modules/common.json");
+import React, { useEffect, useRef, useState } from 'react';
+import Interface from '../components/Interface';
+
+const { material, bootstrap, contentDesc } = require('./installation.json');
+const { descContent: defaultHeading } = require('../modules/common.json');
 
 export default function Installation() {
-  const [type, setType] = useState("M");
+  const [type, setType] = useState('M');
   const [data, setData] = useState({
     html: material.install,
     heading: material.heading,
@@ -13,13 +14,13 @@ export default function Installation() {
 
   useEffect(() => {
     switch (type) {
-      case "M":
+      case 'M':
         setData({
           html: material.install,
           heading: material.heading,
         });
         break;
-      case "B":
+      case 'B':
         setData({
           html: bootstrap.install,
           heading: bootstrap.heading,
@@ -35,7 +36,7 @@ export default function Installation() {
 
   return (
     <>
-      <h1 className={"display-4 fw-bold"}> {"Installation"} </h1>
+      <h1 className={'display-4 fw-bold'}>{' Installation '}</h1>
       <Interface
         heading={data.heading}
         content={desc}

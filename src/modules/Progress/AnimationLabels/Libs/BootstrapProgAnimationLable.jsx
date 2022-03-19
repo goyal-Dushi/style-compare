@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Stack } from "@mui/material";
-import * as Boot from "react-bootstrap";
+import React, { useState, useEffect, useRef } from 'react';
+import { Stack } from '@mui/material';
+import * as Boot from 'react-bootstrap';
 
 export default function BootstrapProgAnimationLable() {
   const [buffProgress, setBuffProgress] = useState(0);
@@ -28,23 +28,23 @@ export default function BootstrapProgAnimationLable() {
   }, []);
 
   return (
-    <Stack width={"100%"} spacing={2}>
+    <Stack width={'100%'} spacing={2}>
       <Boot.ProgressBar
         label={`${Math.round(buffProgress)}%`}
         striped
-        variant={"info"}
+        variant={'info'}
         now={Math.round(buffProgress)}
       />
       <Boot.ProgressBar
         animated
         label={`${Math.round(buffProgress)}%`}
-        variant={"danger"}
+        variant={'danger'}
         now={Math.round(buffProgress)}
       />
       <Boot.ProgressBar>
-        <Boot.ProgressBar striped variant={"success"} now={35} key={1} />
-        <Boot.ProgressBar variant={"warning"} now={10} key={2} />
-        <Boot.ProgressBar animated variant={"danger"} now={10} key={3} />
+        <Boot.ProgressBar striped variant={'success'} now={35} key={1} />
+        <Boot.ProgressBar variant={'warning'} now={10} key={2} />
+        <Boot.ProgressBar animated variant={'danger'} now={10} key={3} />
       </Boot.ProgressBar>
     </Stack>
   );

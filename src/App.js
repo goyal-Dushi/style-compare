@@ -1,16 +1,17 @@
-import React, { createContext, lazy, Suspense } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import NavHeader from "./components/NavHeader";
-import Footer from "./components/Footer";
-import LeftSideNav from "./components/LeftSideNav";
-import Loading from "./components/Loader";
-import { libType } from "./libtype";
-const Alerts = lazy(() => import("./pages/Alert"));
-const ChipBadge = lazy(() => import("./pages/Chip&Badge"));
-const Home = lazy(() => import("./pages/Home"));
-const Progress = lazy(() => import("./pages/Progress"));
-const Installation = lazy(() => import("./pages/Installation"));
-const ButtonStyles = lazy(() => import("./pages/Buttons"));
+import React, { createContext, lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import NavHeader from './components/NavHeader';
+import Footer from './components/Footer';
+import LeftSideNav from './components/LeftSideNav';
+import Loading from './components/Loader';
+import { libType } from './libtype';
+
+const Alerts = lazy(() => import('./pages/Alert'));
+const ChipBadge = lazy(() => import('./pages/Chip&Badge'));
+const Home = lazy(() => import('./pages/Home'));
+const Progress = lazy(() => import('./pages/Progress'));
+const Installation = lazy(() => import('./pages/Installation'));
+const ButtonStyles = lazy(() => import('./pages/Buttons'));
 
 export const TypeContext = createContext();
 
@@ -18,55 +19,55 @@ function App() {
   return (
     <>
       <NavHeader />
-      <div className={"bodyWrapper"}>
+      <div className={'bodyWrapper'}>
         <LeftSideNav />
-        <div className={"bodyContainer"}>
+        <div className={'bodyContainer'}>
           <TypeContext.Provider value={libType}>
             <Routes>
               <Route
-                path={"/"}
+                path={'/'}
                 element={
-                  <Suspense fallback={<Loading component={"Home"} />}>
+                  <Suspense fallback={<Loading component={'Home'} />}>
                     <Home />
                   </Suspense>
                 }
               />
               <Route
-                path={"/installation"}
+                path={'/installation'}
                 element={
-                  <Suspense fallback={<Loading component={"Installation"} />}>
+                  <Suspense fallback={<Loading component={'Installation'} />}>
                     <Installation />
                   </Suspense>
                 }
               />
               <Route
-                path={"/chips&badges"}
+                path={'/chips&badges'}
                 element={
-                  <Suspense fallback={<Loading component={"Chips & Badges"} />}>
+                  <Suspense fallback={<Loading component={'Chips & Badges'} />}>
                     <ChipBadge />
                   </Suspense>
                 }
               />
               <Route
-                path={"/buttons"}
+                path={'/buttons'}
                 element={
-                  <Suspense fallback={<Loading component={"Button"} />}>
+                  <Suspense fallback={<Loading component={'Button'} />}>
                     <ButtonStyles />
                   </Suspense>
                 }
               />
               <Route
-                path={"/alerts"}
+                path={'/alerts'}
                 element={
-                  <Suspense fallback={<Loading component={"Alert"} />}>
+                  <Suspense fallback={<Loading component={'Alert'} />}>
                     <Alerts />
                   </Suspense>
                 }
               />
               <Route
-                path={"/progress"}
+                path={'/progress'}
                 element={
-                  <Suspense fallback={<Loading component={"Progress"} />}>
+                  <Suspense fallback={<Loading component={'Progress'} />}>
                     <Progress />
                   </Suspense>
                 }

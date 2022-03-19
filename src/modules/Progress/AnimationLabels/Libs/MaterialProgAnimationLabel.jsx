@@ -1,11 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from 'react';
 import {
   CircularProgress,
   LinearProgress,
   Stack,
   Box,
   Typography,
-} from "@mui/material";
+} from '@mui/material';
 
 export default function MaterialProgAnimationLabel() {
   const [buffProgress, setBuffProgress] = useState(0);
@@ -36,53 +36,55 @@ export default function MaterialProgAnimationLabel() {
     };
   }, []);
   return (
-    <Stack width={"100%"} spacing={2}>
+    <Stack width={'100%'} spacing={2}>
       <Box
         sx={{
-          position: "relative",
-          display: "inline-flex",
-          width: "fit-content",
-        }}>
-        <CircularProgress variant='determinate' value={buffProgress} />
+          position: 'relative',
+          display: 'inline-flex',
+          width: 'fit-content',
+        }}
+      >
+        <CircularProgress variant={'determinate'} value={buffProgress} />
         <Box
           sx={{
-            textAlign: "center",
+            textAlign: 'center',
             top: 0,
             bottom: 0,
             right: 0,
             left: 0,
-            position: "absolute",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}>
-          <Typography variant='caption' color='text.secondary'>
+            position: 'absolute',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <Typography variant={'caption'} color={'text.secondary'}>
             {`${Math.round(buffProgress)}%`}
           </Typography>
         </Box>
       </Box>
       <LinearProgress
-        variant={"determinate"}
+        variant={'determinate'}
         value={Math.round(buffProgress)}
-        color={"secondary"}
+        color={'secondary'}
       />
       <CircularProgress
-        variant={"determinate"}
+        variant={'determinate'}
         value={Math.round(buffProgress)}
-        color={"error"}
+        color={'error'}
       />
-      <Box sx={{ display: "flex", alignItems: "center" }}>
-        <Box sx={{ width: "100%", mr: 1 }}>
+      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <Box sx={{ width: '100%', mr: 1 }}>
           <LinearProgress
-            variant={"buffer"}
+            variant={'buffer'}
             value={Math.round(buffProgress)}
             valueBuffer={buffer}
-            color={"success"}
+            color={'success'}
           />
         </Box>
         <Box sx={{ minWidth: 35 }}>
-          <Typography variant='body2' color='text.secondary'>{`${Math.round(
-            buffProgress
+          <Typography variant={'body2'} color={'text.secondary'}>{`${Math.round(
+            buffProgress,
           )}%`}</Typography>
         </Box>
       </Box>

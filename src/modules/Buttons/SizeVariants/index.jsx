@@ -1,28 +1,29 @@
-import React, { useRef, useState } from "react";
-import Interface from "../../../components/Interface";
-import MaterialSizVarButton from "./Libs/MaterialSizVarButton";
-import BootstrapSizVarButton from "./Libs/BootstrapSizVarButton";
-import { htmlSizeVariants } from "../buttonsHtml";
+import React, { useRef, useState } from 'react';
+import Interface from '../../../components/Interface';
+import MaterialSizVarButton from './Libs/MaterialSizVarButton';
+import BootstrapSizVarButton from './Libs/BootstrapSizVarButton';
+import { htmlSizeVariants } from '../buttonsHtml';
+
 const {
   content: { sizeVariants },
   links: { forBtnSizeVariants, materialBtnAPI, bootstrapBtnAPI },
-} = require("../buttons.json");
-const { descContent } = require("../../common.json");
+} = require('../buttons.json');
+const { descContent } = require('../../common.json');
 
 export default function ButtonSizeVariants({ id }) {
-  const [type, setType] = useState("M");
+  const [type, setType] = useState('M');
   const html = useRef();
   const desc = useRef();
   const link = useRef();
 
   const getHTML = () => {
     switch (type) {
-      case "M":
+      case 'M':
         html.current = htmlSizeVariants.M;
         desc.current = sizeVariants.M;
         link.current = forBtnSizeVariants.M || materialBtnAPI;
         return <MaterialSizVarButton />;
-      case "B":
+      case 'B':
         html.current = htmlSizeVariants.B;
         desc.current = sizeVariants.B;
         link.current = forBtnSizeVariants.B || bootstrapBtnAPI;
@@ -36,7 +37,7 @@ export default function ButtonSizeVariants({ id }) {
   return (
     <Interface
       componentID={id}
-      heading={"Sizes & Variants"}
+      heading={'Sizes & Variants'}
       content={desc}
       linkTo={link}
       setType={setType}

@@ -1,16 +1,16 @@
-import { Alert, IconButton, Snackbar, Tooltip } from "@mui/material";
-import React, { useRef, useState } from "react";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import { monokai } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import styles from "./codebox.module.css";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import { Alert, IconButton, Snackbar, Tooltip } from '@mui/material';
+import React, { useRef, useState } from 'react';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { monokai } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import styles from './codebox.module.css';
 
 function CodeBox({ snippet }) {
   const [alert, setAlert] = useState(false);
   const inputRef = useRef();
 
   const handleAlertClose = (event, reason) => {
-    if (reason === "clickaway") {
+    if (reason === 'clickaway') {
       setAlert(false);
       return;
     }
@@ -22,7 +22,7 @@ function CodeBox({ snippet }) {
       window.navigator.clipboard.writeText(snippet);
     } else {
       inputRef?.current?.select();
-      document.execCommand("copy");
+      document.execCommand('copy');
     }
     setAlert(true);
   };
@@ -30,22 +30,24 @@ function CodeBox({ snippet }) {
   return (
     <>
       <div className={styles.codebox}>
-        <div style={{ position: "relative", width: "100%" }}>
-          <Tooltip title={"Copy"} arrow={true} placement={"left"}>
+        <div style={{ position: 'relative', width: '100%' }}>
+          <Tooltip title={'Copy'} arrow placement={'left'}>
             <IconButton
               onClick={handleCopy}
-              aria-label={"copy"}
-              style={{ position: "absolute", right: "0" }}
-              color={"primary"}
-              size={"large"}>
+              aria-label={'copy'}
+              style={{ position: 'absolute', right: '0' }}
+              color={'primary'}
+              size={'large'}
+            >
               <ContentCopyIcon />
             </IconButton>
           </Tooltip>
         </div>
         <SyntaxHighlighter
-          wrapLongLines={true}
+          wrapLongLines
           className={styles.styleHighlighter}
-          style={monokai}>
+          style={monokai}
+        >
           {snippet}
         </SyntaxHighlighter>
       </div>
@@ -56,12 +58,13 @@ function CodeBox({ snippet }) {
         ref={inputRef}
       />
       <Snackbar
-        anchorOrigin={{ horizontal: "right", vertical: "top" }}
+        anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
         autoHideDuration={2000}
         open={alert}
-        onClose={handleAlertClose}>
-        <Alert variant={"filled"} severity={"success"}>
-          {"Copied to Clipboard!"}
+        onClose={handleAlertClose}
+      >
+        <Alert variant={'filled'} severity={'success'}>
+          Copied to Clipboard!
         </Alert>
       </Snackbar>
     </>

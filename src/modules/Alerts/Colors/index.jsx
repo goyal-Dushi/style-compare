@@ -1,28 +1,29 @@
-import React, { useCallback, useState, useRef } from "react";
-import MaterialAlertColors from "./Libs/MaterialAlertColors";
-import BootstrapAlertColor from "./Libs/BootstrapAlertColor";
-import { htmlColor } from "../alertsHtml";
-import Interface from "../../../components/Interface";
+import React, { useCallback, useState, useRef } from 'react';
+import MaterialAlertColors from './Libs/MaterialAlertColors';
+import BootstrapAlertColor from './Libs/BootstrapAlertColor';
+import { htmlColor } from '../alertsHtml';
+import Interface from '../../../components/Interface';
+
 const {
   content: { colors },
   links: { forColors },
-} = require("../alerts.json");
-const { descContent } = require("../../common.json");
+} = require('../alerts.json');
+const { descContent } = require('../../common.json');
 
 export default function AlertColors({ id }) {
-  const [type, setType] = useState("M");
+  const [type, setType] = useState('M');
   const html = useRef();
   const desc = useRef();
   const link = useRef();
 
   const getHTML = useCallback(() => {
     switch (type) {
-      case "M":
+      case 'M':
         link.current = forColors.M;
         html.current = htmlColor.M;
         desc.current = colors.M;
         return <MaterialAlertColors />;
-      case "B":
+      case 'B':
         link.current = forColors.B;
         html.current = htmlColor.B;
         desc.current = colors.B;
@@ -37,7 +38,7 @@ export default function AlertColors({ id }) {
     <>
       <Interface
         componentID={id}
-        heading={"Colors & Icons"}
+        heading={'Colors & Icons'}
         content={desc}
         linkTo={link}
         setType={setType}
