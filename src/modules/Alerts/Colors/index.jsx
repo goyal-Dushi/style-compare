@@ -1,23 +1,24 @@
-import React, { useCallback, useState, useRef } from "react";
-import MaterialAlertColors from "./Libs/MaterialAlertColors";
-import BootstrapAlertColor from "./Libs/BootstrapAlertColor";
-import { htmlColor } from "../alertsHtml";
-import Interface from "../../../components/Interface";
-const { content } = require("../alerts.json");
-const { descContent } = require("../../common.json");
+import React, { useCallback, useState, useRef } from 'react';
+import MaterialAlertColors from './Libs/MaterialAlertColors';
+import BootstrapAlertColor from './Libs/BootstrapAlertColor';
+import { htmlColor } from '../alertsHtml';
+import Interface from '../../../components/Interface';
+
+const { content } = require('../alerts.json');
+const { descContent } = require('../../common.json');
 
 export default function AlertColors({ id }) {
-  const [type, setType] = useState("M");
+  const [type, setType] = useState('M');
   const html = useRef();
   const desc = useRef();
 
   const getHTML = useCallback(() => {
     switch (type) {
-      case "M":
+      case 'M':
         html.current = htmlColor.M;
         desc.current = content.colors.M;
         return <MaterialAlertColors />;
-      case "B":
+      case 'B':
         html.current = htmlColor.B;
         desc.current = content.colors.B;
         return <BootstrapAlertColor />;
@@ -28,15 +29,13 @@ export default function AlertColors({ id }) {
   }, [type]);
 
   return (
-    <>
-      <Interface
-        componentID={id}
-        heading={"Colors & Icons"}
-        content={desc}
-        setType={setType}
-        setHtml={getHTML}
-        codeData={html}
-      />
-    </>
+    <Interface
+      componentID={id}
+      heading={'Colors & Icons'}
+      content={desc}
+      setType={setType}
+      setHtml={getHTML}
+      codeData={html}
+    />
   );
 }

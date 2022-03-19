@@ -1,15 +1,15 @@
-import React from "react";
-import { Alert } from "@mui/material";
+import React from 'react';
+import { Alert } from '@mui/material';
 
 export default function MaterialAlertVariants() {
   return (
     <>
-      <Alert> {"Default Standard variant"} </Alert>
-      <Alert variant={"filled"} severity={"info"}>
-        {"Filled"}
+      <Alert> {'Default Standard variant'} </Alert>
+      <Alert variant={'filled'} severity={'info'}>
+        {'Filled'}
       </Alert>
-      <Alert variant={"outlined"} severity={"warning"}>
-        {"Outlined"}
+      <Alert variant={'outlined'} severity={'warning'}>
+        {'Outlined'}
       </Alert>
     </>
   );

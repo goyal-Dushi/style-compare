@@ -1,23 +1,24 @@
-import React, { useState, useRef, useCallback } from "react";
-import BootstrapBadge from "./Libs/BootstrapBadge";
-import MaterialBadge from "./Libs/MaterialBadge";
-import Interface from "../../../../components/Interface";
-import { htmlAlignContent } from "../badgeHtml";
-const { content } = require("../badges.json");
-const { descContent } = require("../../../common.json");
+import React, { useState, useRef, useCallback } from 'react';
+import BootstrapBadge from './Libs/BootstrapBadge';
+import MaterialBadge from './Libs/MaterialBadge';
+import Interface from '../../../../components/Interface';
+import { htmlAlignContent } from '../badgeHtml';
+
+const { content } = require('../badges.json');
+const { descContent } = require('../../../common.json');
 
 function AlignmentContent({ id }) {
-  const [type, setType] = useState("M");
+  const [type, setType] = useState('M');
   const html = useRef();
   const desc = useRef();
 
   const getHTML = useCallback(() => {
     switch (type) {
-      case "M":
+      case 'M':
         html.current = htmlAlignContent.M;
         desc.current = content.alignContent.M;
         return <MaterialBadge />;
-      case "B":
+      case 'B':
         html.current = htmlAlignContent.B;
         desc.current = content.alignContent.B;
         return <BootstrapBadge />;
@@ -30,7 +31,7 @@ function AlignmentContent({ id }) {
   return (
     <Interface
       componentID={id}
-      heading={"Alignment & Content"}
+      heading={'Alignment & Content'}
       content={desc}
       setType={setType}
       setHtml={getHTML}

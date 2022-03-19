@@ -1,25 +1,26 @@
-import React, { useCallback, useState, useRef } from "react";
-import MatericalChipIcon from "./Libs/MatericalChipIcon";
-import BootstrapChipIcons from "./Libs/BootstrapChipIcons";
-import Interface from "../../../../components/Interface";
-import { htmlChipIcons } from "../../chipsHtml";
+import React, { useCallback, useState, useRef } from 'react';
+import MatericalChipIcon from './Libs/MatericalChipIcon';
+import BootstrapChipIcons from './Libs/BootstrapChipIcons';
+import Interface from '../../../../components/Interface';
+import { htmlChipIcons } from '../../chipsHtml';
+
 const {
   content: { icons },
-} = require("../chips.json");
-const { descContent } = require("../../../common.json");
+} = require('../chips.json');
+const { descContent } = require('../../../common.json');
 
 function IconChips({ id }) {
-  const [type, setType] = useState("M");
+  const [type, setType] = useState('M');
   const html = useRef();
   const desc = useRef();
 
   const getHTML = useCallback(() => {
     switch (type) {
-      case "M":
+      case 'M':
         html.current = htmlChipIcons.M;
         desc.current = icons.M;
         return <MatericalChipIcon />;
-      case "B":
+      case 'B':
         html.current = htmlChipIcons.B;
         desc.current = icons.B;
         return <BootstrapChipIcons />;
@@ -32,7 +33,7 @@ function IconChips({ id }) {
   return (
     <Interface
       componentID={id}
-      heading={"Icon Chips/Chip Actions"}
+      heading={'Icon Chips/Chip Actions'}
       content={desc}
       setType={setType}
       setHtml={getHTML}
