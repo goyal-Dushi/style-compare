@@ -13,7 +13,7 @@ export default function Footer() {
         <a
           target={'_blank'}
           className={styles.anchor}
-          href={'http://dushyantgoyal.herokuapp.com/'}
+          href={process.env.REACT_APP_PORTFOLIO_WEBSITE}
           rel={'noreferrer noopener'}
         >
           {' Dushyant Goyal'}
