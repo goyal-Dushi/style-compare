@@ -9,12 +9,11 @@ export default function NavHeader() {
       <Tooltip title={'View on Github'} arrow placement={'left'}>
         <a
           target={'_blank'}
-          href={'https://github.com/goyal-Dushi/style-compare'}
+          href={process.env.REACT_APP_GITHUB_URL}
           style={{
             color: 'black',
             fontSize: '30px',
           }}
-          role={'button'}
           rel={'noreferrer noopener'}
         >
           <i className={'bi bi-github'} />
