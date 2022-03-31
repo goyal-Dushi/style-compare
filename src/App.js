@@ -1,5 +1,6 @@
 import React, { createContext, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Grid } from '@mui/material';
 import NavHeader from './components/NavHeader';
 import Footer from './components/Footer';
 import LeftSideNav from './components/LeftSideNav';
@@ -17,11 +18,13 @@ export const TypeContext = createContext();
 
 function App() {
   return (
-    <>
+    <div className={'position-relative'}>
       <NavHeader />
-      <div className={'bodyWrapper'}>
-        <LeftSideNav />
-        <div className={'bodyContainer'}>
+      <Grid container spacing={0} className={'mb-5'}>
+        <Grid item md={2}>
+          <LeftSideNav />
+        </Grid>
+        <Grid item sm={12} md={10}>
           <TypeContext.Provider value={libType}>
             <Routes>
               <Route
@@ -74,10 +77,10 @@ function App() {
               />
             </Routes>
           </TypeContext.Provider>
-        </div>
-        <Footer />
-      </div>
-    </>
+        </Grid>
+      </Grid>
+      <Footer />
+    </div>
   );
 }
 

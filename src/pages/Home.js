@@ -1,9 +1,11 @@
+import Container from '@mui/material/Container';
 import React from 'react';
 
 export default function Home() {
   return (
-    <div className={'w-75'}>
-      <h1 className={'display-3 fw-bold'}> Welcome to LibCompare </h1>
+    // <div className={'w-75'}>
+    <Container fluid className={'pt-4'}>
+      <h1 className={'display-3 fw-bold'}>Welcome to LibCompare</h1>
       <p className={'fs-5'}>
         The purpose of this documentation is to provide short and to-the-point
         evaluation and documentation of various components and their respective
@@ -30,6 +32,6 @@ export default function Home() {
         so as to act as a one stop solution for all Frontend Developers to be
         able to easily evaluate these libraries and choose decisively.
       </p>
-    </div>
+    </Container>
   );
 }
