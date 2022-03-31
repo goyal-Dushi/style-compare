@@ -1,74 +1,71 @@
-import React, { useState } from 'react';
-import Accordion from 'react-bootstrap/Accordion';
+import React, { useEffect, useState } from 'react';
+import Accordion from '@mui/material/Accordion';
 import { useNavigate } from 'react-router-dom';
-import styles from './leftSideNav.module.css';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import List from '@mui/material/List';
+import ListItemButton from '@mui/material/ListItemButton';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const { options } = require('./leftNavOptions.json');
 
 export default function LeftSideNav() {
-  const [selectOption, setSelected] = useState('About');
+  const [optionIndex, setOptionIndex] = useState();
+  const navigate = useNavigate();
 
-  const handleOptionClick = (e) => {
-    setSelected(e.currentTarget.innerText);
+  const handleOptionClick = (e, optionName) => {
+    setOptionIndex(optionName);
   };
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    navigate('/');
+    setOptionIndex('About');
+  }, []);
+
   return (
-    <aside className={styles.sideNav}>
-      <ul className={`${styles.sideNavContent} w-75 mx-auto`}>
-        <Accordion flush>
-          <Accordion.Item eventKey={'0'}>
-            <Accordion.Header>
-              <li>Getting Started</li>
-            </Accordion.Header>
-            <Accordion.Body>
-              <ul className={'list-group list-group-flush'}>
-                {options.start.map((item) => (
-                  <li
-                    aria-hidden
-                    key={item}
-                    className={
-                      selectOption === item.name
-                        ? 'list-group-item list-group-item-action py-2 list-group-item-info'
-                        : 'list-group-item list-group-item-action py-2'
-                    }
-                    onClick={(e) => {
-                      navigate(item.link);
-                      handleOptionClick(e);
-                    }}
-                  >
-                    {item.name}
-                  </li>
-                ))}
-              </ul>
-            </Accordion.Body>
-          </Accordion.Item>
-          <Accordion.Item eventKey={'1'}>
-            <Accordion.Header>Components</Accordion.Header>
-            <Accordion.Body>
-              <ul className={'list-group list-group-flush'}>
-                {options.components.map((item) => (
-                  <li
-                    aria-hidden
-                    key={item}
-                    className={
-                      selectOption === item.name
-                        ? 'list-group-item list-group-item-action py-2 list-group-item-info'
-                        : 'list-group-item list-group-item-action py-2'
-                    }
-                    onClick={(e) => {
-                      navigate(item.link);
-                      handleOptionClick(e);
-                    }}
-                  >
-                    {item.name}
-                  </li>
-                ))}
-              </ul>
-            </Accordion.Body>
-          </Accordion.Item>
-        </Accordion>
-      </ul>
+    <aside className={'position-fixed mx-auto mt-3'} style={{ width: '300px' }}>
+      <Accordion defaultExpanded disableGutters>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          {'Getting Started'}
+        </AccordionSummary>
+        <AccordionDetails>
+          <List>
+            {options.start.map((item) => (
+              <ListItemButton
+                selected={optionIndex === item.name}
+                onClick={(e) => {
+                  navigate(item.link);
+                  handleOptionClick(e, item.name);
+                }}
+                key={item.name}
+              >
+                {item.name}
+              </ListItemButton>
+            ))}
+          </List>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion disableGutters>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          {'Components'}
+        </AccordionSummary>
+        <AccordionDetails>
+          <List>
+            {options.components.map((item) => (
+              <ListItemButton
+                selected={optionIndex === item.name}
+                key={item.name}
+                onClick={(e) => {
+                  navigate(item.link);
+                  handleOptionClick(e, item.name);
+                }}
+              >
+                {item.name}
+              </ListItemButton>
+            ))}
+          </List>
+        </AccordionDetails>
+      </Accordion>
     </aside>
   );
 }

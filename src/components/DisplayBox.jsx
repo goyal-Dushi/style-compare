@@ -1,8 +1,15 @@
 import React from 'react';
-import styles from './displaybox.module.css';
 
 function DisplayBox({ children }) {
-  return <div className={styles.displayBox}>{children}</div>;
+  return (
+    <div
+      className={
+        'my-2 d-flex justify-content-around p-3 flex-wrap border border-dark rounded'
+      }
+    >
+      {children}
+    </div>
+  );
 }
 
 export default DisplayBox;
