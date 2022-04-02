@@ -22,7 +22,7 @@
       "B": "https://react-bootstrap.github.io/components/buttons/#examples"
     },
     "forBtnDisabled": {
-      "M": "",
+      "M": null,
       "B": "https://react-bootstrap.github.io/components/buttons/#disabled-state"
     },
     "forBtnSizeVariants": {
@@ -31,9 +31,11 @@
     },
     "forBtnIcons": {
       "M": "https://mui.com/components/buttons/#buttons-with-icons-and-label",
-      "B": ""
+      "B": null
     },
-    "materialBtnAPI": "https://mui.com/api/button/",
-    "bootstrapBtnAPI": "https://react-bootstrap.github.io/components/buttons/#api"
+    "defaultBtnLink": {
+      "M": "https://mui.com/api/button/",
+      "B": "https://react-bootstrap.github.io/components/buttons/#api"
+    }
   }
 }

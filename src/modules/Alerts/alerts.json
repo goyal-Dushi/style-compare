@@ -28,13 +28,15 @@
     },
     "forAlertVariants": {
       "M": "https://mui.com/components/alert/#variants",
-      "B": ""
+      "B": null
     },
     "forAlertDismissable": {
-      "M": "",
+      "M": null,
       "B": "https://react-bootstrap.github.io/components/alerts#dismissing"
     },
-    "materialAlertAPI": "https://mui.com/api/alert/",
-    "bootstrapAlertAPI": "https://react-bootstrap.github.io/components/alerts#api"
+    "defaultAlertLink": {
+      "M": "https://mui.com/api/alert/",
+      "B": "https://react-bootstrap.github.io/components/alerts#api"
+    }
   }
 }
