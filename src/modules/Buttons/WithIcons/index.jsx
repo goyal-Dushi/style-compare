@@ -1,12 +1,13 @@
-import React, { useState, useRef } from 'react';
-import MaterialBtnIcon from './Libs/MaterialBtnIcon';
-import BootstrapBtnIcon from './Libs/BootstrapBtnIcon';
+import React, { useState, useRef, lazy, Suspense } from 'react';
 import Interface from '../../../components/Interface';
 import { htmlWithIcons } from '../buttonsHtml';
 
+const MaterialBtnIcon = lazy(() => import('./Libs/MaterialBtnIcon'));
+const BootstrapBtnIcon = lazy(() => import('./Libs/BootstrapBtnIcon'));
+
 const {
   content: { icons },
-  links: { forBtnIcons, materialBtnAPI, bootstrapBtnAPI },
+  links: { forBtnIcons, defaultBtnLink },
 } = require('../buttons.json');
 const { descContent } = require('../../common.json');
 
@@ -17,19 +18,23 @@ export default function WithIcons({ id }) {
   const link = useRef();
 
   const getHTML = () => {
+    html.current = htmlWithIcons[type];
+    desc.current = icons[type] || descContent.defaultText;
+    link.current = forBtnIcons[type] || defaultBtnLink[type];
     switch (type) {
       case 'M':
-        html.current = htmlWithIcons.M;
-        desc.current = icons.M;
-        link.current = forBtnIcons.M || materialBtnAPI;
-        return <MaterialBtnIcon />;
+        return (
+          <Suspense fallback={'Loading...'}>
+            <MaterialBtnIcon />
+          </Suspense>
+        );
       case 'B':
-        html.current = htmlWithIcons.B;
-        desc.current = icons.B;
-        link.current = forBtnIcons.B || bootstrapBtnAPI;
-        return <BootstrapBtnIcon />;
+        return (
+          <Suspense fallback={'Loading...'}>
+            <BootstrapBtnIcon />
+          </Suspense>
+        );
       default:
-        desc.current = descContent.defaultText;
         return <></>;
     }
   };

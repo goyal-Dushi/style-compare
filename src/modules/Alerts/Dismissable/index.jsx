@@ -1,12 +1,15 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, lazy, Suspense } from 'react';
 import Interface from '../../../components/Interface';
 import { htmlDismiss } from '../alertsHtml';
-import MaterialAlertDismiss from './Libs/MaterialAlertDismiss';
-import BootstrapAlertDismiss from './Libs/BootstrapAlertDismiss';
+
+const MaterialAlertDismiss = lazy(() => import('./Libs/MaterialAlertDismiss'));
+const BootstrapAlertDismiss = lazy(() =>
+  import('./Libs/BootstrapAlertDismiss'),
+);
 
 const {
   content: { dismissable },
-  links: { forAlertDismissable, materialAlertAPI, bootstrapAlertAPI },
+  links: { forAlertDismissable, defaultAlertLink },
 } = require('../alerts.json');
 const { descContent } = require('../../common.json');
 
@@ -17,19 +20,23 @@ export default function DismissAlert({ id }) {
   const link = useRef();
 
   const getHTML = () => {
+    desc.current = dismissable[type] || descContent.defaultText;
+    html.current = htmlDismiss[type];
+    link.current = forAlertDismissable[type] || defaultAlertLink[type];
     switch (type) {
       case 'M':
-        desc.current = dismissable.M;
-        html.current = htmlDismiss.M;
-        link.current = forAlertDismissable.M || materialAlertAPI;
-        return <MaterialAlertDismiss />;
+        return (
+          <Suspense fallback={'Loading...'}>
+            <MaterialAlertDismiss />
+          </Suspense>
+        );
       case 'B':
-        desc.current = dismissable.B;
-        html.current = htmlDismiss.B;
-        link.current = forAlertDismissable.B || bootstrapAlertAPI;
-        return <BootstrapAlertDismiss />;
+        return (
+          <Suspense fallback={'Loading'}>
+            <BootstrapAlertDismiss />
+          </Suspense>
+        );
       default:
-        desc.current = descContent.defaultText;
         return <></>;
     }
   };

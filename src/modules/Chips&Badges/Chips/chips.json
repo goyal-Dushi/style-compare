@@ -28,7 +28,9 @@
       "M": "https://mui.com/components/chips/#chip-adornments",
       "B": ""
     },
-    "materialChipAPI": "https://mui.com/api/chip/",
-    "bootstrapChipAPI": "https://react-bootstrap.github.io/components/badge/#badge-props"
+    "defaultChipLink": {
+      "M": "https://mui.com/api/chip/",
+      "B": "https://react-bootstrap.github.io/components/badge/#badge-props"
+    }
   }
 }

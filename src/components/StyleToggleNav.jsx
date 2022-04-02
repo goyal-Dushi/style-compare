@@ -7,51 +7,39 @@ const {
 } = require('../modules/common.json');
 
 function StyleToggleNav({ setStyleType, linkTo }) {
-  const types = useContext(TypeContext);
-  const linkHead = useRef();
+  const { types, imgSrc } = useContext(TypeContext);
+  const linkHead = useRef(types.M);
 
   const toggleStyle = (type) => {
-    switch (type) {
-      case 'M':
-        linkHead.current = 'Material UI';
-        setStyleType('M');
-        break;
-      case 'B':
-        linkHead.current = 'Bootstrap';
-        setStyleType('B');
-        break;
-      default:
-        linkHead.current = '';
-        break;
-    }
+    linkHead.current = types[type];
+    setStyleType(type);
   };
+
   return (
     <>
       <div className={'d-inline-block'}>
-        {types?.value?.map((item, i) => (
+        {Object.entries(types)?.map(([key, value], index) => (
           <Tooltip
-            key={item}
+            key={key}
             arrow
             placement={'top-end'}
-            title={
-              <span style={{ fontSize: '18px' }}>{types?.names?.[i]}</span>
-            }
+            title={<span style={{ fontSize: '18px' }}>{value}</span>}
           >
             <IconButton
               color={'inherit'}
-              aria-label={`${types?.names?.[i]}-icon`}
-              onClick={() => toggleStyle(item)}
+              aria-label={`${value}-icon`}
+              onClick={() => toggleStyle(key)}
             >
-              {types?.imgSrc[i] ? (
+              {imgSrc[index] ? (
                 <img
                   className={'d-block border shadow rounded-circle'}
                   height={'35px'}
                   width={'35px'}
-                  src={types?.imgSrc[i]}
+                  src={imgSrc[index]}
                   alt={'css-lib-img'}
                 />
               ) : (
-                item
+                key
               )}
             </IconButton>
           </Tooltip>
@@ -65,7 +53,7 @@ function StyleToggleNav({ setStyleType, linkTo }) {
             href={linkTo?.current ? linkTo?.current : defaultLink}
             rel={'noreferrer'}
           >
-            {linkHead?.current ? linkHead?.current : 'Material UI'}
+            {linkHead?.current}
           </a>
         </div>
       )}

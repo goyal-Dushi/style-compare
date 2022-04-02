@@ -8,9 +8,11 @@
   "links": {
     "forBadgeAlignContent": {
       "M": "https://mui.com/components/badges/#badge-alignment",
-      "B": ""
+      "B": null
     },
-    "materialBadgeAPI": "https://mui.com/api/badge/",
-    "bootstrapBadgeAPI": "https://react-bootstrap.github.io/components/badge/#api"
+    "defaultBadgeLink": {
+      "M": "https://mui.com/api/badge/",
+      "B": "https://react-bootstrap.github.io/components/badge/#api"
+    }
   }
 }

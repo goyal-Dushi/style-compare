@@ -8,5 +8,19 @@
       "M": "",
       "B": ""
     }
+  },
+  "links": {
+    "forProgressLabels": {
+      "M": null,
+      "B": null
+    },
+    "forProgressTypeColors": {
+      "M": null,
+      "B": null
+    },
+    "defaultProgressLinks": {
+      "M": "https://mui.com/api/linear-progress/",
+      "B": "https://react-bootstrap.github.io/components/progress/#progress-bar-props"
+    }
   }
 }
