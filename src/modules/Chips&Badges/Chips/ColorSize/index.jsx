@@ -1,12 +1,17 @@
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, lazy, Suspense } from 'react';
 import Interface from '../../../../components/Interface';
-import BootstrapChipColorSize from './Libs/BootstrapChipColorSize';
-import MaterialChipColorSize from './Libs/MaterialChipColorSize';
 import { htmlChipColorSize } from '../../chipsHtml';
+
+const BootstrapChipColorSize = lazy(() =>
+  import('./Libs/BootstrapChipColorSize'),
+);
+const MaterialChipColorSize = lazy(() =>
+  import('./Libs/MaterialChipColorSize'),
+);
 
 const {
   content: { colorSizes },
-  links: { forChipColorSizes, materialChipAPI, bootstrapChipAPI },
+  links: { forChipColorSizes, defaultChipLink },
 } = require('../chips.json');
 const { descContent } = require('../../../common.json');
 
@@ -17,19 +22,23 @@ export default function ColorsSizes({ id }) {
   const link = useRef();
 
   const getHTML = useCallback(() => {
+    html.current = htmlChipColorSize[type];
+    desc.current = colorSizes[type] || descContent.defaultText;
+    link.current = forChipColorSizes[type] || defaultChipLink[type];
     switch (type) {
       case 'M':
-        html.current = htmlChipColorSize.M;
-        desc.current = colorSizes.M;
-        link.current = forChipColorSizes.M || materialChipAPI;
-        return <MaterialChipColorSize />;
+        return (
+          <Suspense fallback={'Loading...'}>
+            <MaterialChipColorSize />
+          </Suspense>
+        );
       case 'B':
-        html.current = htmlChipColorSize.B;
-        desc.current = colorSizes.B;
-        link.current = forChipColorSizes.B || bootstrapChipAPI;
-        return <BootstrapChipColorSize />;
+        return (
+          <Suspense fallback={'Loading...'}>
+            <BootstrapChipColorSize />
+          </Suspense>
+        );
       default:
-        desc.current = descContent.defaultText;
         return <></>;
     }
   }, [type]);

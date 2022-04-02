@@ -1,9 +1,10 @@
-import React, { useRef } from 'react';
+import React, { lazy, Suspense, useRef } from 'react';
 import DescBox from './DescBox';
 import StyleToggleNav from './StyleToggleNav';
 import DisplayBox from './DisplayBox';
 import CodeBox from './CodeBox';
-import CodeSandBox from './CodeSandBox';
+
+const CodeSandBox = lazy(() => import('./CodeSandBox'));
 
 export default function Interface(props) {
   const { componentID, heading, content, setType, setHtml, codeData, linkTo } =
@@ -16,7 +17,11 @@ export default function Interface(props) {
         {heading && content && <DescBox heading={heading} content={content} />}
         <StyleToggleNav setStyleType={setType} linkTo={linkState?.current} />
         {setHtml ? <DisplayBox> {setHtml()} </DisplayBox> : <></>}
-        <CodeSandBox show={showEditor} />
+        {showEditor && (
+          <Suspense fallback={'Loading Sandbox...'}>
+            <CodeSandBox />
+          </Suspense>
+        )}
         {codeData.current ? (
           <CodeBox snippet={codeData.current} />
         ) : (

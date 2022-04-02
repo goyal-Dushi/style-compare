@@ -1,12 +1,12 @@
-import React, { useState, useRef, useCallback } from 'react';
-import BootstrapBadge from './Libs/BootstrapBadge';
-import MaterialBadge from './Libs/MaterialBadge';
+import React, { useState, useRef, useCallback, Suspense, lazy } from 'react';
 import Interface from '../../../../components/Interface';
 import { htmlAlignContent } from '../badgeHtml';
 
+const BootstrapBadge = lazy(() => import('./Libs/BootstrapBadge'));
+const MaterialBadge = lazy(() => import('./Libs/MaterialBadge'));
 const {
   content: { alignContent },
-  links: { forBadgeAlignContent, materialBadgeAPI, bootstrapBadgeAPI },
+  links: { forBadgeAlignContent, defaultBadgeLink },
 } = require('../badges.json');
 const { descContent } = require('../../../common.json');
 
@@ -17,19 +17,23 @@ function AlignmentContent({ id }) {
   const link = useRef();
 
   const getHTML = useCallback(() => {
+    html.current = htmlAlignContent[type];
+    desc.current = alignContent[type] || descContent.defaultText;
+    link.current = forBadgeAlignContent[type] || defaultBadgeLink[type];
     switch (type) {
       case 'M':
-        html.current = htmlAlignContent.M;
-        desc.current = alignContent.M;
-        link.current = forBadgeAlignContent.M || materialBadgeAPI;
-        return <MaterialBadge />;
+        return (
+          <Suspense fallback={'Loading...'}>
+            <MaterialBadge />
+          </Suspense>
+        );
       case 'B':
-        html.current = htmlAlignContent.B;
-        desc.current = alignContent.B;
-        link.current = forBadgeAlignContent.B || bootstrapBadgeAPI;
-        return <BootstrapBadge />;
+        return (
+          <Suspense fallback={'Loading...'}>
+            <BootstrapBadge />
+          </Suspense>
+        );
       default:
-        desc.current = descContent.defaultText;
         return <></>;
     }
   }, [type]);

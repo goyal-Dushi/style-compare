@@ -1,12 +1,17 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, lazy, Suspense } from 'react';
 import Interface from '../../../components/Interface';
 import { htmlVariants } from '../alertsHtml';
-import MaterialAlertVariants from './Libs/MaterialAlertVariants';
-import BootstrapAlertVariants from './Libs/BootstrapAlertVariants';
+
+const MaterialAlertVariants = lazy(() =>
+  import('./Libs/MaterialAlertVariants'),
+);
+const BootstrapAlertVariants = lazy(() =>
+  import('./Libs/BootstrapAlertVariants'),
+);
 
 const {
   content: { variants },
-  links: { forAlertVariants, materialAlertAPI, bootstrapAlertAPI },
+  links: { forAlertVariants, defaultAlertLink },
 } = require('../alerts.json');
 const { descContent } = require('../../common.json');
 
@@ -17,19 +22,23 @@ export default function AlertVariants({ id }) {
   const link = useRef();
 
   const getHTML = () => {
+    html.current = htmlVariants[type];
+    desc.current = variants[type] || descContent.defaultText;
+    link.current = forAlertVariants[type] || defaultAlertLink[type];
     switch (type) {
       case 'M':
-        html.current = htmlVariants.M;
-        desc.current = variants.M;
-        link.current = forAlertVariants.M || materialAlertAPI;
-        return <MaterialAlertVariants />;
+        return (
+          <Suspense fallback={'Loading...'}>
+            <MaterialAlertVariants />
+          </Suspense>
+        );
       case 'B':
-        html.current = htmlVariants.B;
-        desc.current = variants.B;
-        link.current = forAlertVariants.B || bootstrapAlertAPI;
-        return <BootstrapAlertVariants />;
+        return (
+          <Suspense fallback={'Loading...'}>
+            <BootstrapAlertVariants />
+          </Suspense>
+        );
       default:
-        desc.current = descContent.defaultText;
         return <></>;
     }
   };

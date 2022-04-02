@@ -1,12 +1,15 @@
-import React, { useRef, useState } from 'react';
+import React, { lazy, useRef, useState, Suspense } from 'react';
 import Interface from '../../../components/Interface';
-import MaterialSizVarButton from './Libs/MaterialSizVarButton';
-import BootstrapSizVarButton from './Libs/BootstrapSizVarButton';
 import { htmlSizeVariants } from '../buttonsHtml';
+
+const MaterialSizVarButton = lazy(() => import('./Libs/MaterialSizVarButton'));
+const BootstrapSizVarButton = lazy(() =>
+  import('./Libs/BootstrapSizVarButton'),
+);
 
 const {
   content: { sizeVariants },
-  links: { forBtnSizeVariants, materialBtnAPI, bootstrapBtnAPI },
+  links: { forBtnSizeVariants, defaultBtnLink },
 } = require('../buttons.json');
 const { descContent } = require('../../common.json');
 
@@ -17,19 +20,23 @@ export default function ButtonSizeVariants({ id }) {
   const link = useRef();
 
   const getHTML = () => {
+    html.current = htmlSizeVariants[type];
+    desc.current = sizeVariants[type] || descContent.defaultText;
+    link.current = forBtnSizeVariants[type] || defaultBtnLink[type];
     switch (type) {
       case 'M':
-        html.current = htmlSizeVariants.M;
-        desc.current = sizeVariants.M;
-        link.current = forBtnSizeVariants.M || materialBtnAPI;
-        return <MaterialSizVarButton />;
+        return (
+          <Suspense fallback={'Loading...'}>
+            <MaterialSizVarButton />
+          </Suspense>
+        );
       case 'B':
-        html.current = htmlSizeVariants.B;
-        desc.current = sizeVariants.B;
-        link.current = forBtnSizeVariants.B || bootstrapBtnAPI;
-        return <BootstrapSizVarButton />;
+        return (
+          <Suspense fallback={'Loading...'}>
+            <BootstrapSizVarButton />
+          </Suspense>
+        );
       default:
-        desc.current = descContent.defaultText;
         return <></>;
     }
   };
