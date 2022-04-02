@@ -1,12 +1,15 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, lazy, Suspense } from 'react';
 import Interface from '../../../components/Interface';
-import MaterialButtonColors from './Libs/MaterialButtonColors';
-import BootstrapButtonColors from './Libs/BootstrapButtonColors';
 import { htmlColors } from '../buttonsHtml';
+
+const MaterialButtonColors = lazy(() => import('./Libs/MaterialButtonColors'));
+const BootstrapButtonColors = lazy(() =>
+  import('./Libs/BootstrapButtonColors'),
+);
 
 const {
   content: { colors },
-  links: { forBtnColors, materialBtnAPI, bootstrapBtnAPI },
+  links: { forBtnColors, defaultBtnLink },
 } = require('../buttons.json');
 const { descContent } = require('../../common.json');
 
@@ -17,19 +20,23 @@ function ButtonColors({ id }) {
   const link = useRef();
 
   const getHTML = () => {
+    html.current = htmlColors[type];
+    desc.current = colors[type] || descContent.defaultText;
+    link.current = forBtnColors[type] || defaultBtnLink[type];
     switch (type) {
       case 'M':
-        html.current = htmlColors.M;
-        desc.current = colors.M;
-        link.current = forBtnColors.M || materialBtnAPI;
-        return <MaterialButtonColors />;
+        return (
+          <Suspense fallback={'Loading...'}>
+            <MaterialButtonColors />
+          </Suspense>
+        );
       case 'B':
-        html.current = htmlColors.B;
-        desc.current = colors.B;
-        link.current = forBtnColors.B || bootstrapBtnAPI;
-        return <BootstrapButtonColors />;
+        return (
+          <Suspense fallback={'Loading...'}>
+            <BootstrapButtonColors />
+          </Suspense>
+        );
       default:
-        desc.current = descContent.defaultText;
         return <></>;
     }
   };

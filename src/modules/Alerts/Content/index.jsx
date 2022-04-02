@@ -1,12 +1,15 @@
-import React, { useCallback, useState, useRef } from 'react';
+import React, { useCallback, useState, useRef, lazy, Suspense } from 'react';
 import Interface from '../../../components/Interface';
-import MaterialAlertContent from './Libs/MaterialAlertContent';
-import BootstrapAlertContent from './Libs/BootstrapAlertContent';
 import { htmlContent } from '../alertsHtml';
+
+const MaterialAlertContent = lazy(() => import('./Libs/MaterialAlertContent'));
+const BootstrapAlertContent = lazy(() =>
+  import('./Libs/BootstrapAlertContent'),
+);
 
 const {
   content: { alertContent },
-  links: { forAlertContent, bootstrapAlertAPI, materialAlertAPI },
+  links: { forAlertContent, defaultAlertLink },
 } = require('../alerts.json');
 const { descContent } = require('../../common.json');
 
@@ -17,19 +20,23 @@ export default function AdditionalContent({ id }) {
   const link = useRef();
 
   const getHTML = useCallback(() => {
+    html.current = htmlContent[type];
+    desc.current = alertContent[type] || descContent.defaultText;
+    link.current = forAlertContent[type] || defaultAlertLink[type];
     switch (type) {
       case 'M':
-        html.current = htmlContent.M;
-        desc.current = alertContent.M;
-        link.current = forAlertContent.M || materialAlertAPI;
-        return <MaterialAlertContent />;
+        return (
+          <Suspense fallback={'Loading...'}>
+            <MaterialAlertContent />
+          </Suspense>
+        );
       case 'B':
-        html.current = htmlContent.B;
-        desc.current = alertContent.B;
-        link.current = forAlertContent.B || bootstrapAlertAPI;
-        return <BootstrapAlertContent />;
+        return (
+          <Suspense fallback={'Loading...'}>
+            <BootstrapAlertContent />
+          </Suspense>
+        );
       default:
-        desc.current = descContent.defaultText;
         return <></>;
     }
   }, [type]);

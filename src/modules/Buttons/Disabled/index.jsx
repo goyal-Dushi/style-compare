@@ -1,12 +1,13 @@
-import React, { useRef, useState } from 'react';
+import React, { lazy, Suspense, useRef, useState } from 'react';
 import Interface from '../../../components/Interface';
-import MaterialDisabledBtn from './Libs/MaterialDisabledBtn';
-import BootstrapDisabledBtn from './Libs/BootstrapDisabledBtn';
 import { htmlDisabled } from '../buttonsHtml';
+
+const MaterialDisabledBtn = lazy(() => import('./Libs/MaterialDisabledBtn'));
+const BootstrapDisabledBtn = lazy(() => import('./Libs/BootstrapDisabledBtn'));
 
 const {
   content,
-  links: { forBtnDisabled, materialBtnAPI, bootstrapBtnAPI },
+  links: { forBtnDisabled, defaultBtnLink },
 } = require('../buttons.json');
 
 export default function ButtonDisabled({ id }) {
@@ -16,15 +17,21 @@ export default function ButtonDisabled({ id }) {
   const link = useRef();
 
   const getHTML = () => {
+    html.current = htmlDisabled[type];
+    link.current = forBtnDisabled[type] || defaultBtnLink[type];
     switch (type) {
       case 'M':
-        html.current = htmlDisabled.M;
-        link.current = forBtnDisabled.M || materialBtnAPI;
-        return <MaterialDisabledBtn />;
+        return (
+          <Suspense fallback={'Loading...'}>
+            <MaterialDisabledBtn />
+          </Suspense>
+        );
       case 'B':
-        html.current = htmlDisabled.B;
-        link.current = forBtnDisabled.B || bootstrapBtnAPI;
-        return <BootstrapDisabledBtn />;
+        return (
+          <Suspense fallback={'Loading...'}>
+            <BootstrapDisabledBtn />
+          </Suspense>
+        );
       default:
         return <></>;
     }

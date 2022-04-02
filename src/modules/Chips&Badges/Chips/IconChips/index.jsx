@@ -1,12 +1,13 @@
-import React, { useCallback, useState, useRef } from 'react';
-import MatericalChipIcon from './Libs/MatericalChipIcon';
-import BootstrapChipIcons from './Libs/BootstrapChipIcons';
+import React, { useCallback, useState, useRef, lazy, Suspense } from 'react';
 import Interface from '../../../../components/Interface';
 import { htmlChipIcons } from '../../chipsHtml';
 
+const MatericalChipIcon = lazy(() => import('./Libs/MatericalChipIcon'));
+const BootstrapChipIcons = lazy(() => import('./Libs/BootstrapChipIcons'));
+
 const {
   content: { icons },
-  links: { forChipIcon, materialChipAPI, bootstrapChipAPI },
+  links: { forChipIcon, defaultChipLink },
 } = require('../chips.json');
 const { descContent } = require('../../../common.json');
 
@@ -17,19 +18,23 @@ function IconChips({ id }) {
   const link = useRef();
 
   const getHTML = useCallback(() => {
+    html.current = htmlChipIcons[type];
+    desc.current = icons[type] || descContent.defaultText;
+    link.current = forChipIcon[type] || defaultChipLink[type];
     switch (type) {
       case 'M':
-        html.current = htmlChipIcons.M;
-        desc.current = icons.M;
-        link.current = forChipIcon.M || materialChipAPI;
-        return <MatericalChipIcon />;
+        return (
+          <Suspense fallback={'Loading...'}>
+            <MatericalChipIcon />
+          </Suspense>
+        );
       case 'B':
-        html.current = htmlChipIcons.B;
-        desc.current = icons.B;
-        link.current = forChipIcon.B || bootstrapChipAPI;
-        return <BootstrapChipIcons />;
+        return (
+          <Suspense fallback={'Loading...'}>
+            <BootstrapChipIcons />
+          </Suspense>
+        );
       default:
-        desc.current = descContent.defaultText;
         return <></>;
     }
   }, [type]);
