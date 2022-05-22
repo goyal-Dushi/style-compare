@@ -1,5 +1,6 @@
 import React, { useContext, useRef } from 'react';
-import { IconButton, Tooltip } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
 import { TypeContext } from '../App';
 
 const {
