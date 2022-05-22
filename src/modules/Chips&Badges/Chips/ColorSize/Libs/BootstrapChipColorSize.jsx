@@ -1,28 +1,30 @@
 import React from 'react';
-import * as Boot from 'react-bootstrap';
+import Badge from 'react-bootstrap/Badge';
 
 export default function BootstrapChipColorSize() {
   return (
     <>
-      <Boot.Badge pill> {'Primary Default'} </Boot.Badge>
-      <Boot.Badge pill className={'fs-1'} bg={'success'}>
+      <Badge pill className={'m-1'}>
+        {'Primary Default'}
+      </Badge>
+      <Badge pill className={'fs-1 m-1'} bg={'success'}>
         {'Success'}
-      </Boot.Badge>
-      <Boot.Badge pill className={'fs-2'} bg={'danger'}>
+      </Badge>
+      <Badge pill className={'fs-2 m-1'} bg={'danger'}>
         {'Danger'}
-      </Boot.Badge>
-      <Boot.Badge pill className={'fs-3'} bg={'warning'}>
+      </Badge>
+      <Badge pill className={'fs-3 m-1'} bg={'warning'}>
         {'Warning!'}
-      </Boot.Badge>
-      <Boot.Badge pill className={'fs-4'} bg={'info'}>
+      </Badge>
+      <Badge pill className={'fs-4 m-1'} bg={'info'}>
         {'Info'}
-      </Boot.Badge>
-      <Boot.Badge className={'text-secondary fs-5'} pill bg={'light'}>
+      </Badge>
+      <Badge className={'text-secondary m-1 fs-5'} pill bg={'light'}>
         {'Light'}
-      </Boot.Badge>
-      <Boot.Badge className={'fs-6'} pill bg={'dark'}>
+      </Badge>
+      <Badge className={'fs-6 m-1'} pill bg={'dark'}>
         {'Dark'}
-      </Boot.Badge>
+      </Badge>
     </>
   );
 }
