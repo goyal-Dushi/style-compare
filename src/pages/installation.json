@@ -4,7 +4,7 @@
     "heading": "Material UI"
   },
   "bootstrap": {
-    "install": "\n npm install bootstrap \n \n yarn add bootstrap \n",
+    "install": "\n npm install react-bootstrap bootstrap \n \n yarn add react-bootstrap bootstrap \n",
     "heading": "Bootstrap"
   },
   "contentDesc": "You can use either yarn or npm, most popular node package manager libs to install such dependencies in your next React/Vue/Angular project."
