@@ -17,12 +17,14 @@ export default function MatericalChipIcon() {
     <>
       <Chip
         clickable
+        className={'m-1'}
         icon={<AddCircle />}
         label={'Add Item'}
         color={'primary'}
       />
       <Chip
         clickable
+        className={'m-1'}
         icon={<AddCircleOutline />}
         label={'Add Item'}
         variant={'outlined'}
@@ -30,12 +32,14 @@ export default function MatericalChipIcon() {
       />
       <Chip
         clickable
+        className={'m-1'}
         avatar={<Avatar>{'M'}</Avatar>}
         label={'Avatar'}
         color={'secondary'}
       />
       {showChip ? (
         <Chip
+          className={'m-1'}
           deleteIcon={<Delete />}
           label={'Delete Chip'}
           onDelete={handleDelete}
@@ -54,6 +58,7 @@ export default function MatericalChipIcon() {
       )}
       {showChip2 ? (
         <Chip
+          className={'m-1'}
           label={' Default Delete Chip'}
           onDelete={handleDelete2}
           color={'primary'}

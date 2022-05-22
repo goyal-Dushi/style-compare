@@ -1,39 +1,63 @@
+import List from '@mui/material/List';
+import Paper from '@mui/material/Paper';
+import ListItem from '@mui/material/ListItem';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React, { useState } from 'react';
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  styled,
+  useMediaQuery,
+} from '@mui/material';
+
+const RightNavPaper = styled(Paper)(({ theme }) => ({
+  marginTop: theme.spacing(10),
+}));
+
+function ParentWrapper({ smallScreen, children }) {
+  if (smallScreen) {
+    return (
+      <Accordion>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+          {'View on this page'}
+        </AccordionSummary>
+        <AccordionDetails>{children}</AccordionDetails>
+      </Accordion>
+    );
+  }
+
+  return (
+    <RightNavPaper elevation={2} className={'position-fixed w-auto mx-auto'}>
+      <h5 className={'text-center mt-2'}>On This Page</h5>
+      {children}
+    </RightNavPaper>
+  );
+}
 
 export default function RightSideNav({ values, scrollRef }) {
-  const [selectedText, setSelectedText] = useState(values[0]);
-  const handleOptionSelect = (e) => {
-    setSelectedText(e.currentTarget.innerText);
+  const [selectedText, setSelectedText] = useState(scrollRef[0]);
+  const smallScreen600 = useMediaQuery('max-width: 600px');
+  const handleOptionSelect = (e, selectedIndex) => {
+    setSelectedText(selectedIndex);
   };
 
   return (
-    <aside className={'position-fixed end-0 top-20'} style={{ width: '20%' }}>
-      <h5 className={'mx-auto w-50'}>
-        <u>On This Page</u>
-      </h5>
-      <ul
-        id={'rightNav'}
-        className={'mx-auto w-50 h-auto ps-0 list-group list-group-flush'}
-      >
+    <ParentWrapper smallScreen={smallScreen600}>
+      <List>
         {values?.map((item, i) => (
-          <a
-            key={item}
-            onClick={(e) => handleOptionSelect(e)}
-            style={{ textDecoration: 'none' }}
-            href={scrollRef[i]}
-          >
-            <li
-              className={
-                selectedText === item
-                  ? 'list-group-item list-group-item-action list-group-item-info'
-                  : 'list-group-item list-group-item-action'
-              }
+          <a key={item} style={{ textDecoration: 'none' }} href={scrollRef[i]}>
+            <ListItem
+              onClick={(e) => {
+                handleOptionSelect(e, scrollRef[i]);
+              }}
+              selected={selectedText === scrollRef[i]}
             >
               {item}
-            </li>
+            </ListItem>
           </a>
         ))}
-      </ul>
-    </aside>
+      </List>
+    </ParentWrapper>
   );
 }

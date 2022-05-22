@@ -8,7 +8,7 @@ export default function DescBox({ heading, content }) {
   }, [content, contentRef]);
 
   return (
-    <div style={{ margin: '40px 40px 0px' }}>
+    <div className={'mt-3'}>
       <h2 className={'display-6'}> {heading} </h2>
       <p ref={contentRef} />
     </div>

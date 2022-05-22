@@ -1,7 +1,7 @@
 import React, { useContext, useRef } from 'react';
-import { IconButton, Tooltip } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
 import { TypeContext } from '../App';
-import styles from './styleToggleNav.module.css';
 
 const {
   descContent: { defaultLink },
@@ -18,7 +18,7 @@ function StyleToggleNav({ setStyleType, linkTo }) {
 
   return (
     <>
-      <div className={styles.styleContainer}>
+      <div className={'d-inline-block'}>
         {Object.entries(types)?.map(([key, value], index) => (
           <Tooltip
             key={key}
@@ -33,7 +33,7 @@ function StyleToggleNav({ setStyleType, linkTo }) {
             >
               {imgSrc[index] ? (
                 <img
-                  className={styles.styleImg}
+                  className={'d-block border shadow rounded-circle'}
                   height={'35px'}
                   width={'35px'}
                   src={imgSrc[index]}
@@ -47,7 +47,7 @@ function StyleToggleNav({ setStyleType, linkTo }) {
         ))}
       </div>
       {linkTo && (
-        <div className={styles.styleLink}>
+        <div className={'ps-1'}>
           {'View on '}
           <a
             target={'_blank'}

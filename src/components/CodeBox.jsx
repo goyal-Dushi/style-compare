@@ -1,9 +1,11 @@
-import { Alert, IconButton, Snackbar, Tooltip } from '@mui/material';
+import Alert from '@mui/material/Alert';
+import IconButton from '@mui/material/IconButton';
+import Snackbar from '@mui/material/Snackbar';
+import Tooltip from '@mui/material/Tooltip';
 import React, { useRef, useState } from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { monokai } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import styles from './codebox.module.css';
 
 function CodeBox({ snippet }) {
   const [alert, setAlert] = useState(false);
@@ -29,28 +31,27 @@ function CodeBox({ snippet }) {
 
   return (
     <>
-      <div className={styles.codebox}>
-        <div style={{ position: 'relative', width: '100%' }}>
-          <Tooltip title={'Copy'} arrow placement={'left'}>
-            <IconButton
-              onClick={handleCopy}
-              aria-label={'copy'}
-              style={{ position: 'absolute', right: '0' }}
-              color={'primary'}
-              size={'large'}
-            >
-              <ContentCopyIcon />
-            </IconButton>
-          </Tooltip>
-        </div>
-        <SyntaxHighlighter
-          wrapLongLines
-          className={styles.styleHighlighter}
-          style={monokai}
-        >
-          {snippet}
-        </SyntaxHighlighter>
+      <div className={'position-relative'}>
+        <Tooltip title={'Copy'} arrow placement={'left'}>
+          <IconButton
+            onClick={handleCopy}
+            aria-label={'copy'}
+            style={{ right: 0 }}
+            className={'position-absolute'}
+            color={'primary'}
+            size={'large'}
+          >
+            <ContentCopyIcon />
+          </IconButton>
+        </Tooltip>
       </div>
+      <SyntaxHighlighter
+        wrapLongLines
+        className={'p-0 border-none rounded'}
+        style={monokai}
+      >
+        {snippet}
+      </SyntaxHighlighter>
       <input
         style={{ height: 0, opacity: 0 }}
         readOnly

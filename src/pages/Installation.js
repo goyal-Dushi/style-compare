@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import Page from '../components/Page';
 import Interface from '../components/Interface';
 
 const { material, bootstrap, contentDesc } = require('./installation.json');
@@ -35,7 +36,7 @@ export default function Installation() {
   }, [type]);
 
   return (
-    <>
+    <Page>
       <h1 className={'display-4 fw-bold'}>{' Installation '}</h1>
       <Interface
         heading={data.heading}
@@ -43,6 +44,6 @@ export default function Installation() {
         setType={setType}
         codeData={data.html}
       />
-    </>
+    </Page>
   );
 }
