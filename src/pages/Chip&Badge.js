@@ -1,5 +1,6 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
+import Page from '../components/Page';
 import RightSideNav from '../components/RightSideNav';
 import AlignmentContent from '../modules/Chips&Badges/Badges/Align&Content';
 import ColorsSizes from '../modules/Chips&Badges/Chips/ColorSize';
@@ -9,7 +10,7 @@ export default function ChipBadge() {
   return (
     <Grid container>
       <Grid item sm={12} md={9}>
-        <div className={'w-75 mx-auto'}>
+        <Page>
           <h2 className={'display-5 fw-bold mt-3'}>
             <u>Chips</u>
           </h2>
@@ -19,7 +20,7 @@ export default function ChipBadge() {
             <u>Badges</u>
           </h2>
           <AlignmentContent id={'badgeAlignment'} />
-        </div>
+        </Page>
       </Grid>
       <Grid item sm={0} md={3}>
         <RightSideNav

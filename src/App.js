@@ -1,6 +1,14 @@
-import React, { createContext, lazy, Suspense } from 'react';
+import React, {
+  createContext,
+  lazy,
+  Suspense,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Grid } from '@mui/material';
+import Grid from '@mui/material/Grid';
+import { useMediaQuery } from '@mui/material';
 import NavHeader from './components/NavHeader';
 import Footer from './components/Footer';
 import LeftSideNav from './components/LeftSideNav';
@@ -15,16 +23,30 @@ const Installation = lazy(() => import('./pages/Installation'));
 const ButtonStyles = lazy(() => import('./pages/Buttons'));
 
 export const TypeContext = createContext();
+export const NavContext = createContext();
 
 function App() {
+  const [navState, setNavState] = useState(true);
+  const screenSmall = useMediaQuery('max-width: 900px');
+
+  const toggleNav = useCallback(() => {
+    setNavState((prevState) => {
+      return !prevState;
+    });
+  }, []);
+
+  useEffect(() => {
+    toggleNav();
+  }, [screenSmall]);
+
   return (
-    <div className={'position-relative'}>
-      <NavHeader />
-      <Grid container spacing={0} className={'mb-5'}>
-        <Grid item md={2}>
-          <LeftSideNav />
+    <>
+      <NavHeader toggleNav={toggleNav} />
+      <Grid container spacing={0} className={'vh-100'}>
+        <Grid item sm={navState ? 3 : 0} xs={navState ? 3 : 0} md={2}>
+          <LeftSideNav toggleNav={toggleNav} navOpen={navState} />
         </Grid>
-        <Grid item sm={12} md={10}>
+        <Grid item sm={navState ? 9 : 12} xs={navState ? 9 : 12} md={10}>
           <TypeContext.Provider value={libType}>
             <Routes>
               <Route
@@ -80,7 +102,7 @@ function App() {
         </Grid>
       </Grid>
       <Footer />
-    </div>
+    </>
   );
 }
 
