@@ -21,7 +21,6 @@ const CustomPaper = styled(Paper, {
       display: 'block',
       zIndex: '10',
       transition: theme.transitions.create('transform', {
-        transition: theme.transitions.easing.easeIn,
         duration: theme.transitions.duration.enteringScreen,
       }),
       transform: 'scaleX(1)',
