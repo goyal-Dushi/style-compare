@@ -1,34 +1,29 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
-import { DarkThemeContext } from './DarkThemeContext';
+import React, { useEffect, useState, useMemo } from 'react';
+import DarkThemeContext from './DarkThemeContext';
 
+export default function DarkThemeProvider({ children }) {
+  const [darkTheme, setDarkTheme] = useState(false);
 
-export const DarkThemeProvider = ({ children }) => {
+  useEffect(() => {
+    const themeMode = localStorage.getItem('LibCompareTheme');
+    const boolValue = themeMode === 'true';
+    setDarkTheme(boolValue);
+  }, []);
 
-    const [ darkTheme, setDarkTheme ] = useState( false );
+  const handleTheme = () => {
+    localStorage.setItem('LibCompareTheme', !darkTheme);
+    setDarkTheme(!darkTheme);
+  };
 
-    useEffect( () => {
-        const themeMode = localStorage.getItem( 'LibCompareTheme' );
-        const boolValue = ( themeMode == 'true' ) ? true : false;
-        setDarkTheme( boolValue );
-    }, []);
-    
+  const dataContext = useMemo(() => ({
+    darkTheme,
+    setDarkTheme,
+    handleTheme,
+  }));
 
-    const handleTheme = () => {
-        localStorage.setItem( 'LibCompareTheme', !darkTheme );
-        setDarkTheme( !darkTheme );
-    }
-    
-
-    const dataContext = {
-        darkTheme,
-        setDarkTheme,
-        handleTheme,
-    }
-
-    return ( 
-        <DarkThemeContext.Provider value={ dataContext } >
-            { children }
-        </DarkThemeContext.Provider >
-    );
+  return (
+    <DarkThemeContext.Provider value={dataContext}>
+      {children}
+    </DarkThemeContext.Provider>
+  );
 }
