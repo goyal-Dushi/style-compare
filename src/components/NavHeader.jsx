@@ -28,7 +28,7 @@ export default function NavHeader(props) {
       >
         <IconButton
           onClick={() => toggleNav()}
-          className={'burger-icon fs-2 text-dark'}
+          className={'burger-icon fs-2 text-reset'}
         >
           <i className={'bi bi-list'} />
         </IconButton>

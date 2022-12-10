@@ -18,6 +18,7 @@ export default function Footer() {
   return (
     <Paper elevation={4} className={'position-fixed bottom-0 start-0 end-0'}>
       <BottomNav
+        sx={{ bgcolor: 'unset' }}
         className={
           'd-flex flex-column align-items-center justify-content-center'
         }

@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import Page from '../components/Page';
 import RightSideNav from '../components/RightSideNav';
 import AlignmentContent from '../modules/Chips&Badges/Badges/Align&Content';
 import ColorsSizes from '../modules/Chips&Badges/Chips/ColorSize';
 import IconChips from '../modules/Chips&Badges/Chips/IconChips';
+import { stylingSnippets } from '../themes/stylingSnippets';
 
 export default function ChipBadge() {
+  useEffect(() => {
+    stylingSnippets();
+  });
+
   return (
     <Grid container>
       <Grid item sm={12} md={9}>

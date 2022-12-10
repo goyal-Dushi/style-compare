@@ -2,17 +2,17 @@ import React, { useEffect, useState, useMemo } from 'react';
 import DarkThemeContext from './DarkThemeContext';
 
 export default function DarkThemeProvider({ children }) {
-  const [darkTheme, setDarkTheme] = useState(false);
+  const [darkTheme, setDarkTheme] = useState('light');
 
   useEffect(() => {
     const themeMode = localStorage.getItem('LibCompareTheme');
-    const boolValue = themeMode === 'true';
-    setDarkTheme(boolValue);
+    setDarkTheme(themeMode || darkTheme);
   }, []);
 
   const handleTheme = () => {
-    localStorage.setItem('LibCompareTheme', !darkTheme);
-    setDarkTheme(!darkTheme);
+    const newThemeMode = darkTheme === 'light' ? 'dark' : 'light';
+    localStorage.setItem('LibCompareTheme', newThemeMode);
+    setDarkTheme(newThemeMode);
   };
 
   const dataContext = useMemo(() => ({
