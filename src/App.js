@@ -14,6 +14,8 @@ import Footer from './components/Footer';
 import LeftSideNav from './components/LeftSideNav';
 import Loading from './components/Loader';
 import { libType } from './libtype';
+import AppTheme from './themes/AppTheme';
+import DarkThemeProvider from './themes/context/DarkThemeProvider';
 
 const Alerts = lazy(() => import('./pages/Alert'));
 const ChipBadge = lazy(() => import('./pages/Chip&Badge'));
@@ -109,7 +111,11 @@ function App() {
 export default function AppWrapper() {
   return (
     <Router>
-      <App />
+      <DarkThemeProvider>
+        <AppTheme>
+          <App />
+        </AppTheme>
+      </DarkThemeProvider>
     </Router>
   );
 }

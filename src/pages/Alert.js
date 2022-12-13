@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import Page from '../components/Page';
 import RightSideNav from '../components/RightSideNav';
@@ -6,8 +6,13 @@ import DismissAlert from '../modules/Alerts/Dismissable';
 import AlertColors from '../modules/Alerts/Colors';
 import AdditionalContent from '../modules/Alerts/Content';
 import AlertVariants from '../modules/Alerts/Variants';
+import { stylingSnippets } from '../themes/stylingSnippets';
 
 function Alerts() {
+  useEffect(() => {
+    stylingSnippets();
+  });
+
   return (
     <Grid container>
       <Grid item sm={12} md={9}>

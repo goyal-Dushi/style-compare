@@ -1,7 +1,8 @@
 import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import { IconButton, styled } from '@mui/material';
+import { Grid, IconButton, styled } from '@mui/material';
+import ThemeButton from './ThemeButton';
 
 const CustomAppbar = styled(AppBar)(({ theme }) => ({
   color: 'inherit',
@@ -27,20 +28,28 @@ export default function NavHeader(props) {
       >
         <IconButton
           onClick={() => toggleNav()}
-          className={'burger-icon fs-2 text-dark'}
+          className={'burger-icon fs-2 text-reset'}
         >
           <i className={'bi bi-list'} />
         </IconButton>
         <h1 className={'display-6'}> {'LibCompare'} </h1>
-        <a
-          target={'_blank'}
-          href={process.env.REACT_APP_GITHUB_URL}
-          title={'Github'}
-          className={'fs-2 text-dark'}
-          rel={'noreferrer noopener'}
+        <Grid
+          container
+          direction={'row'}
+          justifyContent={'end'}
+          alignItems={'center'}
         >
-          <i className={'bi bi-github'} />
-        </a>
+          <a
+            target={'_blank'}
+            href={process.env.REACT_APP_GITHUB_URL}
+            title={'Github'}
+            className={'fs-2 text-reset'}
+            rel={'noreferrer noopener'}
+          >
+            <i className={'bi bi-github'} />
+          </a>
+          <ThemeButton />
+        </Grid>
       </Toolbar>
     </CustomAppbar>
   );

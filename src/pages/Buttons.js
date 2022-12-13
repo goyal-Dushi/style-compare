@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import Page from '../components/Page';
 import RightSideNav from '../components/RightSideNav';
@@ -6,8 +6,13 @@ import ButtonColors from '../modules/Buttons/Colors';
 import ButtonDisabled from '../modules/Buttons/Disabled';
 import ButtonSizeVariants from '../modules/Buttons/SizeVariants';
 import WithIcons from '../modules/Buttons/WithIcons';
+import { stylingSnippets } from '../themes/stylingSnippets';
 
 export default function ButtonStyles() {
+  useEffect(() => {
+    stylingSnippets();
+  });
+
   return (
     <Grid container>
       <Grid item sm={12} md={9}>
